@@ -1,5 +1,4 @@
 module.exports = {
-    base: '/notebook/',
     title: 'Situ Book',
     description: 'Taking notes...',
     themeConfig: {
