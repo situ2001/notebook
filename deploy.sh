@@ -24,3 +24,5 @@ git commit -m 'deploy'
 git push -f git@github.com:situ2001/notebook.git master:gh-pages
 
 cd -
+
+read -p "Press enter to continue"

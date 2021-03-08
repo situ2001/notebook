@@ -21,6 +21,7 @@ module.exports = {
                 title: 'JavaScript',
                 children: [
                     './javascript/读书笔记.md',
+                    './javascript/async.md',
                     './javascript/问题记录.md'
                 ]
             },
