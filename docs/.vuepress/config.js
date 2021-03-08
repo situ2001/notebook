@@ -31,7 +31,7 @@ module.exports = {
                 ]
             },
             {
-                title: 'C++',
+                title: 'C/C++',
                 children: [
                     '/cpp/OOP.md',
                     '/cpp/问题记录.md'
