@@ -2,8 +2,15 @@ module.exports = {
     title: 'Situ Book',
     description: 'Taking notes...',
     evergreen: true,
+    markdown: {
+        extendMarkdown: md => {
+            
+            md.use(require('markdown-it-katex'));
+        }
+    },
     head: [
-        ['link', { rel: 'icon', href: '/logo-bike.svg' }]
+        ['link', { rel: 'icon', href: '/logo-bike.svg' }],
+        ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css'}]
     ],
     themeConfig: {
         nav: [
@@ -39,7 +46,7 @@ module.exports = {
                 title: 'C/C++',
                 children: [
                     '/cpp/OOP.md',
-                    '/cpp/问题记录.md'
+                    //'/cpp/问题记录.md'
                 ]
             },
             {
@@ -48,7 +55,9 @@ module.exports = {
             },
             {
                 title: 'Others',
-                children: []
+                children: [
+                    '/others/创新班.md'
+                ]
             }
         ]
     }

@@ -80,29 +80,3 @@ Hello world
 > There are times when we want things to load and happen right away. For example when applying some user-defined styles to a webpage you'll want the styles to be applied as soon as possible.
 >
 > If we're running an operation that takes time however, like querying a database and using the results to populate templates, it is better to push this off the main thread and complete the task asynchronously. Over time, you'll learn when it makes more sense to choose an asynchronous technique over a synchronous one.
-
-## bind方法
-
-`let boundFunc = func.bind(thisArg[, arg1[, arg2[, ...argN]]])`
-
-这个方法返回一个函数，这个函数有什么特别之处呢。特别之处就是这个函数的this是被bind了，bind就是对象`thisArg`。
-
-具体怎么操作呢？见下代码
-
-``` javascript
-const mod = {
-  value: 114514,
-  getValue: function () {
-    return this.value;
-  }
-};
-
-const unboundGetValue = mod.getValue;
-console.log(unboundGetValue());
-
-const boundGetValue = mod.getValue.bind(mod);
-console.log(boundGetValue());
-
-// in nodejs
-// the excepted output: undefined 114514
-```
