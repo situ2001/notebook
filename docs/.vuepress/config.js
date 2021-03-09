@@ -4,7 +4,6 @@ module.exports = {
     evergreen: true,
     markdown: {
         extendMarkdown: md => {
-            
             md.use(require('markdown-it-katex'));
         }
     },
@@ -22,10 +21,11 @@ module.exports = {
             {
                 title: 'Java',
                 children: [
+                    '/java/基础知识.md',
+                    '/java/问题记录.md',
                     '/java/多线程.md',
                     '/java/设计模式.md',
-                    '/java/反射.md',
-                    '/java/问题记录.md'
+                    '/java/反射.md'
                 ]
             },
             {
