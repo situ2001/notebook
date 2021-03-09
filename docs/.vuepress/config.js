@@ -1,6 +1,10 @@
 module.exports = {
     title: 'Situ Book',
     description: 'Taking notes...',
+    evergreen: true,
+    head: [
+        ['link', { rel: 'icon', href: '/logo-bike.svg' }]
+    ],
     themeConfig: {
         nav: [
             { text: 'Blog', link: 'https://blog.situ2001.com' },
@@ -39,10 +43,12 @@ module.exports = {
                 ]
             },
             {
+                title: 'Git',
+                children: []
+            },
+            {
                 title: 'Others',
-                children: [
-
-                ]
+                children: []
             }
         ]
     }
