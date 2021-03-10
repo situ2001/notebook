@@ -8,8 +8,8 @@ module.exports = {
         }
     },
     head: [
-        ['link', { rel: 'icon', href: '/logo-bike.svg' }],
-        ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css'}]
+        ['link', { rel: 'icon', href: '/logo-book.svg' }],
+        ['link', { rel: 'stylesheet', href: '/katex.min.css'}]
     ],
     themeConfig: {
         nav: [
@@ -45,13 +45,26 @@ module.exports = {
             {
                 title: 'C/C++',
                 children: [
+                    '/cpp/code_sample.md',
                     '/cpp/OOP.md',
-                    //'/cpp/问题记录.md'
+                    '/cpp/问题记录.md'
                 ]
             },
             {
                 title: 'Git',
                 children: []
+            },
+            {
+                title: '其他专业课',
+                children: [
+                    '/basic_lessons/数字电路.md'
+                ]
+            },
+            {
+                title: '工具',
+                children: [
+                    '/tools/note.md'
+                ]
             },
             {
                 title: 'Others',
