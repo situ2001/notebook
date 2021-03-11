@@ -19,6 +19,13 @@ module.exports = {
         sidebarDepth: 2,
         sidebar: [
             {
+                title: '工具',
+                children: [
+                    '/tools/note.md',
+                    '/tools/linux_command.md'
+                ]
+            },
+            {
                 title: 'Java',
                 children: [
                     '/java/基础知识.md',
@@ -39,6 +46,8 @@ module.exports = {
             {
                 title: 'Python',
                 children: [
+                    '/python/rules_naming.md',
+                    '/python/鸭子类型.md',
                     '/python/问题记录.md'
                 ]
             },
@@ -46,6 +55,7 @@ module.exports = {
                 title: 'C/C++',
                 children: [
                     '/cpp/code_sample.md',
+                    '/cpp/rules_naming.md',
                     '/cpp/OOP.md',
                     '/cpp/问题记录.md'
                 ]
@@ -55,15 +65,9 @@ module.exports = {
                 children: []
             },
             {
-                title: '其他专业课',
+                title: '专业基础课',
                 children: [
                     '/basic_lessons/数字电路.md'
-                ]
-            },
-            {
-                title: '工具',
-                children: [
-                    '/tools/note.md'
                 ]
             },
             {

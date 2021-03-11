@@ -106,6 +106,8 @@ term
 - [ ] Contact the media
 ```
 
+然后详细的syntax介绍就是来自于这个网页了: [Markdown Guide](https://www.markdownguide.org/)
+
 ## $LaTeX$
 
 这是一个用来写数学公式的typesetting system
@@ -119,7 +121,7 @@ immediately by a digit. Thus, $20,000 and $30,000 won’t parse as math. If for 
 reason you need to enclose text in literal $ characters, backslash-escape them and
 they won’t be treated as math delimiters.
 
-目前，我的符号的查询有两种途径
+目前，我的符号的查询有两种途径，但是相比起来呢，后者似乎更全一些，因为logic notation这些运算符，我在Wiki那边倒是没有找到。
 
 1. [https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols](Wikipedia:LaTeX_symbols)
 2. [https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols](List_of_LaTeX_mathematical_symbols)
