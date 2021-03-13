@@ -21,7 +21,7 @@ module.exports = {
             {
                 title: '工具',
                 children: [
-                    '/tools/note.md',
+                    '/tools/take_notes.md',
                     '/tools/linux_command.md'
                 ]
             },
@@ -41,8 +41,7 @@ module.exports = {
                     '/javascript/问题记录.md',
                     '/javascript/常用方法',
                     '/javascript/读书笔记.md',
-                    '/javascript/异步.md',
-                    //'/javascript/async_promise.md'
+                    '/javascript/异步.md'
                 ]
             },
             {
@@ -75,7 +74,7 @@ module.exports = {
             {
                 title: 'Others',
                 children: [
-                    '/others/创新班.md'
+                    //'/others/创新班.md'
                 ]
             }
         ]

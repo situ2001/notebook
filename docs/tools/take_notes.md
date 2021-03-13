@@ -114,12 +114,9 @@ term
 
 所以怎么用的，在markdown-it-katex插件下，要遵循的语法是
 
-> Anything between two $ characters will be treated as TeX math. The opening $ must
-have a non-space character immediately to its right, while the closing $ must
-have a non-space character immediately to its left, and must not be followed
-immediately by a digit. Thus, $20,000 and $30,000 won’t parse as math. If for some
-reason you need to enclose text in literal $ characters, backslash-escape them and
-they won’t be treated as math delimiters.
+1. Anything between two $ characters will be treated as TeX math.
+2. The opening $ must have a non-space character immediately to its right, while the closing $ must have a non-space character immediately to its left, and must not be followed immediately by a digit. Thus, $20,000 and $30,000 won’t parse as math.
+3. If for some reason you need to enclose text in literal $ characters,backslash-escape them and they won’t be treated as math delimiters.
 
 目前，我的符号的查询有两种途径，但是相比起来呢，后者似乎更全一些，因为logic notation这些运算符，我在Wiki那边倒是没有找到。
 
