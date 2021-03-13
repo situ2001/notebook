@@ -27,10 +27,10 @@ git config http.proxy http://127.0.0.1:7890
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 git push -f git@github.com:situ2001/notebook.git master:gh-pages
 
-cd -
-
 # if you want to use http proxy
 # git config --unset http.proxy
 git config --unset http.proxy
+
+cd -
 
 read -p "Press enter to continue"
