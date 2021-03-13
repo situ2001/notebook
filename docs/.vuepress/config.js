@@ -41,7 +41,8 @@ module.exports = {
                     '/javascript/问题记录.md',
                     '/javascript/常用方法',
                     '/javascript/读书笔记.md',
-                    '/javascript/async.md',
+                    '/javascript/异步.md',
+                    //'/javascript/async_promise.md'
                 ]
             },
             {
