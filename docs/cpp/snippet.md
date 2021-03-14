@@ -2,7 +2,7 @@
 
 For convenience of looking up, I collect some C++ code snippets.
 
-## Operator overriding
+## Operator overloading
 
 (special case)
 
@@ -177,5 +177,80 @@ int main()
             std::cout << e << '\n';
         }
     }
+}
+```
+
+## 面向对象代码示例
+
+无继承无多态，无现代C++，很原始，很普通。(助人为乐)
+
+``` cpp
+#include <iostream>
+
+using namespace std;
+
+double const kPi = 3.14;
+
+class Circle
+{
+private:
+    double radius_;
+public:
+    Circle();
+    Circle(double radius);
+    friend double GetRadius(Circle circle);
+    double GetArea() const;
+    double GetPerimeter() const;
+    double operator+(Circle other);
+};
+
+Circle::Circle() : radius_(1) {}
+
+Circle::Circle(double radius)
+{
+    radius_ = radius;
+}
+
+double GetRadius(Circle circle)
+{
+    return circle.radius_;
+}
+
+double Circle::GetArea() const
+{
+    return kPi * radius_ * radius_;
+}
+
+double Circle::GetPerimeter() const
+{
+    return kPi * radius_ * 2;
+}
+
+double Circle::operator+(Circle other)
+{
+    return (*this).GetArea() + other.GetArea();
+}
+
+int main()
+{
+    // initialize two Circle objects
+    Circle circle1;
+    Circle circle2(3);
+
+    // get area
+    cout << circle1.GetArea() << '\n'; // 3.14
+    cout << circle2.GetArea() << '\n'; // 28.26
+    
+    // get perimeter
+    cout << circle1.GetPerimeter() << '\n'; // 6.28
+    cout << circle2.GetPerimeter() << '\n'; // 18.84
+
+    // use friend to get a specific Circle's radius
+    cout << GetRadius(circle1) << '\n'; // 1
+    cout << GetRadius(circle2) << '\n'; // 2
+
+    // operator overloading
+    double total_area = circle1 + circle2;
+    cout << total_area; // 31.4 
 }
 ```

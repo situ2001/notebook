@@ -322,7 +322,13 @@ test2 = test3; //wrong!
 
 直接扔cppreference算了: [直达](https://en.cppreference.com/w/cpp/language/operators)
 
-其实返回值赋给谁的这个问题，我想了想，估计可以直接与基本类型的运算挂钩。
+注意，一个重载运算符的函数，其operand必须有一个是枚举类型或者类类型。
+
+> When an operator appears in an expression, and at least one of its operands has a class type or an enumeration type
+
+其实返回值赋给谁的这个问题，我想了想，估计可以直接与基本类型的运算挂钩。比如`+`是这样的，成员函数`a.operator+(b)`，非成员函数`operator+(a, b)`
+
+但是一些运算符是不能被重载为非成员函数的: `=`, `()`, `[]`, `->`，其实结合一下操作符的本质特点就可以了
 
 总的来说，跟声明一个non-member function和一个member function差不多。但是有一些略微不同的地方，先在这里用一段代码记下来，之后回查就简单多了。
 
@@ -432,7 +438,7 @@ foo++ was called
 
 草了，竟然还有啊...不愧是C++...
 
-一般来说呢，`const`是作用于它左边的（如果左边啥都没有的话）。而这个关键字`const`能作用于变量、函数、类对象...
+一般来说呢，`const`是作用于它左边的（如果左边啥都没有的话）。而这个关键字`const`能作用于变量、**成员**函数、类对象...
 
 不过**关键**是有`const`的东西，它不能修改里面成员的内存空间。
 
