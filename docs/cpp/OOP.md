@@ -184,6 +184,15 @@ public:
 private:
   int num = 114514;
 };
+
+// or
+friend void getNum(Test test);
+
+// outside of the class
+void getNum(Test test)
+{
+  // implements here
+}
 ```
 
 ``` cpp
@@ -440,7 +449,3 @@ foo++ was called
 并且const了的函数实质又是？是这样的，其实就是把这个函数里头的`*this`给const掉了。
 
 > In the body of a cv-qualified function, *this is cv-qualified, e.g. in a const member function, only other const member functions may be called normally. (A non-const member function may still be called if const_cast is applied or through an access path that does not involve this.)
-
-## 示例
-
-施工中...
