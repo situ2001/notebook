@@ -2,6 +2,4 @@
 
 Keep a note, and one day it will keep you.
 
-~~早期版本，本地笔记迁移中...~~
-
-大致完成，将成为个人知识库
+![LICENSE](https://img.shields.io/github/license/situ2001/notebook?style=flat-square) ![repo size](https://img.shields.io/github/repo-size/situ2001/notebook?style=flat-square)
