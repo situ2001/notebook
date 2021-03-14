@@ -1,8 +1,10 @@
-# 代码片段(C++)
+# Code snippet(C++)
 
-收集一些代码示例，以后查阅起来会方便很多
+For convenience of looking up, I collect some C++ code snippets.
 
-## 运算符重载(特殊)
+## Operator overriding
+
+(special case)
 
 ``` cpp
 #include <iostream>
@@ -103,9 +105,9 @@ foo++ was called
 */
 ```
 
-## Modern C++(部分)
+## Modern C++
 
-存了一些可能会用到的新特性(不包含class那边的)
+Part of the features since C++11.
 
 ``` cpp
 #include <iostream>

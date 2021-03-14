@@ -1,6 +1,6 @@
 # 做笔记
 
-这是一篇用于记录如何我平时写笔记的笔记(~~套娃~~)
+How to take notes with vuepress?
 
 ## Markdown
 
@@ -108,11 +108,11 @@ term
 
 然后详细的syntax介绍就是来自于这个网页了: [Markdown Guide](https://www.markdownguide.org/)
 
-## $LaTeX$
+## LaTeX
 
-这是一个用来写数学公式的typesetting system
+$LaTeX$是一个用来写数学公式的typesetting system
 
-所以怎么用的，在markdown-it-katex插件下，要遵循的语法是
+所以怎么用的，在`markdown-it-katex`插件下，要遵循的语法是
 
 1. Anything between two $ characters will be treated as TeX math.
 2. The opening $ must have a non-space character immediately to its right, while the closing $ must have a non-space character immediately to its left, and must not be followed immediately by a digit. Thus, $20,000 and $30,000 won’t parse as math.
@@ -122,3 +122,27 @@ term
 
 1. [https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols](Wikipedia:LaTeX_symbols)
 2. [https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols](List_of_LaTeX_mathematical_symbols)
+
+## Markdown extension
+
+### toc
+
+`[[toc]]`可以直接得到目录
+
+[[toc]]
+
+### Github-Style Tables
+
+``` markdown
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+```
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
