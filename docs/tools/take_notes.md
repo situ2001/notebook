@@ -120,8 +120,8 @@ $LaTeX$是一个用来写数学公式的typesetting system
 
 目前，我的符号的查询有两种途径，但是相比起来呢，后者似乎更全一些，因为logic notation这些运算符，我在Wiki那边倒是没有找到。
 
-1. [https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols](Wikipedia:LaTeX_symbols)
-2. [https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols](List_of_LaTeX_mathematical_symbols)
+1. [https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols](https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols)
+2. [https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
 
 ## Markdown extension
 

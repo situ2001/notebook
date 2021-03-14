@@ -233,7 +233,7 @@ double Circle::operator+(Circle other)
 
 int main()
 {
-    // initialize two Circle objects
+    // instantiate two Circle objects
     Circle circle1;
     Circle circle2(3);
 
