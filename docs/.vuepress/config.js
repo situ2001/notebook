@@ -49,8 +49,9 @@ module.exports = {
                 title: 'Python',
                 children: [
                     '/python/rules_naming.md',
-                    '/python/鸭子类型.md',
-                    '/python/问题记录.md'
+                    '/python/built_in_things.md',
+                    '/python/问题记录.md',
+                    '/python/鸭子类型.md'
                 ]
             },
             {
@@ -75,7 +76,7 @@ module.exports = {
             {
                 title: 'Others',
                 children: [
-                    
+                    '/others/tensorflow.md'
                 ]
             }
         ]
