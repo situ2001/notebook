@@ -1,4 +1,4 @@
-# 代码命名规范
+# 命名规范
 
 Still, 一个很好的repo: [StyleGuide](https://github.com/google/styleguide)(原文大部分摘抄自此)
 

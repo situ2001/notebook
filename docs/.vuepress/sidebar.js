@@ -1,19 +1,21 @@
 module.exports = [
     {
-        title: '工具',
+        title: '杂项',
         children: [
             '/tools/take_notes.md',
-            '/tools/linux_command.md'
+            '/tools/linux_command.md',
+            '/tools/vocabulary.md'
         ]
     },
     {
         title: 'Java',
         children: [
-            '/java/基础知识.md',
+            '/java/basis.md', // 基础知识
             '/java/问题记录.md',
+            '/java/feature_jdk.md', // JDK新特性
             '/java/多线程.md',
             '/java/设计模式.md',
-            '/java/反射.md'
+            '/java/reflection.md' // 反射
         ]
     },
     {
@@ -21,7 +23,7 @@ module.exports = [
         children: [
             '/javascript/问题记录.md',            
             '/javascript/常用方法.md',
-            '/javascript/keywords.md',
+            '/javascript/keywords.md', // 关键字
             '/javascript/读书笔记.md',
             '/javascript/异步.md'
         ]
@@ -29,8 +31,8 @@ module.exports = [
     {
         title: 'Python',
         children: [
-            '/python/rules_naming.md',
-            '/python/built_in_things.md',
+            '/python/rules_naming.md', // 命名规则
+            '/python/built_in_things.md', // 内建
             '/python/问题记录.md',
             '/python/鸭子类型.md'
         ]
@@ -38,9 +40,9 @@ module.exports = [
     {
         title: 'C/C++',
         children: [
-            '/cpp/snippet.md',
-            '/cpp/rules_naming.md',
-            '/cpp/OOP.md',
+            '/cpp/snippet.md', // 代码片段
+            '/cpp/rules_naming.md', // 命名规范
+            '/cpp/OOP.md', // OOP 从Java迁移
             '/cpp/问题记录.md'
         ]
     },
