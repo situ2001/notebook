@@ -21,12 +21,17 @@ struct Foo
     }
 
     // assignment operator
+    // must supply an argument
     Foo& operator=(const Foo& other)
     {
         std::cout << "operator = was called";
         this->value = other.value;
         return *this;
     }
+
+    // when you use increment operator next to the assignment
+    // the returning value will be used to assign to lhs
+    // But if you put prefix or postfix ++ alone, returning type does nothing
 
     // postfix ++, note that the int value dose nothing here
     Foo operator++(int)

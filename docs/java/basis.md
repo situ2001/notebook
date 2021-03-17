@@ -1,5 +1,14 @@
 # 基础知识
 
+## Method Overloading
+
+(嘿呀这是最naive的)我一直以为是同名同返回类型不同参...
+
+其实正确的是，只需要同名不同参。如下
+
+- Both must have the same method name.
+- Both must have different argument lists.
+
 ## Union Type
 
 使用Bitwise-OR运算符，即`|`，一般是用于try-catch block里面的exception catching。比如我们从文件反序列化对象的时候，可能会同时出现两个exception: `IOException`和`ClassNotFoundException`，所以这个时候，Union Type就有用了。

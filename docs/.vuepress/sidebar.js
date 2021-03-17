@@ -2,9 +2,9 @@ module.exports = [
     {
         title: '杂项',
         children: [
-            '/tools/take_notes.md',
+            '/tools/take_notes.md', // 如何记笔记
             '/tools/linux_command.md',
-            '/tools/vocabulary.md'
+            '/tools/vocabulary.md' // 专业词汇表
         ]
     },
     {
@@ -53,7 +53,8 @@ module.exports = [
     {
         title: '一些课程',
         children: [
-            '/basic_lessons/数字电路.md'
+            '/basic_lessons/数字电路.md',
+            '/basic_lessons/discrete_mathematics.md'
         ]
     },
     {

@@ -1,14 +1,13 @@
 {
   "name": "notebook",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Taking notes",
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "situ2001",
+  "license": "GPL-3.0",
   "dependencies": {
     "markdown-it-katex": "^2.0.3",
     "vuepress": "^1.8.2"

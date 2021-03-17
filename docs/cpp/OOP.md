@@ -1,4 +1,4 @@
-# 面向对象(C++)
+# OOP(C++)
 
 (个人笔记) 要不是大一下学校的OOP课要讲MFC...
 
@@ -8,7 +8,7 @@
 
 感觉C++中的OOP多了好多东西啊（太菜了
 
-## 运算符和keyword
+## Operator & Keyword
 
 按优先级来说的。
 
@@ -18,11 +18,11 @@ member access: `.`和`->`常见，前者是非指针变量用过的，后者是�
 
 class上的`:`，如同java里的`extends`
 
-## member function
+## Member function
 
 这个其实怎么说呢，我就把它跟java里头的instance method混为一谈了。所以这样理解就没问题了。
 
-## 实例化一个对象
+## Instantiation
 
 无参数的话，**不用带parentheses**...(被坑过)，如下面的第一行...
 
@@ -34,7 +34,7 @@ Test* test2 = new Test;
 
 前者开在stack上，后者开在heap上。（java直接扔heap上不香吗
 
-## 虚函数
+## Virtual function
 
 函数就有非虚函数，虚函数和纯虚函数这三种了，太草了。由于java的对象方法默认就是`virtual`的（JVM调用指令`invokevirtual`），然后java可以多态，要invoke的方法都是在runtime进行动态绑定的。所以C++里头的函数虚不虚，就很好理解了。
 
@@ -104,7 +104,7 @@ a->eat(); // I am eating food
 
 不过这能做到jvav做不到的东西，挺厉害的嘛（
 
-## override 关键字
+## Override keyword
 
 这个东西(C++11)似乎可以防止写虚函数重载的时候，不小心写错的大无语事件发生。用法如下
 
@@ -112,7 +112,7 @@ a->eat(); // I am eating food
 virtual void eat() override;
 ```
 
-## modifier
+## Modifier
 
 似乎因为没有jvav的package，所以这么几个modifier**都没有了package access的restriction**（因为根本没有package啊）。所以就很方便了。
 
@@ -122,7 +122,7 @@ virtual void eat() override;
 
 `private`直接是私有，类里的能访问。
 
-## static
+## Static keyword
 
 这个也没啥大区别的，唯一的小区别就是访问static的方法或变量需要使用operator `::`
 
@@ -135,7 +135,7 @@ public:
 Test::i // 114514
 ```
 
-## 关于继承
+## Inheritance
 
 就这样
 
@@ -155,7 +155,7 @@ public:
   }
 ```
 
-相似地，我们也可以用来给field初始化，如
+相似地，我们也可以用来给field初始化
 
 ``` cpp
 private:
@@ -169,7 +169,7 @@ public:
 
 经查询，这个东西叫做`Constructors and member initializer lists`
 
-## friend
+## Friend keyword
 
 然后就是友元了，友元可以直接访问class里头的private field，它不是一个成员函数也不是一个这个class的static函数。作用域不一样的。这东西有这个特性，岂不是可以少一堆getter和setter？（
 
@@ -200,7 +200,7 @@ Test test;
 getNum(test); // 114514
 ```
 
-当然也可以在里头声明一个友元类，此时友元类里的成员函数都能访问到这个类的private field
+当然也可以在里头声明一个友元类，此时友元类里的成员函数都能访问到这个类的private field(前提当然是先有至少一个该类的对象，才能进行访问)
 
 ``` cpp
 //In class Test
@@ -220,7 +220,7 @@ class Friend
 
 应该用不到，不写了。
 
-## constructor和destructor
+## Constructor & Destructor
 
 常见，语法也是差不多，但是后者析构这个就没见过了（GC擦屁股太香了
 
@@ -252,13 +252,23 @@ Test test;
 Test test1 = test; //invoke Copy Constructor
 ```
 
-就像是java中`Cloneable`对象的`clone()`方法一样，深拷贝浅拷贝这些也是差不多的，要在拷贝构造函数那里写自己的实现。
+调用默认拷贝构造函数的时候，一切栈上的变量都被拷过去了(这不就是跟struct一模一样吗)。当然要自己实现的时候，就不是这样了（要自己一个一个加实现）
+
+而这个呢，就是用重载运算符的了...
+
+``` cpp
+Test test;
+Test test1;
+test1 = test; // This is operator overloading, NOT invoking copy constructor
+```
 
 ## Move Constructor
 
 C++11开始加入了rvalue reference，这是什么呢，一查cpprefernce就能看到短小精悍的解释
 
 > Rvalue references can be used to extend the lifetimes of temporary objects
+
+两个字来说就是~~续命~~
 
 还有std::move，类的构造器也有了移动构造函数
 
@@ -275,11 +285,13 @@ Foo foo1;
 Foo foo2 = std::move(foo1);
 ```
 
-## pointer this
+## Pointer
+
+### this
 
 跟java一样，C++只有成员函数才有的。记得member access要用operator `->`
 
-## pointer to an object
+### Pointer to an object
 
 这个java的引用变量是差不多的。声明也就这样
 
@@ -296,13 +308,13 @@ Test* pointer = &test1;
 Test* test2 = new Test;
 ```
 
-## 函数定义位置
+## Where to define
 
 定义在类里头就是默认inline了。如下引用来自cpluscplus.com
 
 > The only difference between defining a class member function completely within its class or to include only the prototype and later its definition, is that in the first case the function will automatically be considered an inline member function by the compiler, while in the second it will be a normal (not-inline) class member function, which in fact supposes no difference in behavior
 
-## delete AND default
+## default & delete
 
 如果有带参的constructor，那么可以用`=default`来写默认constructor如`Test(){}`，如果要禁用某个函数，可以上`=delete`
 
@@ -318,7 +330,7 @@ Test test2;
 test2 = test3; //wrong!
 ```
 
-## 运算符重载
+## Operator overloading
 
 直接扔cppreference算了: [直达](https://en.cppreference.com/w/cpp/language/operators)
 
@@ -328,113 +340,13 @@ test2 = test3; //wrong!
 
 其实返回值赋给谁的这个问题，我想了想，估计可以直接与基本类型的运算挂钩。比如`+`是这样的，成员函数`a.operator+(b)`，非成员函数`operator+(a, b)`
 
-但是一些运算符是不能被重载为非成员函数的: `=`, `()`, `[]`, `->`，其实结合一下操作符的本质特点就可以了
+但是一些运算符是不能被重载为非成员函数的: `=`, `()`, `[]`, `->`，其实结合一下这些操作符运算的本质特点就可以了
 
 总的来说，跟声明一个non-member function和一个member function差不多。但是有一些略微不同的地方，先在这里用一段代码记下来，之后回查就简单多了。
 
-``` cpp
-#include <iostream>
+代码呢？扔到snippet里面去了...
 
-struct Foo
-{
-    int value;
-
-    // operator +
-    Foo operator+(const Foo& b)
-    {
-        std::cout << "+ was called" << std::endl;
-        return Foo{ this->value + b.value };
-    }
-
-    // assignment operator
-    Foo& operator=(const Foo& other)
-    {
-        std::cout << "operator = was called";
-        this->value = other.value;
-        return *this;
-    }
-
-    // postfix ++, note that the int value dose nothing here
-    Foo operator++(int)
-    {
-        Foo old = *this;
-        operator++();
-        std::cout << "foo++ was called" << std::endl;
-        return old;
-    }
-
-    // prefix ++
-    Foo& operator++()
-    {
-        this->value += 1;
-        // do some increment operation here
-        std::cout << "++foo was called" << std::endl;
-        return *this;
-    }
-
-    // also the += operator
-    Foo& operator+=(const Foo& rhs)
-    {
-        this->value += rhs.value;
-        // addition of rhs to *this takes place here
-        std::cout << "+= operator was called" << std::endl;
-        return *this;
-    }
-};
-
-// Since << and >> take user-defined type as the right argument (b in a@b), they must be implemented as non-member
-std::ostream& operator<<(std::ostream& os, Foo foo)
-{
-    std::cout << foo.value;
-    return os;
-}
-
-// a non-member operator > function
-bool operator>(const Foo& lhs, const Foo& rhs)
-{
-    return lhs.value > rhs.value;
-}
-
-int main()
-{
-    Foo foo = { 114 };
-    Foo bar = { 514 };
-
-    Foo test1 = foo + bar;
-    std::cout << test1 << std::endl;
-
-    Foo test2;
-    test2 = foo;
-    std::cout << test2 << std::endl;
-
-    std::cout << (foo++) << std::endl;
-    std::cout << (++foo) << std::endl;
-
-    foo += bar;
-    std::cout << foo << std::endl;
-
-    std::cout << (foo > bar) << std::endl;
-}
-
-```
-
-输出结果
-
-``` shell
-+ was called
-628
-operator = was called114
-++foo was called
-foo++ was called
-114
-++foo was called
-116
-+= operator was called
-630
-1
-```
-
-## const keyword
+## Const keyword
 
 草了，竟然还有啊...不愧是C++...
 

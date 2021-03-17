@@ -53,7 +53,7 @@ initialize a Bar
 
         a foo method
 
-        an example
+        For example
 
         ``` python
         print (Bar().foo()) # 114514

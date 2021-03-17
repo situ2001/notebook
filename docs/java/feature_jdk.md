@@ -43,7 +43,7 @@ var lambda = new Consumer<String>() {
 public void test(var foo) // not allowed
 ```
 
-- 就初始化
+- 仅声明
 
 ``` java
 var x; // not allowed
@@ -71,12 +71,12 @@ try {
 
 > Java has a number of non-denotable types - that is to say types that can exist within your program, but for which there’s no way to explicitly write out the name for that type. A good example of a non-denotable type is an anonymous class - you can add fields and methods to it, but you won’t be able to write the name of the anonymous class in your Java code. The diamond operator can’t be used with anonymous classes. Var is less restricted and can be used to support some non-denotable types - specifically anonymous classes and intersection types.
 
-在Java10里，我们可以基于一个存在的类创建一个新类，不过却没有相对应的新类型名字，那么这个就叫做`Non-denoted Type`，前提是必须要用`var`，下面的代码用Object做declared type就会报错。
+在Java10里，我们可以基于一个存在的类，来创建一个新类，不过这个新类却没有相对应的新类型名字。这个就叫做`Non-denoted Type`，声明这种对象的时候必须要用`var`(因为根本没有存在的类型)，下面的代码用Object做declared type就会报错。
 
 ``` java
 public class Test {
     public static void main(String[] args) {
-        var obj = new Object(){
+        var obj = new Object() {
             final String s = "114514";
 
             public String test() {
@@ -94,11 +94,11 @@ public class Test {
 }
 ```
 
-## 多行字符串
+## Text block
 
-不用加号拼接字符串了
+(Since Java15)对于多行字符串，终于可以不用加号拼接字符串了
 
-Python, YES!!(
+Python, YES!!!
 
 ``` java
 String example = """
@@ -122,35 +122,40 @@ Wow, so python-liked(
 
 ## enhanced switch
 
-见这里: [链接](https://openjdk.java.net/jeps/361)
+(Since Java14)见这里: [链接](https://openjdk.java.net/jeps/361)
 
-`when`, are you?(
+`when` are you?(
 
-可以当成赋值表达式用了，真香。所以赋值也好，return也好，都可以的。
+可以当成赋值表达式用了，真香。所以赋值也好，return也好，都可以的。`->`后若是一个code block，那么就要用`yield`来说明返回值。
 
 ``` java
-enum Foo {
-    ONE, TWO, THREE, FOUR, FIVE
-}
-bar = new Foo();
-String s = switch(bar) {
-    case ONE, TWO   -> "case 1";
-    case THREE      -> yield "case 2";
-    case FOUR, FIVE -> "case 3";
-    default         -> {
-        System.out.println("No case matched");
-        yield "case 0";
+public class Test {
+    enum Foo {
+        ONE, TWO, THREE, FOUR, FIVE
     }
-};
+
+    public static void main(String[] args) {
+        var bar = Foo.ONE;
+        String s = switch(bar) {
+            case ONE, TWO   -> "case 1";
+            case THREE      -> { var i = 0; yield "case 2"; }
+            case FOUR, FIVE -> "case 3";
+            default         -> {
+                System.out.println("No case matched");
+                yield "case 0";
+            }
+        };
+    }
+}
 ```
 
 不过赋值时候，要注意全部情况，否则就会报错（不愧是严格的Java）
 
-非赋值的switch，也是这样。主要是`:`to`->`, eliminate `break`
+非赋值的switch，也是这样。主要是`:`to`->`, omit `break`。
 
 ## JShell
 
-很像动态语言如py的command prompt啊（
+(Since Java9)很像动态语言如py的command prompt啊（
 
 使用的话直接cmd输入即可
 
@@ -158,10 +163,6 @@ String s = switch(bar) {
 jshell
 ```
 
-## Java command
-
-直接可以不用多一步`javac`，直接`java`就行了
-
 ## instanceof
 
-(Preview)...
+(Preview)待更...
