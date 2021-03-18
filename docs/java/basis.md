@@ -18,10 +18,8 @@
 ``` java
 public class Test {
     public static void main(String[] args) {
-        Object obj;
-        
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("obj.dat"))) {
-            obj = in.readObject();
+            Object obj = in.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -31,11 +29,11 @@ public class Test {
 
 ## Intersection Type
 
-使用Bitwise-AND运算符，即`&`，可以用于generic中的wild card和对lambda表达式的casting
+使用Bitwise-AND运算符，即`&`，可以用于generic中的wild card和对lambda表达式的casting，格式为`A & B`，A B指的是类或接口类型，比如`Object & Runnable`
 
 - 泛型
 
-格式为`A & B`，A指的是类类型，而B是接口类型，比如`<T extends Object & Serializable>`。代码见下
+比如`<T extends Object & Serializable>`。代码见下
 
 ``` java
 public class Test {
