@@ -9,6 +9,73 @@
 - Both must have the same method name.
 - Both must have different argument lists.
 
+## Varargs
+
+当有一个方法不是很确定参数的个数的时候，就可以使用可变参数了，其实在Java里头，可变参数的实质就是一个长度可变的**数组**。syntax如下
+
+``` java
+public void foo(Object foo, String... bars)
+```
+
+比如说我们把可变参数里的元素全部print出来
+
+``` java
+import java.util.Arrays;
+
+public class Example {
+    private static void foo(String description, int... args) {
+        System.out.println(Arrays.toString(args)); // [1, 9, 1, 9, 8, 1, 0]
+        System.out.println("Description: " + description); // Description: dssq
+
+        for (var e : args) {
+            System.out.print(e);
+        } // 1919810
+    }
+
+    public static void main(String[] args) {
+        foo("dssq", 1, 9, 1, 9, 8, 1, 0);
+    }
+}
+```
+
+那么为什么不用数组做参数？区别请见下
+
+``` java
+foo(1, 9, 1, 9, 8, 1, 0);
+foo(new int[]{1, 9, 1, 9, 8, 1, 0});
+```
+
+自带API里头的一个好例子，就是`String.format`这个方法啦
+
+``` java
+public static String format​(String format, Object... args)
+// For example, invoke it with parameter("%s, %s", "foo", "bar")
+```
+
+## MethodHandle
+
+> A method handle is a typed, directly executable reference to an underlying method, constructor, field, or similar low-level operation, with optional transformations of arguments or return values. These transformations are quite general, and include such patterns as conversion, insertion, deletion, and substitution.
+
+``` java
+public class Test {
+    public static void main(String[] args) throws Throwable {
+        MethodType methodType;
+        MethodHandle methodHandle;
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        methodType = MethodType.methodType(String.class, char.class, char.class);
+        System.out.println(methodType); // (char,char)String
+        methodHandle = lookup.findVirtual(String.class, "replace", methodType);
+
+        String s = (String) methodHandle.invokeExact("hello", 'h', 'y');
+        System.out.println(s); // yello
+    }
+}
+```
+
+从中可以知道，原来方法的签名是这样子的。
+
+(待更)
+
 ## Union Type
 
 使用Bitwise-OR运算符，即`|`，一般是用于try-catch block里面的exception catching。比如我们从文件反序列化对象的时候，可能会同时出现两个exception: `IOException`和`ClassNotFoundException`，所以这个时候，Union Type就有用了。
@@ -81,7 +148,7 @@ interface java.io.Serializable
 */
 ```
 
-## Enumerated Type
+## Enums
 
 枚举类型(Enumerated Type)，这个我的教材没有详细讲，而是将这玩意放在了Appendix里头，那么按理来说就是比较好理解了。
 
