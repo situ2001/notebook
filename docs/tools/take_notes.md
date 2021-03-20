@@ -2,6 +2,8 @@
 
 How to take notes with vuepress?
 
+[[toc]]
+
 ## Markdown
 
 这`个`*真**好***~~用~~
@@ -122,6 +124,19 @@ $LaTeX$是一个用来写数学公式的typesetting system
 
 1. [https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols](https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols)
 2. [https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
+
+---
+
+### 速查表格
+
+|符号|latex
+|:-:|-
+|$\sum_{i=0}^{m}$|`$$\sum_{i=0}^{m}$$`
+|$\frac{114}{514}$|`$\frac{114}{514}$`
+|$\bar{f}$|`$\bar{f}$`
+|$\mathbb{E}$|`$\mathbb{E}$`
+
+---
 
 ## Markdown extension
 

@@ -1,6 +1,6 @@
 module.exports = [
     {
-        title: '杂项',
+        title: '速查',
         children: [
             '/tools/take_notes.md', // 如何记笔记
             '/tools/linux_command.md',
@@ -24,6 +24,7 @@ module.exports = [
             '/javascript/问题记录.md',            
             '/javascript/常用方法.md',
             '/javascript/keywords.md', // 关键字
+            '/javascript/function.md', // Function
             '/javascript/读书笔记.md',
             '/javascript/异步.md'
         ]
@@ -31,6 +32,7 @@ module.exports = [
     {
         title: 'Python',
         children: [
+            '/python/special.md', //特殊技巧
             '/python/rules_naming.md', // 命名规则
             '/python/built_in_things.md', // 内建
             '/python/问题记录.md',
@@ -47,20 +49,17 @@ module.exports = [
         ]
     },
     {
-        title: 'Git',
-        children: []
-    },
-    {
-        title: '一些课程',
+        title: '课堂笔记',
         children: [
-            '/basic_lessons/数字电路.md',
-            '/basic_lessons/discrete_mathematics.md'
+            '/lessons/数字电路.md',
+            '/lessons/discrete_mathematics.md',
+            '/lessons/ml_and_big_data.md' // 大数据与ML
         ]
     },
     {
         title: 'Others',
         children: [
-            '/others/tensorflow.md'
+            '/others/tensorflow.md',
         ]
     }
 ]

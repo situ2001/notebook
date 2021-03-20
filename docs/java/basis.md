@@ -1,5 +1,7 @@
 # 基础知识
 
+[[toc]]
+
 ## Method Overloading
 
 (嘿呀这是最naive的)我一直以为是同名同返回类型不同参...
@@ -150,9 +152,11 @@ interface java.io.Serializable
 
 ## Enums
 
-枚举类型(Enumerated Type)，这个我的教材没有详细讲，而是将这玩意放在了Appendix里头，那么按理来说就是比较好理解了。
+枚举类型(Enumerated Type)，代码结构跟class是差不多的，这玩意也是一个class，其实就是把class关键字改成enum而已。
 
-例子如下，其实枚举类型的结构跟class也是差不多的，这玩意也是一个class哦(~~不就是把class改成enum吗，interface也是这样呢~~)，自带`name()`和`ordinate()`方法，又因为`extends Object implements Comparable`，所以有`compareTo()`和Object自带的方法。下面这个例子就啥都涉及到了，里面有data field, method和constructor。而枚举的元素这样写，相当于new一个实例罢了。
+自带`name()`和`ordinate()`，且`extends Object implements Comparable`，所以有`compareTo()`和Object自带的方法
+
+枚举类里面的元素，可以看成是一个已经实例化了的该类型的constant。带参就`ELEMENT(param)`不带就`ELEMENT`
 
 ``` java
 package appendixH;
