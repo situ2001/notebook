@@ -3,7 +3,7 @@ module.exports = [
         title: '速查',
         children: [
             '/tools/take_notes.md', // 如何记笔记
-            '/tools/linux_command.md',
+            '/tools/linux_command.md', // Linux命令
             '/tools/vocabulary.md' // 专业词汇表
         ]
     },
@@ -21,12 +21,13 @@ module.exports = [
     {
         title: 'JavaScript',
         children: [
-            '/javascript/问题记录.md',            
-            '/javascript/常用方法.md',
+            '/javascript/problems.md',            
+            '/javascript/common_function.md',
             '/javascript/keywords.md', // 关键字
-            '/javascript/function.md', // Function
-            '/javascript/读书笔记.md',
-            '/javascript/异步.md'
+            '/javascript/function.md', // 函数
+            '/javascript/objects.md', // objects
+            '/javascript/asynchronous.md', // 异步
+            '/javascript/EMCAScript.md'
         ]
     },
     {

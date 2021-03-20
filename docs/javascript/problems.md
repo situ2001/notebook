@@ -1,0 +1,63 @@
+# Problems
+
+[[toc]]
+
+## 运算符 || &&
+
+|operator|meaning|statement|
+|--|--|--|
+| `||` |Logic OR| If expr1 can be converted to true, returns expr1; else, returns expr2.|
+| `&&` |Logic AND| If expr1 can be converted to true, returns expr2; else, returns expr1.|
+
+这个在逻辑运算中是一样的了，只不过在js里头还能这样做
+
+``` javascript
+let a = undefined || 114514; // a = 114514
+let b = undefined && 1919810; // b = undefined
+let c = "you" || "me"; // c = you
+let d = "you" && "me"; // d = me
+```
+
+欸，怎么理解和记忆呢？直接根据**短路运算**的规则来就行了，比如Logic OR，第一个true就扔回第一个，否则就会比较第二个，因此第一个false就会扔回第二个。Logic AND也是如此。
+
+当然要注意哪些东西在js里头是false的
+
+## Falsy values
+
+下面这些表达式都是false的
+
+- null
+- NaN
+- 0
+- empty string ("" or '' or ``)
+- undefined
+
+## Global Object
+
+顾名思义就是全局对象。在浏览器下，全局变量(global variable)创建后会被作为是`Window`的一个property
+
+In web browser, when a variable defined with `var` keyword, they are created as the member of the global object.(Node.js does not have this case)
+
+|Environment|Global Object|
+|:---:|:---:|
+|Web browser|Window|
+|Node.js|global|
+
+For example
+
+``` javascript
+// on a web browser
+var a = 114514;
+let b = 114514;
+console.log(this.a); // 114514
+console.log(this.b); // undefined
+// on node.js
+var a = 114514;
+var b = 114514;
+console.log(this.a); // undefined
+console.log(this.b); // undefined
+```
+
+## script标签
+
+这个要注意，因为HTML的加载，是从头加载到尾的，所以如果一个js有与DOM相关的操作，就要等物件都加载完了先。因此最好的方法是把`<script src=""></script>`放在body后面，而不是放在`<head>`里头。

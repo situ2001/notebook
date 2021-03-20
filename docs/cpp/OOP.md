@@ -216,7 +216,7 @@ class Friend
 
 这个东西的中文怪怪的，以friend来了解可能会更好。
 
-## 多继承
+## Multiple inheritance
 
 应该用不到，不写了。
 

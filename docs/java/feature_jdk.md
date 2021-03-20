@@ -1,8 +1,8 @@
-# 新特性
+# Feature
 
-这里记录的是从JDK1.8之后，Java的新特性（不包括JDK1.8）
+[[toc]]
 
-下面是一些我会用到的还不错的新特性
+下面是一些我会用到的JDK1.8+的还不错的新特性
 
 ## Local Variable Inference
 
@@ -116,7 +116,7 @@ Wow, so python-liked(
 */
 ```
 
-## record关键字
+## record keyword
 
 目前preview，要等未来的Java16(目前2021/03/21)
 

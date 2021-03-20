@@ -1,4 +1,6 @@
-# 常用函数
+# Common function
+
+[[toc]]
 
 这里将会用来记录JavaScript里头经常使用到的一些函数。
 

@@ -1,4 +1,4 @@
-# 关键字
+# Keywords
 
 ## typeof
 

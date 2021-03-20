@@ -131,7 +131,7 @@ $LaTeX$是一个用来写数学公式的typesetting system
 
 |符号|latex
 |:-:|-
-|$\sum_{i=0}^{m}$|`$$\sum_{i=0}^{m}$$`
+|$\sum_{i=0}^{m}$|`$\sum_{i=0}^{m}$`
 |$\frac{114}{514}$|`$\frac{114}{514}$`
 |$\bar{f}$|`$\bar{f}$`
 |$\mathbb{E}$|`$\mathbb{E}$`
