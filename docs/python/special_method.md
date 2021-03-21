@@ -1,45 +1,32 @@
-# 问题记录
+# 魔法函数
 
-## Function argument
+总的来说，一般是`__`开头和结尾的，就是了。如`__init__`, `__str__`等
 
-函数的参数有好几种，有默认参数，有可变参数，而可变参数之中，就又分为`*args`和`**kwargs`，分别叫做可变长度的参数和可变长度的字典参数（有key-value）
+## str
 
-就像是这样（这个样例必须是positional的，不然过不去）
+就像是Java里头的`toString()`
 
 ``` python
-def func(a, b=None, *args, **kwargs):
-    print (a)
-    print (b)
-    for i in args:
-        print (i)
-    for key, value in kwargs.items():
-        print ('{}={}'.format(key, value))
+class Foo(object):
+    def __init__(self) -> None:
+        super().__init__()
+    def __str__(self) -> str:
+        return 'Hello from foo...'
 
-func(1, 14, 514, 1919, chou='810')
+print (Foo()) # Hello from foo...
 ```
 
-经过一番观察，`*args`就是一个tuple而`**kwargs`是一个dict...，然后在invoke的时候还可以这样子: `func(a=114514)`
+## 获取属性
 
-但是keyword argument不能在positional argument的前面，否则会报错`Positional argument cannot appear after keyword arguments`
-
-## Traceback
-
-报错了，怎么看traceback呢，它**不像**java的stacktrace那样读，有句话很关键: **most recent call last**，即最近的call是在最下面的！所以，整个过程是要从上往下看的。
+python对象的属性可以通过属性`__dict__`来获得
 
 ``` python
-def test(str):
-    print ('Hello, ' + st)
+class Foo(object):
+    def __init__(self) -> None:
+        self.bar = 114514
+        self.bar1 = 1919810
 
-test('Tom')
-
-''' RUN
-Traceback (most recent call last):
-  File "C:\Users\situ\codes\python\test1.py", line 4, in <module>
-    test('Tom')
-  File "C:\Users\situ\codes\python\test1.py", line 2, in test
-    print ('Hello, ' + st)
-NameError: name 'st' is not defined
-'''
+print (Foo().__dict__) # {'bar': 114514, 'bar1': 1919810}
 ```
 
 ## Operator overloading
@@ -157,16 +144,3 @@ print (x[:2, :, 1:])
 而那个Ellipsis而怎么理解呢？我觉得可以直接literally理解，就是“省略”之意。
 
 加入Ellipsis(其实是一个built-in constant)即`...`就是这样了，有一个五维的数组y，refinement本来是这样的:`y[:2, :, :, :, 3:]`就可以写成`[:2, ..., 3:]`了（在numpy的**具体实现**下），不愧就是Ellipsis省略之意啊。
-
-## list vs array
-
-列表与数组，有什么区别呢？好像在python里面，我很少会见到array啊。经常见的，也就只有list和tuple，后者就是不可更改的前者。
-
-查阅之后，发现一个能放`Any`元素，一个只能放特定类型的元素，不过python呢，不自带array，只有list和tuple，所以想要数组的话，需要第三方包，比如`numpy`（怪不得我很少在py里见到array
-
-## 赋值
-
-``` python
-a, b, c = 1, 3, 5
-accuracy, label = ([15], [114514])
-```

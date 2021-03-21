@@ -33,10 +33,11 @@ module.exports = [
     {
         title: 'Python',
         children: [
-            '/python/special.md', //特殊技巧
             '/python/rules_naming.md', // 命名规则
             '/python/built_in_things.md', // 内建
-            '/python/问题记录.md',
+            '/python/special.md', //特殊技巧
+            '/python/special_method.md',
+            '/python/problems.md',
             '/python/鸭子类型.md'
         ]
     },
