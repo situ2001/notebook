@@ -59,6 +59,13 @@ struct Foo
         std::cout << "+= operator was called" << std::endl;
         return *this;
     }
+
+    // function operator()
+    int operator()(int other)
+    {
+        return value + other;
+    }
+    // [] and -> is just like the operator()
 };
 
 // Since << and >> take user-defined type as the right argument (b in a@b), they must be implemented as non-member
@@ -93,6 +100,8 @@ int main()
     std::cout << foo << std::endl;
 
     std::cout << (foo > bar) << std::endl;
+
+    std::cout << foo(400) << std::endl;
 }
 
 /* OUTPUT
@@ -107,6 +116,7 @@ foo++ was called
 += operator was called
 630
 1
+1030
 */
 ```
 

@@ -24,6 +24,7 @@ module.exports = [
             '/javascript/problems.md',            
             '/javascript/common_function.md',
             '/javascript/keywords.md', // 关键字
+            '/javascript/built_in_object.md', // 内建对象
             '/javascript/function.md', // 函数
             '/javascript/objects.md', // objects
             '/javascript/asynchronous.md', // 异步
@@ -45,6 +46,7 @@ module.exports = [
         title: 'C/C++',
         children: [
             '/cpp/snippet.md', // 代码片段
+            '/cpp/keywords.md', // 关键字
             '/cpp/rules_naming.md', // 命名规范
             '/cpp/OOP.md', // OOP 从Java迁移
             '/cpp/问题记录.md'

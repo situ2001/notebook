@@ -9,8 +9,6 @@
 | `||` |Logic OR| If expr1 can be converted to true, returns expr1; else, returns expr2.|
 | `&&` |Logic AND| If expr1 can be converted to true, returns expr2; else, returns expr1.|
 
-这个在逻辑运算中是一样的了，只不过在js里头还能这样做
-
 ``` javascript
 let a = undefined || 114514; // a = 114514
 let b = undefined && 1919810; // b = undefined
@@ -18,9 +16,9 @@ let c = "you" || "me"; // c = you
 let d = "you" && "me"; // d = me
 ```
 
-欸，怎么理解和记忆呢？直接根据**短路运算**的规则来就行了，比如Logic OR，第一个true就扔回第一个，否则就会比较第二个，因此第一个false就会扔回第二个。Logic AND也是如此。
+根据**短路运算**的规则来理解就行了，比如Logic OR，第一个true就扔回第一个，否则就会比较第二个，因此第一个false就会扔回第二个。Logic AND也是如此。
 
-当然要注意哪些东西在js里头是false的
+并且因为js用来判断false和true的是用falsy value和truthy value，所以使用if语句的时候，要注意哪些东西在js里头是false的。
 
 ## Falsy values
 
@@ -56,6 +54,35 @@ var a = 114514;
 var b = 114514;
 console.log(this.a); // undefined
 console.log(this.b); // undefined
+```
+
+## for in vs for of
+
+`for ... in ...`循环的是一个对象的property name
+
+`for ... of ...`循环迭代的是一个对象的property value，然而限定了使用的对象，**要是iteratable**的才行，比如`Array`, `Map`, `Set`, `String`, `TypedArray`, `arguments`
+
+``` javascript
+let list = [4, 5, 6];
+
+for (let i in list) {
+   console.log(i); // "0", "1", "2",
+}
+
+for (let i of list) {
+   console.log(i); // "4", "5", "6"
+}
+
+let pets = new Set(["Cat", "Dog", "Hamster"]);
+pets["species"] = "mammals";
+
+for (let pet in pets) {
+   console.log(pet); // "species"
+}
+
+for (let pet of pets) {
+    console.log(pet); // "Cat", "Dog", "Hamster"
+}
 ```
 
 ## script标签
