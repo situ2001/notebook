@@ -88,3 +88,12 @@ def test():
 就除了function和class之外，几乎是不存在scope的了。
 
 并且变量名**就只是一个name**而已，它指到某一个对象上。
+
+## main
+
+要想module里的class和函数外的语句不被import的时候调用，可以加这个来判断`__main__`，达到作为模块的时候不被执行的效果
+
+``` python
+if __name == '__main__':
+    # do sth
+```
