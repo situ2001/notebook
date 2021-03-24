@@ -7,7 +7,7 @@ let get = (dir, items) => {
 
 module.exports = [
     {
-        title: '未分类',
+        title: '杂项',
         children: get('/tools', [
             'take_notes', // 如何记笔记
             'vocabulary' // 专业词汇表

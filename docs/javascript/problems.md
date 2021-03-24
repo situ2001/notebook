@@ -85,6 +85,67 @@ for (let pet of pets) {
 }
 ```
 
+## template literals
+
+``` javascript
+let str = '514';
+console.log(`114${str}`); // 114514
+let examScore = 45;
+let examHighestScore = 70;
+examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round((examScore/examHighestScore*100)) }%). ${ examScore >= 49 ? 'Well done, you passed!' : 'Bad luck, you didn\'t pass this time.' }`;
+```
+
 ## script标签
 
 这个要注意，因为HTML的加载，是从头加载到尾的，所以如果一个js有与DOM相关的操作，就要等物件都加载完了先。因此最好的方法是把`<script src=""></script>`放在body后面，而不是放在`<head>`里头。
+
+## import
+
+就是模块导入呗，这是ES2015开始才有的功能，注意另外一个导入模块的`require()`并不是标准js api的一部分。是node.js那边特有的一个函数。
+
+``` javascript
+import defaultExport from "module-name";
+import * as name from "module-name";
+import { export1 } from "module-name";
+import { export1 as alias1 } from "module-name";
+import { export1 , export2 } from "module-name";
+import { foo , bar } from "module-name/path/to/specific/un-exported/file";
+import { export1 , export2 as alias2 , [...] } from "module-name";
+import defaultExport, { export1 [ , [...] ] } from "module-name";
+import defaultExport, * as name from "module-name";
+import "module-name";
+var promise = import("module-name");
+```
+
+## export
+
+与import相反，作为模块而导出
+
+``` javascript
+// Exporting individual features
+export let name1, name2, …, nameN; // also var, const
+export let name1 = …, name2 = …, …, nameN; // also var, const
+export function functionName(){...}
+export class ClassName {...}
+
+// Export list
+export { name1, name2, …, nameN };
+
+// Renaming exports
+export { variable1 as name1, variable2 as name2, …, nameN };
+
+// Exporting destructured assignments with renaming
+export const { name1, name2: bar } = o;
+
+// Default exports
+export default expression;
+export default function (…) { … } // also class, function*
+export default function name1(…) { … } // also class, function*
+export { name1 as default, … };
+
+// Aggregating modules
+export * from …; // does not set the default export
+export { name1, name2, …, nameN } from …;
+export { import1 as name1, import2 as name2, …, nameN } from …;
+export { default, … } from …;
+```

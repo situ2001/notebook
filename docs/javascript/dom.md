@@ -8,4 +8,4 @@
 
 >The HTMLElement.click() method simulates a mouse click on an element.
 
-...草这个是模拟点击，而不是指的onlick...要的话请`.onclick`或者`addEventListener('click', func)`
+...草这个是模拟点击，而不是指的onlick...要的话请改`onclick` property或者`addEventListener('click', func)`
