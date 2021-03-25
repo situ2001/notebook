@@ -1,4 +1,4 @@
-# electron
+# Electron
 
 ## Essence
 
