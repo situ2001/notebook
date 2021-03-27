@@ -1,10 +1,10 @@
-# EMCAScript
+# ECMAScript
 
 要写好JS，得了解一下JS的历史
 
 ## ES
 
-EMCA指的是European Computer Manufacturer’s Association
+ECMA指的是European Computer Manufacturer’s Association
 
 ES是脚本语言的一个标准，其实它又是基于早期的JS的...
 

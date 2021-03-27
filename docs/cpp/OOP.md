@@ -6,7 +6,7 @@
 
 基于java中的OOP来学习C++的OOP（可 迁 移 学 习）（爆炸预定
 
-感觉C++中的OOP多了好多东西啊（太菜了
+感觉C++中的OOP多了好多东西啊（太菜了）
 
 ## Operator & Keyword
 
@@ -24,7 +24,7 @@ class上的`:`，如同java里的`extends`
 
 ## Instantiation
 
-无参数的话，**不用带parentheses**...(被坑过)，如下面的第一行...
+无参数的话，**不用带parentheses**
 
 ``` cpp
 Test test1;
@@ -62,9 +62,7 @@ virtual void test()
 }
 ```
 
-如果父类的虚函数想有自己的实现的话，把`= 0`去掉，加自己的实现即可。
-
-那函数虚不虚有什么关系呢？比如这段
+如果父类的虚函数想有自己的实现的话，把`= 0`去掉，加自己的实现即可（此时仍然有多态）。但此时的父类就不是抽象类了，可以被实例化。
 
 ``` cpp
 class Animal
@@ -86,27 +84,9 @@ class Chicken : public Animal
 };
 ```
 
-带了`virtual`关键字的话就是这样的
-
-``` cpp
-Animal* a = new Chicken;
-a->eat(); // I am eating hay
-```
-
-而没有`virtual`关键字的话就是这样的
-
-``` cpp
-Animal* a = new Chicken;
-a->eat(); // I am eating food
-```
-
-就是相当于没有了多态特性而已。（个人理解）
-
-不过这能做到jvav做不到的东西，挺厉害的嘛（
-
 ## Override keyword
 
-这个东西(C++11)似乎可以防止写虚函数重载的时候，不小心写错的大无语事件发生。用法如下
+(C++11)可以防止写虚函数重载的时候，不小心写错的大无语事件发生。
 
 ``` cpp
 virtual void eat() override;
@@ -171,7 +151,7 @@ public:
 
 ## Friend keyword
 
-然后就是友元了，友元可以直接访问class里头的private field，它不是一个成员函数也不是一个这个class的static函数。作用域不一样的。这东西有这个特性，岂不是可以少一堆getter和setter？（
+> The friend declaration appears in a class body and grants a function or another class access to private and protected members of the class where the friend declaration appears.
 
 ``` cpp
 class Test
@@ -200,7 +180,9 @@ Test test;
 getNum(test); // 114514
 ```
 
-当然也可以在里头声明一个友元类，此时友元类里的成员函数都能访问到这个类的private field(前提当然是先有至少一个该类的对象，才能进行访问)
+当然也可以在里头声明一个友元类，此时友元类里的成员函数都能访问到这个类的private field
+
+前提是有一个该类的对象，才能进行访问
 
 ``` cpp
 //In class Test
@@ -214,11 +196,9 @@ class Friend
 }
 ```
 
-这个东西的中文怪怪的，以friend来了解可能会更好。
-
 ## Multiple inheritance
 
-应该用不到，不写了。
+估计用不到了，不写了。
 
 ## Constructor & Destructor
 
@@ -233,6 +213,8 @@ class Friend
   std::cout << "instance deleted";
 }
 ```
+
+出栈或者`delete`的时候会被隐式调用
 
 方法命名就这，直接是constructor前加 `~`
 
@@ -252,9 +234,7 @@ Test test;
 Test test1 = test; //invoke Copy Constructor
 ```
 
-调用默认拷贝构造函数的时候，一切栈上的变量都被拷过去了(这不就是跟struct一模一样吗)。当然要自己实现的时候，就不是这样了（要自己一个一个加实现）
-
-而这个呢，就是用重载运算符的了...
+调用默认拷贝构造函数的时候，一切栈上的变量都被拷过去了(这不就是跟struct一模一样吗)。但是当然要自己实现的时候，就不是这样了（要自己一个一个加实现）
 
 ``` cpp
 Test test;
@@ -287,11 +267,11 @@ Foo foo2 = std::move(foo1);
 
 ## Pointer
 
-### this
+- this
 
-跟java一样，C++只有成员函数才有的。记得member access要用operator `->`
+`this`跟java一样，C++只有成员函数才有的。记得member access要用operator `->`
 
-### Pointer to an object
+- Pointer to an object
 
 这个java的引用变量是差不多的。声明也就这样
 
@@ -310,13 +290,15 @@ Test* test2 = new Test;
 
 ## Where to define
 
-定义在类里头就是默认inline了。如下引用来自cpluscplus.com
+来自cpluscplus.com
 
 > The only difference between defining a class member function completely within its class or to include only the prototype and later its definition, is that in the first case the function will automatically be considered an inline member function by the compiler, while in the second it will be a normal (not-inline) class member function, which in fact supposes no difference in behavior
 
 ## default & delete
 
-如果有带参的constructor，那么可以用`=default`来写默认constructor如`Test(){}`，如果要禁用某个函数，可以上`=delete`
+如果有带参的constructor，那么可以用`=default`来写默认constructor如`Test(){}`。
+
+如果要禁用某个函数，可以上`=delete`
 
 ``` cpp
 Test() = default;
@@ -338,27 +320,21 @@ test2 = test3; //wrong!
 
 > When an operator appears in an expression, and at least one of its operands has a class type or an enumeration type
 
-其实返回值赋给谁的这个问题，我想了想，估计可以直接与基本类型的运算挂钩。比如`+`是这样的，成员函数`a.operator+(b)`，非成员函数`operator+(a, b)`
+其实返回值赋给谁的这个问题，我想了想，估计可以直接与基本类型的运算挂钩。结合一下操作符运算的本质特点就可以了！
 
-但是一些运算符是不能被重载为非成员函数的: `=`, `()`, `[]`, `->`，其实结合一下这些操作符运算的本质特点就可以了
+对应到方法呢？比如`+`是这样的，成员函数`a.operator+(b)`，非成员函数`operator+(a, b)`
 
-总的来说，跟声明一个non-member function和一个member function差不多。但是有一些略微不同的地方，先在这里用一段代码记下来，之后回查就简单多了。
+但是一些运算符是不能被重载为非成员函数的: `=`, `()`, `[]`, `->`
 
-代码呢？扔到snippet里面去了...
+有些运算符需要记录一下，代码扔到snippet里了
 
 ## Const keyword
 
-草了，竟然还有啊...不愧是C++...
+一般来说呢，`const`是作用于它左边的（如果左边啥都没有的话就是作用于右边）。而这个关键字`const`能作用于变量、**成员**函数、类对象...
 
-一般来说呢，`const`是作用于它左边的（如果左边啥都没有的话）。而这个关键字`const`能作用于变量、**成员**函数、类对象...
+**关键**是有`const`修饰的，就不能修改里面成员的内存空间。
 
-不过**关键**是有`const`的东西，它不能修改里面成员的内存空间。
-
-变量加const就很简单，就不用说了。
-
-如果有`Foo const foo;`，那么这个对象变量（或指针）就不能访问非const方法，也不能修改成员了
-
-如果有一个const方法，那么在这个方法体内，不能访问非const方法，也不能修改成员变量。（实质在后面说了）
+如果有`Foo const foo;`，那么这个对象变量（或指针）就不能访问非const方法，也不能修改成员了。如果有一个const方法，那么在这个方法体内，不能访问非const方法，也不能修改成员变量。（实质在后面说了）
 
 而我查了cppreference，里面这样说
 

@@ -6,35 +6,30 @@
 
 ## Pattern
 
-Function可以有四种Patterns，如下
+Function有四种Patterns，如下
 
 1. The method invocation pattern
 2. The function invocation pattern
 3. The constructor invocation pattern
 4. The apply invocation pattern
 
-invoke的操作分别是`new func()`, `func()`, `foo.func()`, `apply(thisArg, [argsArray])`
+如果有一个名为`func`的函数
 
-## This
+invoke的操作分别是`new func()`, `func()`, `foo.func()`, `func.apply(thisArg, [argsArray])`
 
-`this`这个关键字常见，在JavaScript中大概就是执行当前语句时的对象吧。（个人理解）
-
-在MDN里头呢，解释是这样的（差不多，但是跟个人理解输出的句子好多了）
+## this
 
 > In most cases, the value of this is determined by how a function is called (runtime binding). It can't be set by assignment during execution, and it may be different each time the function is called.
 
-大多数情况就是用来查明这个函数是由谁call的，但是要注意两种情况（我目前碰到的）
+`this`这个关键字常见，在JavaScript中大概就是执行当前语句时的对象吧。（个人理解）
 
-1. The constructor invocation pattern
-2. Arrow function
+大多数情况就是用来查明这个函数是由谁call的，但是要注意Arrow function没有属于自己的argument和this。
 
-前者就是要注意，pattern都不同了。`new func()`实际就是在函数里生成一个新对象并返回。
+函数和箭头函数都可以capture外部this，但前者可以作为constructor invocation pattern来使用，用于新建对象。
 
-后者没有argument和this的这个问题了。前后者都可以capture外部的this，但是前者可以作为constructor invocation pattern来使用，用于新建对象。
+## argument
 
-## Argument
-
-一个js函数，里面除了拥有this，还有argument。实际上就是一个对象
+函数里面除了拥有this，还有argument。实际上就是一个对象
 
 ``` javascript
 let fn = function () {
@@ -46,7 +41,7 @@ fn(114, 514); // [Arguments] { '0': 114, '1': 514 }
 
 ## Closure
 
-中文就是闭包嘛，其实实际上的就是：一小块的代码块。在js中，由于context的存在(词法作用域)，因此外部的可以被捕获进closure与之形成闭包。《The good parts》里面也有一句话说了
+闭包，其实实际上的就是：一小块的代码块。在js中，外部的变量，根据context，可以被捕获进closure与之形成闭包。
 
 > This is possible because the function has the access to the context in which it was created.
 

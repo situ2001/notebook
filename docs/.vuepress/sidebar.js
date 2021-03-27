@@ -7,9 +7,9 @@ let get = (dir, items) => {
 
 module.exports = [
     {
-        title: '杂项',
+        title: '工具',
         children: get('./tools', [
-            'take_notes', // 如何记笔记
+            'taking_notes', // 如何记笔记
             'vocabulary' // 专业词汇表
         ])
     },
@@ -32,10 +32,10 @@ module.exports = [
             'keywords', // 关键字
             'built_in_object', // 内建对象
             'function', // 函数
-            'objects', // objects
+            'object', // objects
             'asynchronous', // 异步
             'promise',
-            'emcascript'
+            'ecmascript'
         ])
     },
     {
@@ -55,7 +55,7 @@ module.exports = [
             'snippet', // 代码片段
             'keywords', // 关键字
             'rules_naming', // 命名规范
-            'OOP', // OOP 从Java迁移
+            'oop', // OOP 从Java迁移
             '问题记录'
         ])
     },

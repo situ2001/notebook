@@ -35,8 +35,8 @@ let promise = new Promise(function(resolve, reject) {
 
 > When the executor obtains the result, be it soon or late, doesn’t matter, it should call `one of these` callbacks:
 
-- resolve(value) — if the job finished successfully, with result `value`.
-- reject(error) — if an error occurred, error is the error `object`.
+- `resolve(value)` — if the job finished successfully, with result `value`.
+- `reject(error)` — if an error occurred, error is the error `object`.
 
 ![Executor](./images/promise_executor.jpg)
 
@@ -76,11 +76,7 @@ console.log("immediate logging");
 
 它们本质上是一个返回的对象，您可以将回调函数附加到该对象上，而不必将回调作为参数传递给另一个函数。
 
-## Keyword
-
-有了上面的铺垫，现在引出关键字`async`与`await`
-
-### async
+## async
 
 加`async`的函数，就会是一个Promise-based function，返回值就会是一个Promise
 
@@ -90,18 +86,22 @@ hello(); // Promise {<fulfilled>: "hello"}
 hello().then((value) => console.log(value)); // hello
 ```
 
-### await
+## await
 
-接着，与上者配合的就是`await`了，它**只能**用在async函数里头
-
-await only works inside async functions within regular JavaScript code.
-
-在Promise-based的函数前加await，可以让code暂时停下，直到这个函数执行完毕。相当这个异步函数的内部执行是同步的
-
-await can be put in front of any async promise-based function to pause your code on that line until the promise fulfills, then return the resulting value.
+> The await operator is used to wait for a Promise
 
 ``` javascript
-// an asynchronous function(returning a Promise)
+[rv] = await expression;
+// rv: Returns the fulfilled value of the promise, or the value itself if it's not a Promise.
+// expression: A Promise or any value to wait for.
+```
+
+在Promise-based的函数前加await，可以让code暂时停下，直到这个promise被fulfill
+
+await can be put in front of any async **promise-based** function to pause your code on that line until the promise fulfills, then return the resulting value.
+
+``` javascript
+// a function that returns a Promise
 function resolveAfter2Seconds(x) {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -126,3 +126,36 @@ var x = resolveAfter2Seconds(10); // await was removed
 ```
 
 就会打印出 `Promise {<pending>}`
+
+### more
+
+不常用
+
+还可以把`reject()`的给catch住
+
+``` javascript
+let f = async () => {
+  try {
+      let x = await Promise.reject(4);
+  } catch(e) {
+      console.log(114514)
+  }
+};
+
+f();
+```
+
+还可以直接get到thenable对象的值...
+
+``` javascript
+async function f2() {
+  const thenable = {
+    then: function(resolve, _reject) {
+      resolve('resolved!')
+    }
+  };
+  console.log(await thenable); // resolved!
+}
+
+f2();
+```
