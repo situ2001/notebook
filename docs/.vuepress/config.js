@@ -12,6 +12,7 @@ module.exports = {
     extraWatchFiles: [
         './sidebar.js'
     ],
+    plugins: ['fulltext-search'],
     head: [
         ['link', { rel: 'icon', href: '/logo-book.svg' }],
         ['link', { rel: 'stylesheet', href: '/katex.min.css'}]
