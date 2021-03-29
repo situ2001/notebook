@@ -1,5 +1,9 @@
 # OOP(C++)
 
+前提：基于java中面向对象的知识储备
+
+[[toc]]
+
 (个人笔记) 要不是大一下学校的OOP课要讲MFC...
 
 <!-- more -->
@@ -119,6 +123,8 @@ static int Test::i = 114514;
 //main
 Test::i // 114514
 ```
+
+为什么要这样做呢？估计要等到了解csapp之后了（
 
 ## Inheritance
 

@@ -1,6 +1,6 @@
 # TensorFlow
 
-## 名字
+## 取名
 
 Q: 为什么取名为TensorFlow?
 

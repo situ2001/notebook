@@ -1,4 +1,4 @@
-# Header
+# Header(C/C++)
 
 C/C++可以在头文件里面做function, namespace, class, global variable和struct的声明，并在对应的cpp文件里面将它们给实现掉。
 
