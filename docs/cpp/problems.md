@@ -28,6 +28,68 @@ typedef struct
 } S;
 ```
 
+## extern keyword
+
+来自[SO问题](https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files)
+
+> A best way to declare and define global variables
+
+摘自原文的答案部分
+
+The header is included by the one source file that defines the variable and by all the source files that reference the variable. For each program, one source file (and only one source file) defines the variable. Similarly, one header file (and only one header file) should declare the variable. The header file is crucial; it enables cross-checking between independent TUs (translation units — think source files) and ensures consistency.
+
+- file3.h
+
+``` c
+extern int global_variable;  /* Declaration of the variable */
+```
+
+- file1.c
+
+``` c
+#include "file3.h"  /* Declaration made available here */
+#include "prog1.h"  /* Function declarations */
+
+/* Variable defined here */
+int global_variable = 37;    /* Definition checked against declaration */
+
+int increment(void) { return global_variable++; }
+```
+
+- file2.c
+
+``` c
+#include "file3.h"
+#include "prog1.h"
+#include <stdio.h>
+
+void use_it(void)
+{
+    printf("Global variable: %d\n", global_variable++);
+}
+```
+
+一些源码，electron里面的`electron_constants.cc`与`electron_constants.h`
+
+``` cpp
+// electron_constants.h
+namespace electron {
+    // The app-command in NativeWindow.
+    extern const char kBrowserForward[];
+    extern const char kBrowserBackward[];
+    // ...
+}
+
+// electron_constants.cc
+#include "shell/common/electron_constants.h"
+
+namespace electron {
+    const char kBrowserForward[] = "browser-forward";
+    const char kBrowserBackward[] = "browser-backward";
+    // ...
+}
+```
+
 ## 只能重载为成员函数的运算符
 
 答案来源: [StackOverflow](https://stackoverflow.com/questions/1132600/why-can-some-operators-only-be-overloaded-as-member-functions-other-as-friend-f)

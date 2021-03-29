@@ -127,4 +127,4 @@ console.log(this.y); // undefined
 
 ## const
 
-这个和let是差不多的，只不过const的必须要初始化，并且不能被重新赋值。
+这个和let是差不多的，只不过const的，必须要在声明的时候顺便初始化，并且不能被重新赋值。

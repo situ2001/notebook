@@ -1,10 +1,10 @@
 # 问题记录
 
-## asterisk
+## Asterisk
 
-字典与参数 或 列表与参数 之间的 相互转化
+Conversion between collections and arguments
 
-Inside a function header(转化为tuple或字典):
+通常发生在函数invocation中。将参数转化为元组或者字典
 
 `*` collects all the positional arguments in a tuple.
 
@@ -14,9 +14,10 @@ Inside a function header(转化为tuple或字典):
 def func(*args, **kargs):
     # ...
 func(1, 14, 514, a=1, b=2, c=3)
+# args=[1, 14, 514] kargs = {'a':1, 'b':2, 'c':3}
 ```
 
-In a function call(转化为参数):
+要列表、元组或字典解包为参数的时候，就可以这么做
 
 `*` unpacks a list or tuple into position arguments.
 

@@ -56,7 +56,7 @@ module.exports = [
             'keywords', // 关键字
             'rules_naming', // 命名规范
             'oop', // OOP 从Java迁移
-            '问题记录'
+            'problems'
         ])
     },
     {

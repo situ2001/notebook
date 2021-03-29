@@ -1,4 +1,4 @@
-const sidebar = require('./sidebar')
+const sidebar = require('../sidebar')
 
 module.exports = {
     title: 'Situ Book',
@@ -10,7 +10,7 @@ module.exports = {
         lineNumbers: false
     },
     extraWatchFiles: [
-        '.vuepress/sidebar.js'
+        './sidebar.js'
     ],
     head: [
         ['link', { rel: 'icon', href: '/logo-book.svg' }],
