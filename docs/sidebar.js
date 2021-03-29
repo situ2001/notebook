@@ -10,7 +10,8 @@ module.exports = [
         title: '工具',
         children: get('./tools', [
             'taking_notes', // 如何记笔记
-            'vocabulary' // 专业词汇表
+            'vocabulary', // 专业词汇表
+            'problems' // 疑难杂症大杂烩
         ])
     },
     {
@@ -55,6 +56,7 @@ module.exports = [
             'snippet', // 代码片段
             'keywords', // 关键字
             'rules_naming', // 命名规范
+            'header',
             'oop', // OOP 从Java迁移
             'problems'
         ])

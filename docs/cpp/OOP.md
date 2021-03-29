@@ -106,10 +106,15 @@ virtual void eat() override;
 
 这个也没啥大区别的，唯一的小区别就是访问static的方法或变量需要使用operator `::`
 
+还有，根据C++17前（艹）的标准。define的时候必须要在类外面进行(除非为const的时候才能在类内做定义)
+
 ``` cpp
 //class Test
 public:
-  static int i = 114514;
+  static int i;
+
+// outside the class
+static int Test::i = 114514;
 
 //main
 Test::i // 114514
@@ -117,15 +122,45 @@ Test::i // 114514
 
 ## Inheritance
 
-就这样
-
 ``` cpp
 class Chicken : public Animal
 ```
 
-继承的话，要注意，C++继承的class默认是private的，所以要加个`public`，否则外部无法使用父类的方法。（草）
+继承的话，要注意，C++继承的class默认是private的，（前期naive认知）所以（不一定）要加个`public`，~~否则外部无法使用父类的方法。~~（~~原来还能用scope qualifier艹~~）
 
-指定父类使用哪一个constructor可不像java那样在子类的constructor里搞，要这样（不就移到了外面来？
+经查询继承类型有如下，比如上面的`public Animal`就是公有继承了
+
+1. 公有继承
+2. 保护继承
+3. 私有继承
+
+原理是将所继承的父类member的accessibility给降级...`public`->`protected`->`private`
+
+比如在保护继承和私有的继承的情况下，如果想改变某一个member的accessibility（比如原来是public或protected的，但是继承后降级），可以使用scope qualifier...(差不多得了)
+
+``` cpp
+class Animal
+{
+    int i = 1141514;
+public:
+    Animal() = default;
+    void foo() {}
+};
+
+class Chicken : Animal
+{
+public:
+    Animal::foo;
+};
+
+int main()
+{
+    Chicken foo;
+    foo.foo();
+}
+```
+
+## Constructors & member initializer lists
 
 ``` cpp
 public:
@@ -146,8 +181,6 @@ public:
     /** do sth */
   }
 ```
-
-经查询，这个东西叫做`Constructors and member initializer lists`
 
 ## Friend keyword
 
