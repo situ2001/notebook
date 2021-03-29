@@ -5,7 +5,7 @@ module.exports = {
     description: 'Taking notes',
     evergreen: true,
     markdown: {
-        extendMarkdown: md => md.use(require('markdown-it-katex')),
+        extendMarkdown: md => md.use(require('@iktakahiro/markdown-it-katex')),
         toc: { includeLevel: [1, 2, 3] },
         lineNumbers: false
     },
