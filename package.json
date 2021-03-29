@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Taking notes",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
+    "docs:dev": "vuepress dev docs --temp .tmp",
     "docs:build": "vuepress build docs"
   },
   "author": "situ2001",
