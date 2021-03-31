@@ -62,6 +62,12 @@ module.exports = [
         ])
     },
     {
+        title: '数据结构与算法',
+        children: get('./dsa', [
+            'basis'
+        ])
+    },
+    {
         title: 'Linux',
         children: get('./linux', [
             'commands',
@@ -69,9 +75,9 @@ module.exports = [
         ])
     },
     {
-        title: '数据结构与算法',
-        children: get('./dsa', [
-            'basis'
+        title: 'Git',
+        children: get('./git', [
+            'gitignore'
         ])
     },
     {
