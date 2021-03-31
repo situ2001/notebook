@@ -3,20 +3,25 @@
 # abort on errors
 set -e
 
+# set date
+now=`date`
+
 # build
 npm run docs:build
 
-# navigate into the build output directory
-cd docs/.vuepress/dist
+# copy dist to deploy.git
+find ./deploy.git -mindepth 1 -not -regex "^\.\/deploy.git\/\.git.*" -delete
+cp -Rf docs/.vuepress/dist/* deploy.git/
+cd deploy.git
 
 # if you are deploying to a custom domain
 echo 'note.situ2001.com' > CNAME
 
-git init
+# git init
 git add -A
-git commit -m 'deploy'
+git commit -m "deploy: $now"
 
-# if you want to use proxy for git 
+# if you want to apply proxy to git 
 # git config http.proxy http://<PROXY_IP>:<PORT> 
 git config http.proxy http://127.0.0.1:7890
 

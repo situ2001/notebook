@@ -7,14 +7,12 @@ set -e
 npm run docs:build
 
 # navigate into the build output directory
-find ./deploy.git -mindepth 1 -not -regex "^\.\/_site\/\.git.*" -delete
-cp -Rf docs/.vuepress/dist/* deploy.git/
-cd deploy.git
+cd docs/.vuepress/dist
 
 # if you are deploying to a custom domain
 echo 'note.situ2001.com' > CNAME
 
-# git init
+git init
 git add -A
 git commit -m 'deploy'
 
