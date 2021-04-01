@@ -4,7 +4,7 @@
 
 用于忽略一些指定的untracked file
 
-## Pattern
+## Patterns
 
 - separator(/)
 

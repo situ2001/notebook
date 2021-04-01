@@ -1,18 +1,14 @@
 # Reflection
 
-在记笔记之前，先放置一段对**reflection**这个单词的解释吧。
-
 > something that shows what something else is like, or that is a sign of a particular situation
 
-我接触了一下java的反射，发现全称应该是对某一事物的反映。也可以说是Java自省，但是直接理解成光学上的反射，估计还是有比较大的偏差。
+在java里，有这么一个神奇的Class类，它是在运行时动态加载的。
 
-那么在java里，有这么一个神奇的类Class，它是在运行时动态加载的。比如，当JVM加载`String`类的时候，`String.class`就会被实例化为一个Class对象并加载进内存里。以后JVM新建String对象，执行String对象里头的method等，都能轻松实现。总的来说，一个Class对象里头有对应类的一切信息。
+比如，当JVM加载`String`类的时候，`String.class`就会被实例化为一个`Class`对象并加载进内存里。以后JVM新建String对象，执行String对象里头的method等，都从这个对象里头读。
 
-通过Class实例来获取类的信息，这个操作，就叫做反射啦。
+总的来说，一个Class对象里头有对应类的一切信息。通过Class实例来获取类的信息，这个操作，就叫做反射。
 
-既然一个Class里面有类的一切信息，那我是不是可以来读取Field啊，Method啊，Constructor啊。甚至还能得知继承关系？？为了证明是不是这样子，我做了一点小实验。
-
-## 获取Field
+## Get Field
 
 对于这个的获取，首先是这么几个主要方法: `getField(String name)`, `getFields()`, `getDeclaredField(String name)`和`getDeclaredFields()`
 
@@ -43,10 +39,7 @@ public class Reflection {
         System.out.println(field.getName());
         System.out.println(field.getType());
         int modifier = field.getModifiers();
-        System.out.println(Modifier.isPublic(modifier));
-        System.out.println(Modifier.isProtected(modifier));
-        System.out.println(Modifier.isPrivate(modifier));
-        System.out.println(Modifier.isFinal(modifier));
+        System.out.println("It is a " + Modifier.toString(modifier) + " field");
         System.out.println();
 
         Bar bar = new Bar("114514");
@@ -83,21 +76,103 @@ private java.lang.String reflection.Bar.mValue
 
 mValue
 class java.lang.String
-false
-false
-true
-false
+It is a private field
 
 114514
 dssq
 ```
 
-## 获取Method
+## Get Method
 
-档燃是可以获取Method的啦，同理Field，获取Method的方法大同小异，连方法名都是类似的。因此根据前者，照葫芦画瓢就完事啦。
+也可以获取Method的，同理Field，获取Method的方法大同小异，连方法名都是类似的。
 
-反射获取的Method，也能获取其一切的一切信息。非常强大，比如。
+反射获取的Method，也能获取其一切的一切信息。非常强大，
+
+> `Interface Function<T,​R>`
+>
+> `default <V> Function<T,​V> andThen​(Function<? super R,​? extends V> after)`
+
+比如我们获取`Function`下的`andThen`的一些信息，并且invoke它。
 
 ``` java
+public class Reflection {
+    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Function<Integer, Integer> f = x -> x * x;
+        Class<?> klass = Function.class;
 
+        var typeParameter = klass.getTypeParameters();
+        System.out.println("Class type parameters: " + Arrays.toString(typeParameter)); // get class generic type parameters
+
+        var method = klass.getMethod("andThen", Function.class); // get method
+        var name = "Method name: " + method.getName();
+        System.out.println(name);
+
+        var modifier = method.getModifiers();
+        System.out.println("It is a " + Modifier.toString(modifier) + " method");
+
+        System.out.print("Parameter of the method: ");
+        Arrays.stream(method.getParameters()).forEach(parameter -> System.out.print(parameter.toString() + " ")); // get parameters' name
+        System.out.println();
+
+        System.out.print("Type parameter of the method: ");
+        Arrays.stream(method.getTypeParameters()).forEach(methodTypeVariable -> System.out.print(methodTypeVariable.getName() +" "));
+        System.out.println();
+
+        System.out.println("Returning: " + method.getGenericReturnType().getTypeName());
+
+        var composedFunction = method.invoke(f, f); // get a composed function
+        var result = ((Function<Integer, Integer>) composedFunction).apply(2);
+        System.out.println("Result: " + result);
+    }
+}
 ```
+
+输出
+
+``` shell
+Class type parameters: [T, R]
+Method name: andThen
+It is a public method
+Parameter of the method: java.util.function.Function<? super R, ? extends V> arg0 
+Type parameter of the method: V 
+Returning: java.util.function.Function<T, V>
+Result: 16
+```
+
+## Object instantiation
+
+同理，像获取Method一样获取Constructor，并可以进行调用来new一个对象。
+
+``` java
+public class Reflection {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+        Class<?> klass = Foo.class;
+        var foo = klass.getDeclaredConstructor().newInstance();
+        var privateConstructor = klass.getDeclaredConstructor(String[].class);
+        privateConstructor.setAccessible(true);
+        privateConstructor.newInstance((Object) new String[]{"114", "514"});
+    }
+}
+
+class Foo {
+    Foo() {
+        System.out.println("Non-arg constructor");
+    }
+
+    private Foo(String... args) {
+        System.out.print("Private constructor with args: ");
+        Arrays.stream(args).forEach(arg -> System.out.print(arg + " "));
+    }
+}
+```
+
+输出
+
+``` java
+Non-arg constructor
+Private constructor with args: 114 514
+```
+
+## 动态代理
+
+待更...

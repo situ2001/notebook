@@ -1,5 +1,7 @@
 # Design patterns
 
+此页面有待重改
+
 ## Observer Pattern(JavaFX)
 
 本文中的JavaFX版本号为`11.0.9`
