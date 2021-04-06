@@ -146,6 +146,7 @@ $LaTeX$是一个用来写数学公式的typesetting system
 |$\Delta v$|`\Delta v`
 |$\forall$|`\forall`
 |$\exists$|`\exists`
+|$114\leq 514$|`$114\leq 514$`
 
 ---
 

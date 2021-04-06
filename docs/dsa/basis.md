@@ -1,5 +1,7 @@
 # 基础储备
 
+[[toc]]
+
 ## Big O Notion
 
 大O表示法可以用来表示时间复杂度和空间复杂度
@@ -35,6 +37,10 @@ Big O means "order of magnitude"(数量级)
 $T(n)$的不同，就有了不同的复杂度，把不同的函数$T(n)$画在同一个坐标轴上，如下
 
 ![chart](./images/chart_input_time.png)
+
+增长的快慢有如下
+
+$$O(1)<O(logn)<O(n)<O(n logn)<O(n^2)<(O^3)<O(2^n)$$
 
 ## Loop flow
 
@@ -77,6 +83,8 @@ while (i < n) {
 ## Determining Big O
 
 可以使用上面的知识来确定大O，比较好训练的操作就是分析循环了。
+
+简的来说就是：算出$T(n)$的表达式
 
 ``` java
 for (int i = 1; i <= n; i++) {
@@ -158,3 +166,49 @@ for (int i = 1; i <= k; i++) {
 |$n$|$n$|$log_{2}n$
 
 由表格，前者的时间复杂度就是$O(n)$，后者的是$O(log n)$，这个就是对数时间复杂度了。
+
+## Recurrence relation
+
+递推关系式，形如$f(x)=f(x-1)+f(x-2)$这样的表达式
+
+举个例子，选择排序
+
+``` java
+private static void sort(int[] array) {
+    for (int i = 0; i < array.length - 1; i++) {
+        int currentMin = array[i];
+        int currentMinIndex = i;
+
+        for (int j = i + 1; j < array.length; j++) {
+            if (array[j] < currentMin) {
+                currentMin = array[j];
+                currentMinIndex = j;
+            }
+        }
+
+        if (currentMin != array[i]) {
+            array[currentMinIndex] = array[i];
+            array[i] = currentMin;
+        }
+    }
+}
+```
+
+容易看出：让第n个元素与后面的元素比较的用时，第一次是n-1次比较，第二次就是n-2次...还有赋值交换的用时c
+
+$$T(n)=k(n-1)+c+k(n-2)+c+...+k+c$$
+$$=k\frac{(n-1)n}{2}+c(n-1)$$
+$$=k(\frac{n^2}{2}-\frac{n}{2})+cn-c$$
+$$=O(n^2)$$
+
+上面选择排序的应该是
+
+$$T(n)=T(n-1)+k(n-1)+c,n\geq 1$$
+
+其中除了函数外多出来的那一坨$k(n-1)+c$，就是用大O表示的那部分了，此处的表示为$O(n)$，如下
+
+$$T(n)=T(n-1)+O(n),n\geq 1$$
+
+一些常见算法的推导式如下
+
+![common](./images/common_recurrence_function.png)

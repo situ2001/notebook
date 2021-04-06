@@ -1,6 +1,6 @@
 # Reflection
 
-> something that shows what something else is like, or that is a sign of a particular situation
+> Something that shows what something else is like, or that is a sign of a particular situation
 
 在java里，有这么一个神奇的Class类，它是在运行时动态加载的。
 

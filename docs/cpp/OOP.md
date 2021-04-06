@@ -12,7 +12,7 @@
 
 感觉C++中的OOP多了好多东西啊（太菜了）
 
-## Operator & Keyword
+## Operators
 
 按优先级来说的。
 
@@ -88,9 +88,9 @@ class Chicken : public Animal
 };
 ```
 
-## Override keyword
+## Override
 
-(C++11)可以防止写虚函数重载的时候，不小心写错的大无语事件发生。
+该关键字(C++11)可以防止写虚函数重载的时候，不小心写错的大无语事件发生。
 
 ``` cpp
 virtual void eat() override;
@@ -125,68 +125,6 @@ Test::i // 114514
 ```
 
 为什么要这样做呢？估计要等到了解csapp之后了（
-
-## Inheritance
-
-``` cpp
-class Chicken : public Animal
-```
-
-继承的话，要注意，C++继承的class默认是private的，（前期naive认知）所以（不一定）要加个`public`，~~否则外部无法使用父类的方法。~~（~~原来还能用scope qualifier艹~~）
-
-经查询继承类型有如下，比如上面的`public Animal`就是公有继承了
-
-1. 公有继承
-2. 保护继承
-3. 私有继承
-
-原理是将所继承的父类member的accessibility给降级...`public`->`protected`->`private`
-
-比如在保护继承和私有的继承的情况下，如果想改变某一个member的accessibility（比如原来是public或protected的，但是继承后降级），可以使用scope qualifier...(差不多得了)
-
-``` cpp
-class Animal
-{
-    int i = 1141514;
-public:
-    Animal() = default;
-    void foo() {}
-};
-
-class Chicken : Animal
-{
-public:
-    Animal::foo;
-};
-
-int main()
-{
-    Chicken foo;
-    foo.foo();
-}
-```
-
-## Constructors & member initializer lists
-
-``` cpp
-public:
-  Chicken() : Animal(arg)
-  {
-    /** do sth */
-  }
-```
-
-相似地，我们也可以用来给field初始化
-
-``` cpp
-private:
-  std::string text = nullptr;
-public:
-  Foo() : text("114514")
-  {
-    /** do sth */
-  }
-```
 
 ## Friend keyword
 
@@ -235,11 +173,79 @@ class Friend
 }
 ```
 
+## Inheritance
+
+``` cpp
+class Chicken : public Animal
+```
+
+继承的话，要注意，C++继承的class默认是private的，（前期naive认知）所以（不一定）要加个`public`，~~否则外部无法使用父类的方法。~~（~~原来还能用scope qualifier艹~~）
+
+经查询继承类型有如下，比如上面的`public Animal`就是公有继承了
+
+1. 公有继承
+2. 保护继承
+3. 私有继承
+
+原理是将所继承的父类member的accessibility给降级...`public`->`protected`->`private`
+
+比如在保护继承和私有的继承的情况下，如果想改变某一个member的accessibility（比如原来是public或protected的，但是继承后降级），可以使用scope qualifier...(差不多得了)
+
+``` cpp
+class Animal
+{
+    int i = 1141514;
+public:
+    Animal() = default;
+    void foo() {}
+};
+
+class Chicken : Animal
+{
+public:
+    Animal::foo;
+};
+
+int main()
+{
+    Chicken foo;
+    foo.foo();
+}
+```
+
 ## Multiple inheritance
 
-估计用不到了，不写了。
+主要是用来当Interface用吧（C++的OOP没有Interface...
 
-## Constructor & Destructor
+``` cpp
+class Foo : public BaseFoo, public BaseBar
+```
+
+如果有命名冲突就用scope qualifier吧...
+
+## Constructors and member initializer lists
+
+``` cpp
+public:
+  Chicken() : Animal(arg)
+  {
+    /** do sth */
+  }
+```
+
+相似地，我们也可以用来给field初始化
+
+``` cpp
+private:
+  std::string text = nullptr;
+public:
+  Foo() : text("114514")
+  {
+    /** do sth */
+  }
+```
+
+## Constructor and Destructor
 
 常见，语法也是差不多，但是后者析构这个就没见过了（GC擦屁股太香了
 
@@ -259,13 +265,20 @@ class Friend
 
 ## Copy Constructor
 
-然后就是这个了，同上，这个东西也是默认缺省的，它的原型像是这样的
+然后就是这个了，同上，这个东西也是默认缺省的，像这样，传的必须要是一个引用类型（不传引用？你可以想想套娃调用...）。
 
 ``` cpp
 Test::Test(const Point&)
 ```
 
-本来java中的引用变量赋值就是把reference to给你而已。但是C++直接给你搞了新的对象。
+其中这个类型，可以cv-qualified，其中`const`主要是用来应对`rvalue`的（`const T&`和`T&&`都能被赋值一个临时对象），如果copy constructor的参数类型不加`const`那么这个就会报错
+
+``` cpp
+// in a function body
+return obj;
+```
+
+本来java中的引用变量赋值就是把reference给你而已。但是C++直接给你弄了个了新对象。
 
 ``` cpp
 //main
@@ -280,6 +293,8 @@ Test test;
 Test test1;
 test1 = test; // This is operator overloading, NOT invoking copy constructor
 ```
+
+此外，函数返回一个对象，传参(一个对象)进去函数的时候，也会调用copy constructor
 
 ## Move Constructor
 
@@ -327,13 +342,13 @@ Test* pointer = &test1;
 Test* test2 = new Test;
 ```
 
-## Where to define
+## Function definition
 
 来自cpluscplus.com
 
 > The only difference between defining a class member function completely within its class or to include only the prototype and later its definition, is that in the first case the function will automatically be considered an inline member function by the compiler, while in the second it will be a normal (not-inline) class member function, which in fact supposes no difference in behavior
 
-## default & delete
+## Default and delete
 
 如果有带参的constructor，那么可以用`=default`来写默认constructor如`Test(){}`。
 
@@ -382,3 +397,7 @@ test2 = test3; //wrong!
 并且const了的函数实质又是？是这样的，其实就是把这个函数里头的`*this`给const掉了。
 
 > In the body of a cv-qualified function, *this is cv-qualified, e.g. in a const member function, only other const member functions may be called normally. (A non-const member function may still be called if const_cast is applied or through an access path that does not involve this.)
+
+## Type casting
+
+待更，用到再更...
