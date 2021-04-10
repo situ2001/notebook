@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>OOP(C++) | Situ Book</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo-book.svg">
+    <link rel="stylesheet" href="/katex.min.css">
+    <meta name="description" content="Taking notes">
+    
+    <link rel="preload" href="/assets/css/0.styles.d8aad553.css" as="style"><link rel="preload" href="/assets/js/app.de3d10c5.js" as="script"><link rel="preload" href="/assets/js/2.0386f08b.js" as="script"><link rel="preload" href="/assets/js/19.ecb0837d.js" as="script"><link rel="prefetch" href="/assets/js/10.bdea1afc.js"><link rel="prefetch" href="/assets/js/11.8d5c9888.js"><link rel="prefetch" href="/assets/js/12.503d00b2.js"><link rel="prefetch" href="/assets/js/13.b0d4b332.js"><link rel="prefetch" href="/assets/js/14.b2138dfa.js"><link rel="prefetch" href="/assets/js/15.ed6be218.js"><link rel="prefetch" href="/assets/js/16.7de27262.js"><link rel="prefetch" href="/assets/js/17.835472c1.js"><link rel="prefetch" href="/assets/js/18.9311bcf2.js"><link rel="prefetch" href="/assets/js/20.dbc002d8.js"><link rel="prefetch" href="/assets/js/21.b5293eb8.js"><link rel="prefetch" href="/assets/js/22.389b8516.js"><link rel="prefetch" href="/assets/js/23.c55b7c3c.js"><link rel="prefetch" href="/assets/js/24.b842d05e.js"><link rel="prefetch" href="/assets/js/25.930e6b1c.js"><link rel="prefetch" href="/assets/js/26.c935ff08.js"><link rel="prefetch" href="/assets/js/27.c66b33d0.js"><link rel="prefetch" href="/assets/js/28.fa61ffc5.js"><link rel="prefetch" href="/assets/js/29.1f81a111.js"><link rel="prefetch" href="/assets/js/3.fdf39f16.js"><link rel="prefetch" href="/assets/js/30.1d5235b7.js"><link rel="prefetch" href="/assets/js/31.89620ff1.js"><link rel="prefetch" href="/assets/js/32.8d0e06c2.js"><link rel="prefetch" href="/assets/js/33.f50a9eeb.js"><link rel="prefetch" href="/assets/js/34.2610b763.js"><link rel="prefetch" href="/assets/js/35.162342eb.js"><link rel="prefetch" href="/assets/js/36.eab1929d.js"><link rel="prefetch" href="/assets/js/37.3ae0d449.js"><link rel="prefetch" href="/assets/js/38.379990c1.js"><link rel="prefetch" href="/assets/js/39.31b7d056.js"><link rel="prefetch" href="/assets/js/4.b71fc604.js"><link rel="prefetch" href="/assets/js/40.3c610417.js"><link rel="prefetch" href="/assets/js/41.6361c4be.js"><link rel="prefetch" href="/assets/js/42.51ea4fd2.js"><link rel="prefetch" href="/assets/js/43.73b04075.js"><link rel="prefetch" href="/assets/js/44.b465b683.js"><link rel="prefetch" href="/assets/js/45.203f091a.js"><link rel="prefetch" href="/assets/js/46.44a278b2.js"><link rel="prefetch" href="/assets/js/47.a551f93c.js"><link rel="prefetch" href="/assets/js/48.b5546301.js"><link rel="prefetch" href="/assets/js/49.fe271d1b.js"><link rel="prefetch" href="/assets/js/5.39e0aae8.js"><link rel="prefetch" href="/assets/js/50.387d8fb6.js"><link rel="prefetch" href="/assets/js/51.a308b499.js"><link rel="prefetch" href="/assets/js/52.e13f719f.js"><link rel="prefetch" href="/assets/js/53.ad8a1db9.js"><link rel="prefetch" href="/assets/js/54.fd5fe7df.js"><link rel="prefetch" href="/assets/js/55.75d7ebba.js"><link rel="prefetch" href="/assets/js/56.528ff35c.js"><link rel="prefetch" href="/assets/js/57.c05f6e21.js"><link rel="prefetch" href="/assets/js/58.881b7d9f.js"><link rel="prefetch" href="/assets/js/6.5732d7e2.js"><link rel="prefetch" href="/assets/js/7.28c3ec58.js"><link rel="prefetch" href="/assets/js/8.f147ee77.js"><link rel="prefetch" href="/assets/js/9.ed369c5f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d8aad553.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Situ Book</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://blog.situ2001.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Blog
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/situ2001" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://blog.situ2001.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Blog
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/situ2001" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Tools</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Python</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>C/C++</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/cpp/snippet.html" class="sidebar-link">Code snippet(C++)</a></li><li><a href="/cpp/keywords.html" class="sidebar-link">Keywords</a></li><li><a href="/cpp/rules_naming.html" class="sidebar-link">Naming rules</a></li><li><a href="/cpp/header.html" class="sidebar-link">Header(C/C++)</a></li><li><a href="/cpp/oop.html" aria-current="page" class="active sidebar-link">OOP(C++)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cpp/oop.html#operators" class="sidebar-link">Operators</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#member-function" class="sidebar-link">Member function</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#instantiation" class="sidebar-link">Instantiation</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#virtual-function" class="sidebar-link">Virtual function</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#override" class="sidebar-link">Override</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#modifier" class="sidebar-link">Modifier</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#static-keyword" class="sidebar-link">Static keyword</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#friend-keyword" class="sidebar-link">Friend keyword</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#inheritance" class="sidebar-link">Inheritance</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#multiple-inheritance" class="sidebar-link">Multiple inheritance</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#constructors-and-member-initializer-lists" class="sidebar-link">Constructors and member initializer lists</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#constructor-and-destructor" class="sidebar-link">Constructor and Destructor</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#copy-constructor" class="sidebar-link">Copy Constructor</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#move-constructor" class="sidebar-link">Move Constructor</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#pointer" class="sidebar-link">Pointer</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#function-definition" class="sidebar-link">Function definition</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#default-and-delete" class="sidebar-link">Default and delete</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#operator-overloading" class="sidebar-link">Operator overloading</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#const-keyword" class="sidebar-link">Const keyword</a></li><li class="sidebar-sub-header"><a href="/cpp/oop.html#type-casting" class="sidebar-link">Type casting</a></li></ul></li><li><a href="/cpp/problems.html" class="sidebar-link">Problems(C/C++)</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构与算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Git</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>HTTP</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Node.js</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>框架</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>课程</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="oop-c"><a href="#oop-c" class="header-anchor">#</a> OOP(C++)</h1> <p>前提：基于java中面向对象的知识储备</p> <p></p><div class="table-of-contents"><ul><li><a href="#oop-c">OOP(C++)</a><ul><li><a href="#operators">Operators</a></li><li><a href="#member-function">Member function</a></li><li><a href="#instantiation">Instantiation</a></li><li><a href="#virtual-function">Virtual function</a></li><li><a href="#override">Override</a></li><li><a href="#modifier">Modifier</a></li><li><a href="#static-keyword">Static keyword</a></li><li><a href="#friend-keyword">Friend keyword</a></li><li><a href="#inheritance">Inheritance</a></li><li><a href="#multiple-inheritance">Multiple inheritance</a></li><li><a href="#constructors-and-member-initializer-lists">Constructors and member initializer lists</a></li><li><a href="#constructor-and-destructor">Constructor and Destructor</a></li><li><a href="#copy-constructor">Copy Constructor</a></li><li><a href="#move-constructor">Move Constructor</a></li><li><a href="#pointer">Pointer</a></li><li><a href="#function-definition">Function definition</a></li><li><a href="#default-and-delete">Default and delete</a></li><li><a href="#operator-overloading">Operator overloading</a></li><li><a href="#const-keyword">Const keyword</a></li><li><a href="#type-casting">Type casting</a></li></ul></li></ul></div><p></p> <p>(个人笔记) 要不是大一下学校的OOP课要讲MFC...</p> <p>基于java中的OOP来学习C++的OOP（可 迁 移 学 习）（爆炸预定</p> <p>感觉C++中的OOP多了好多东西啊（太菜了）</p> <h2 id="operators"><a href="#operators" class="header-anchor">#</a> Operators</h2> <p>按优先级来说的。</p> <p>scope qualifier: <code>::</code>，很直白，翻译过来就叫做作用域限定符</p> <p>member access: <code>.</code>和<code>-&gt;</code>常见，前者是非指针变量用过的，后者是指针变量用的</p> <p>class上的<code>:</code>，如同java里的<code>extends</code></p> <h2 id="member-function"><a href="#member-function" class="header-anchor">#</a> Member function</h2> <p>这个其实怎么说呢，我就把它跟java里头的instance method混为一谈了。所以这样理解就没问题了。</p> <h2 id="instantiation"><a href="#instantiation" class="header-anchor">#</a> Instantiation</h2> <p>无参数的话，<strong>不用带parentheses</strong></p> <div class="language-cpp extra-class"><pre class="language-cpp"><code>Test test1<span class="token punctuation">;</span>
+
+Test<span class="token operator">*</span> test2 <span class="token operator">=</span> <span class="token keyword">new</span> Test<span class="token punctuation">;</span>
+</code></pre></div><p>前者开在stack上，后者开在heap上。（java直接扔heap上不香吗</p> <h2 id="virtual-function"><a href="#virtual-function" class="header-anchor">#</a> Virtual function</h2> <p>函数就有非虚函数，虚函数和纯虚函数这三种了，太草了。由于java的对象方法默认就是<code>virtual</code>的（JVM调用指令<code>invokevirtual</code>），然后java可以多态，要invoke的方法都是在runtime进行动态绑定的。所以C++里头的函数虚不虚，就很好理解了。</p> <p>比如java里头定义一个父类抽象方法的话，子类来实现。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//father</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//son</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** do sth */</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>C++就要用到纯虚函数了</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token comment">//father</span>
+<span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment">//son</span>
+<span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token comment">/** do sth */</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果父类的虚函数想有自己的实现的话，把<code>= 0</code>去掉，加自己的实现即可（此时仍然有多态）。但此时的父类就不是抽象类了，可以被实例化。</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">class</span> <span class="token class-name">Animal</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;I am eating food.&quot;</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Chicken</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Animal</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;I am eating hay&quot;</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="override"><a href="#override" class="header-anchor">#</a> Override</h2> <p>该关键字(C++11)可以防止写虚函数重载的时候，不小心写错的大无语事件发生。</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+</code></pre></div><h2 id="modifier"><a href="#modifier" class="header-anchor">#</a> Modifier</h2> <p>似乎因为没有jvav的package，所以这么几个modifier<strong>都没有了package access的restriction</strong>（因为根本没有package啊）。所以就很方便了。</p> <p><code>public</code>类的外部都能访问。</p> <p><code>protected</code><strong>自己和派生类</strong>能访问。(！大不同！)</p> <p><code>private</code>直接是私有，类里的能访问。</p> <h2 id="static-keyword"><a href="#static-keyword" class="header-anchor">#</a> Static keyword</h2> <p>这个也没啥大区别的，唯一的小区别就是访问static的方法或变量需要使用operator <code>::</code></p> <p>还有，根据C++17前（艹）的标准。define的时候必须要在类外面进行(除非为const的时候才能在类内做定义)</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token comment">//class Test</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">static</span> <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+
+<span class="token comment">// outside the class</span>
+<span class="token keyword">static</span> <span class="token keyword">int</span> Test<span class="token operator">::</span>i <span class="token operator">=</span> <span class="token number">114514</span><span class="token punctuation">;</span>
+
+<span class="token comment">//main</span>
+Test<span class="token operator">::</span>i <span class="token comment">// 114514</span>
+</code></pre></div><p>为什么要这样做呢？估计要等到了解csapp之后了（</p> <p>C++17及之后可以inline</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">inline</span> <span class="token keyword">static</span> <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">114514</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="friend-keyword"><a href="#friend-keyword" class="header-anchor">#</a> Friend keyword</h2> <blockquote><p>The friend declaration appears in a class body and grants a function or another class access to private and protected members of the class where the friend declaration appears.</p></blockquote> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">class</span> <span class="token class-name">Test</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">friend</span> <span class="token keyword">void</span> <span class="token function">getNum</span><span class="token punctuation">(</span>Test test<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> test<span class="token punctuation">.</span>num <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+  <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">114514</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// or</span>
+<span class="token keyword">friend</span> <span class="token keyword">void</span> <span class="token function">getNum</span><span class="token punctuation">(</span>Test test<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// outside of the class</span>
+<span class="token keyword">void</span> <span class="token function">getNum</span><span class="token punctuation">(</span>Test test<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token comment">// implements here</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-cpp extra-class"><pre class="language-cpp"><code>Test test<span class="token punctuation">;</span>
+<span class="token function">getNum</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 114514</span>
+</code></pre></div><p>当然也可以在里头声明一个友元类，此时友元类里的成员函数都能访问到这个类的private field</p> <p>前提是有一个该类的对象，才能进行访问</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token comment">//In class Test</span>
+<span class="token keyword">friend</span> <span class="token keyword">class</span> <span class="token class-name">Friend</span><span class="token punctuation">;</span>
+
+<span class="token comment">//Friend</span>
+<span class="token keyword">class</span> <span class="token class-name">Friend</span>
+<span class="token punctuation">{</span>
+  <span class="token comment">/** ... */</span>
+  <span class="token comment">/** have the access to private field of Test */</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="inheritance"><a href="#inheritance" class="header-anchor">#</a> Inheritance</h2> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">class</span> <span class="token class-name">Chicken</span> <span class="token operator">:</span> <span class="token keyword">public</span> Animal
+</code></pre></div><p>继承的话，要注意，C++继承的class默认是private的，（前期naive认知）所以（不一定）要加个<code>public</code>，<s>否则外部无法使用父类的方法。</s>（<s>原来还能用scope qualifier艹</s>）</p> <p>经查询继承类型有如下，比如上面的<code>public Animal</code>就是公有继承了</p> <ol><li>公有继承</li> <li>保护继承</li> <li>私有继承</li></ol> <p>原理是将所继承的父类member的accessibility给降级...<code>public</code>-&gt;<code>protected</code>-&gt;<code>private</code></p> <p>比如在保护继承和私有的继承的情况下，如果想改变某一个member的accessibility（比如原来是public或protected的，但是继承后降级），可以使用scope qualifier...(差不多得了)</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">class</span> <span class="token class-name">Animal</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1141514</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">default</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Chicken</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token class-name">Animal</span></span>
+<span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    Animal<span class="token operator">::</span>foo<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Chicken foo<span class="token punctuation">;</span>
+    foo<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="multiple-inheritance"><a href="#multiple-inheritance" class="header-anchor">#</a> Multiple inheritance</h2> <p>主要是用来当Interface用吧（C++的OOP没有Interface...</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token operator">:</span> <span class="token keyword">public</span> BaseFoo<span class="token punctuation">,</span> <span class="token keyword">public</span> BaseBar
+</code></pre></div><p>如果有命名冲突就用scope qualifier吧...</p> <p>然后还有歧义的问题，就是这样的</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">Base</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Base</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Base was constructed&quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;tested&quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Bar</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Base</span></span>
+<span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Bar was constructed&quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Bar1</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Base</span></span>
+<span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Bar1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Bar1 was constructed&quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Bar</span><span class="token punctuation">,</span> <span class="token keyword">public</span> <span class="token class-name">Bar1</span></span>
+<span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Foo was constructed&quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  Foo foo<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>输出</p> <div class="language-shell extra-class"><pre class="language-shell"><code>Base was constructed
+Bar was constructed
+Base was constructed
+Bar1 was constructed
+Foo was constructed
+</code></pre></div><p>如果main里加<code>foo.test()</code>会报错<code>ambiguous access of 'test'</code>，因为每个Bar类都分别有自己的一个父类对象。如下所示</p> <div class="language-shell extra-class"><pre class="language-shell"><code>Base   Base
+ <span class="token operator">|</span>      <span class="token operator">|</span>
+Bar    Bar1
+   <span class="token punctuation">\</span>  /
+    Foo
+</code></pre></div><p>为避免这个问题，我们使用虚继承（virtual inheritance）...</p> <p>把两个Bar类的继承里的modifier加上关键字<code>virtual</code>，就会得到如下，两者继承到了同一个父类对象上。</p> <div class="language-shell extra-class"><pre class="language-shell"><code>Base was constructed
+Bar was constructed
+Bar1 was constructed
+Foo was constructed
+</code></pre></div><p>此时的继承关系为</p> <div class="language-shell extra-class"><pre class="language-shell"><code>   Base
+  /   <span class="token punctuation">\</span>
+Bar    Bar1
+  <span class="token punctuation">\</span>   /
+   Foo
+</code></pre></div><h2 id="constructors-and-member-initializer-lists"><a href="#constructors-and-member-initializer-lists" class="header-anchor">#</a> Constructors and member initializer lists</h2> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Chicken</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Animal</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment">/** do sth */</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><p>相似地，我们也可以用来给field初始化</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">private</span><span class="token operator">:</span>
+  std<span class="token operator">::</span>string text <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">text</span><span class="token punctuation">(</span><span class="token string">&quot;114514&quot;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment">/** do sth */</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><h2 id="constructor-and-destructor"><a href="#constructor-and-destructor" class="header-anchor">#</a> Constructor and Destructor</h2> <p>常见，语法也是差不多，但是后者析构这个就没见过了（GC擦屁股太香了</p> <p>类的析构和构造，都是默认缺省的（无参数），这点都一样，当然也可以自己写实现</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token comment">//class Test</span>
+<span class="token operator">~</span><span class="token function">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;instance deleted&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>出栈或者<code>delete</code>的时候会被隐式调用</p> <p>方法命名就这，直接是constructor前加 <code>~</code></p> <h2 id="copy-constructor"><a href="#copy-constructor" class="header-anchor">#</a> Copy Constructor</h2> <p>然后就是这个了，同上，这个东西也是默认缺省的，像这样，传的必须要是一个引用类型（不传引用？你可以想想套娃调用...）。</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token class-name">Test</span><span class="token operator">::</span><span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">const</span> Point<span class="token operator">&amp;</span><span class="token punctuation">)</span>
+</code></pre></div><p>其中这个类型，可以cv-qualified，其中<code>const</code>主要是用来应对<code>rvalue</code>的（<code>const T&amp;</code>和<code>T&amp;&amp;</code>都能被赋值一个临时对象），如果copy constructor的参数类型不加<code>const</code>那么这个就会报错</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token comment">// in a function body</span>
+<span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+</code></pre></div><p>本来java中的引用变量之间的赋值就是把这个变量的值赋给你而已。但是C++直接给你弄了个了新对象。</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token comment">//main</span>
+Test test<span class="token punctuation">;</span>
+Test test1 <span class="token operator">=</span> test<span class="token punctuation">;</span> <span class="token comment">//invoke Copy Constructor</span>
+</code></pre></div><p>调用默认拷贝构造函数的时候，一切栈上的变量都被拷过去了(这不就是跟struct一模一样吗)。但是当然要自己实现的时候，就不是这样了（要自己一个一个加实现）</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code>Test test<span class="token punctuation">;</span>
+Test test1<span class="token punctuation">;</span>
+test1 <span class="token operator">=</span> test<span class="token punctuation">;</span> <span class="token comment">// This is operator overloading, NOT invoking copy constructor</span>
+</code></pre></div><p>此外，函数返回一个对象，传参(一个对象)进去函数的时候，也会调用copy constructor</p> <h2 id="move-constructor"><a href="#move-constructor" class="header-anchor">#</a> Move Constructor</h2> <p>C++11开始加入了rvalue reference，这是什么呢，一查cpprefernce就能看到短小精悍的解释</p> <blockquote><p>Rvalue references can be used to extend the lifetimes of temporary objects</p></blockquote> <p>两个字来说就是<s>续命</s></p> <p>还有std::move，类的构造器也有了移动构造函数</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token comment">//class Foo</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Foo</span><span class="token punctuation">(</span>Foo<span class="token operator">&amp;&amp;</span> bar<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre></div><p>初始化并赋值一个新对象的时候，可以使用Move constructor</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code>Foo foo1<span class="token punctuation">;</span>
+Foo foo2 <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>foo1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="pointer"><a href="#pointer" class="header-anchor">#</a> Pointer</h2> <ul><li>this</li></ul> <p><code>this</code>跟java一样，C++只有成员函数才有的。记得member access要用operator <code>-&gt;</code></p> <ul><li>Pointer to an object</li></ul> <p>这个java的引用变量是差不多的。声明也就这样</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code>ClassType<span class="token operator">*</span> pointer<span class="token punctuation">;</span>
+</code></pre></div><p>用法也就那样，如</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code>Test test1<span class="token punctuation">;</span>
+Test<span class="token operator">*</span> pointer <span class="token operator">=</span> <span class="token operator">&amp;</span>test1<span class="token punctuation">;</span>
+
+Test<span class="token operator">*</span> test2 <span class="token operator">=</span> <span class="token keyword">new</span> Test<span class="token punctuation">;</span>
+</code></pre></div><h2 id="function-definition"><a href="#function-definition" class="header-anchor">#</a> Function definition</h2> <p>来自cpluscplus.com</p> <blockquote><p>The only difference between defining a class member function completely within its class or to include only the prototype and later its definition, is that in the first case the function will automatically be considered an inline member function by the compiler, while in the second it will be a normal (not-inline) class member function, which in fact supposes no difference in behavior</p></blockquote> <h2 id="default-and-delete"><a href="#default-and-delete" class="header-anchor">#</a> Default and delete</h2> <p>如果有带参的constructor，那么可以用<code>=default</code>来写默认constructor如<code>Test(){}</code>。</p> <p>如果要禁用某个函数，可以上<code>=delete</code></p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token function">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">default</span><span class="token punctuation">;</span>
+<span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">const</span> X<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">delete</span><span class="token punctuation">;</span>
+Test<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> X<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">delete</span><span class="token punctuation">;</span>
+
+<span class="token comment">//main</span>
+Test test<span class="token punctuation">;</span>
+Test test1 <span class="token operator">=</span> test<span class="token punctuation">;</span> <span class="token comment">//wrong!</span>
+Test test2<span class="token punctuation">;</span>
+test2 <span class="token operator">=</span> test3<span class="token punctuation">;</span> <span class="token comment">//wrong!</span>
+</code></pre></div><h2 id="operator-overloading"><a href="#operator-overloading" class="header-anchor">#</a> Operator overloading</h2> <p>直接扔cppreference算了: <a href="https://en.cppreference.com/w/cpp/language/operators" target="_blank" rel="noopener noreferrer">直达<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>注意，一个重载运算符的函数，其operand必须有一个是枚举类型或者类类型。</p> <blockquote><p>When an operator appears in an expression, and at least one of its operands has a class type or an enumeration type</p></blockquote> <p>其实返回值赋给谁的这个问题，我想了想，估计可以直接与基本类型的运算挂钩。结合一下操作符运算的本质特点就可以了！</p> <p>对应到方法呢？比如<code>+</code>是这样的，成员函数<code>a.operator+(b)</code>，非成员函数<code>operator+(a, b)</code></p> <p>但是一些运算符是不能被重载为非成员函数的: <code>=</code>, <code>()</code>, <code>[]</code>, <code>-&gt;</code></p> <p>有些运算符需要记录一下，代码扔到snippet里了</p> <h2 id="const-keyword"><a href="#const-keyword" class="header-anchor">#</a> Const keyword</h2> <p>一般来说呢，<code>const</code>是作用于它左边的（如果左边啥都没有的话就是作用于右边）。而这个关键字<code>const</code>能作用于变量、<strong>成员</strong>函数、类对象...</p> <p><strong>关键</strong>是有<code>const</code>修饰的，就不能修改里面成员的内存空间。</p> <p>如果有<code>Foo const foo;</code>，那么这个对象变量（或指针）就不能访问非const方法，也不能修改成员了。如果有一个const方法，那么在这个方法体内，不能访问非const方法，也不能修改成员变量。（实质在后面说了）</p> <p>而我查了cppreference，里面这样说</p> <blockquote><p>const object - an object whose type is const-qualified, or a non-mutable subobject of a const object. Such object cannot be modified: attempt to do so directly is a compile-time error, and attempt to do so indirectly (e.g., by modifying the const object through a reference or pointer to non-const type) results in undefined behavior.</p></blockquote> <p>并且const了的函数实质又是？是这样的，其实就是把这个函数里头的<code>*this</code>给const掉了。</p> <blockquote><p>In the body of a cv-qualified function, *this is cv-qualified, e.g. in a const member function, only other const member functions may be called normally. (A non-const member function may still be called if const_cast is applied or through an access path that does not involve this.)</p></blockquote> <h2 id="type-casting"><a href="#type-casting" class="header-anchor">#</a> Type casting</h2> <p><a href="https://stackoverflow.com/questions/332030/when-should-static-cast-dynamic-cast-const-cast-and-reinterpret-cast-be-used" target="_blank" rel="noopener noreferrer">面向SO编程<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>在OOP里头一般用到的casting关键字，一般有<code>static_cast</code>, <code>dynamic_cast</code>, <code>const_cast</code>和<code>reinterpret_cast</code>和C风格cast）</p> <ul><li><code>static_cast</code>是安全地，隐式地在类型之间进行转换(比如void, int, double, float)</li> <li><code>dynamic_cast</code>是在有继承关系的类之间的up cast, down cast and side cast（虽然上者也可以</li> <li><code>const_cast</code>可以加减<code>const</code>约束</li> <li><code>reinterpret_cast</code>暴力casting，不管啥的</li></ul> <p>一个例子</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">struct</span> <span class="token class-name">Base</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">114514</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> <span class="token class-name">D</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Base</span></span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1919810</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  D<span class="token operator">*</span> d <span class="token operator">=</span> <span class="token keyword">new</span> D<span class="token punctuation">;</span>
+  std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> d<span class="token operator">-&gt;</span>a <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span> <span class="token comment">// 1919810</span>
+  Base<span class="token operator">*</span> b <span class="token operator">=</span> <span class="token keyword">dynamic_cast</span><span class="token operator">&lt;</span>Base<span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// upcast</span>
+  std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> b<span class="token operator">-&gt;</span>a<span class="token punctuation">;</span> <span class="token comment">// 114514</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/cpp/header.html" class="prev">
+        Header(C/C++)
+      </a></span> <span class="next"><a href="/cpp/problems.html">
+        Problems(C/C++)
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.de3d10c5.js" defer></script><script src="/assets/js/2.0386f08b.js" defer></script><script src="/assets/js/19.ecb0837d.js" defer></script>
+  </body>
+</html>
