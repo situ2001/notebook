@@ -58,9 +58,9 @@ console.log(this.b); // undefined
 
 ## for in vs for of
 
-`for ... in ...`循环的是一个对象的property name
+`for ... in ...`，迭代的是一个对象的enumerable property name
 
-`for ... of ...`循环迭代的是一个对象的property value，然而限定了使用的对象，**要是iteratable**的才行，比如`Array`, `Map`, `Set`, `String`, `TypedArray`, `arguments`
+`for ... of ...`，迭代的是一个对象的property value，然而限定了使用的对象，**要是iteratable**的才行，比如`Array`, `Map`, `Set`, `String`, `TypedArray`, `arguments`
 
 ``` javascript
 let list = [4, 5, 6];

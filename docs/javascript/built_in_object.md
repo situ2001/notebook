@@ -99,4 +99,4 @@ twoDecimalPlaces;
 
 > The WeakSet is weak, meaning references to objects in a WeakSet are held weakly.
 
-这意味着只能存object，一但里面存放的对象没有被任何一个引用变量所引用，那么它就会被垃圾回收掉。
+这意味着只能存object，一但里面存放的对象没有被任何一个变量所引用，那么它就会被垃圾回收掉。

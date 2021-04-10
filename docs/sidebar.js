@@ -36,6 +36,7 @@ module.exports = [
             'object', // objects
             'asynchronous', // 异步
             'promise',
+            'iterable',
             'ecmascript'
         ])
     },
@@ -64,7 +65,8 @@ module.exports = [
     {
         title: '数据结构与算法',
         children: get('./dsa', [
-            'basis'
+            'basis',
+            'dynamic_programming'
         ])
     },
     {
@@ -79,6 +81,10 @@ module.exports = [
         children: get('./git', [
             'gitignore'
         ])
+    },
+    {
+        title: 'HTTP',
+        children: get('./http', [])
     },
     {
         title: 'Node.js',

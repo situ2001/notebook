@@ -104,3 +104,32 @@ namespace electron {
 >
 > 4. The class member access `operator->()`. Off-hand I can't see any bad abuse of overloading this operator a non-member. On the other hand, I also can't see any. Also, the class member access operator has rather special rules and playing with potential overloads interfering with these seems an unnecessary complication.
 
+## Pointer to function
+
+``` cpp
+void test()
+{
+    std::cout << "This is function test" << '\n';
+}
+
+// main
+typedef void (*f)(void);
+f fn = test;
+// or
+void (*func)(void) = test;
+fn(); // This is function test
+```
+
+注意使用括号改变优先级...不然`void* f(void)`就是一个返回`void*`类型的函数了。来点茴香豆吧（
+
+`int (*a[])()` is a array of function pointer of the prototype int func()
+
+`int (*f())[]` is a function that returns a pointer to array
+
+但不允许有**array of function**
+
+来个复杂的，其实无非就是标识符被定义成了指针、数组、还是函数而已。
+
+`int* const * (*f)(double)`中，f是一个指向一个返回指向只读int*的指针的函数的指针，其实英语解释起来不是很拗口。
+
+a function pointer that points to a function with prototype `int* const * func(double)` where its returning value is a pointer points to a read-only pointer-to-int

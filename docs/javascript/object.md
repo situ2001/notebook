@@ -10,7 +10,7 @@ primitive的特点就是immutable，也就是说它们不能被更改，不能�
 
 > All primitives are immutable, i.e., they cannot be altered. It is important not to confuse a primitive itself with a variable assigned a primitive value. The variable may be reassigned a new value, but the existing value can not be changed in the ways that objects, arrays, and functions can be altered.
 
-而对象类型的赋值就是赋引用reference了，这跟Java是差不多的
+而Object类型变量(reference variable)之间的赋值就是赋地址(对象所在的内存地址)了，这跟Java是差不多的
 
 ``` javascript
 let a = { x: 114514 };

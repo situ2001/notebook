@@ -209,6 +209,6 @@ $$T(n)=T(n-1)+k(n-1)+c,n\geq 1$$
 
 $$T(n)=T(n-1)+O(n),n\geq 1$$
 
-一些常见算法的推导式如下
+一些常见的递推关系式的形式如下
 
 ![common](./images/common_recurrence_function.png)

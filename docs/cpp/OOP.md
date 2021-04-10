@@ -126,6 +126,12 @@ Test::i // 114514
 
 为什么要这样做呢？估计要等到了解csapp之后了（
 
+C++17及之后可以inline
+
+``` cpp
+inline static int i = 114514;
+```
+
 ## Friend keyword
 
 > The friend declaration appears in a class body and grants a function or another class access to private and protected members of the class where the friend declaration appears.
@@ -223,6 +229,86 @@ class Foo : public BaseFoo, public BaseBar
 
 如果有命名冲突就用scope qualifier吧...
 
+然后还有歧义的问题，就是这样的
+
+``` cpp
+#include <iostream>
+
+class Base
+{
+public:
+  Base() { std::cout << "Base was constructed" << '\n'; }
+  void test()
+  {
+    std::cout << "tested" << '\n';
+  }
+};
+
+class Bar : public Base
+{
+public:
+  Bar() { std::cout << "Bar was constructed" << '\n'; }
+};
+
+class Bar1 : public Base
+{
+public:
+  Bar1() { std::cout << "Bar1 was constructed" << '\n'; }
+};
+
+class Foo : public Bar, public Bar1
+{
+public:
+  Foo() { std::cout << "Foo was constructed" << '\n'; }
+};
+
+int main()
+{
+  Foo foo;
+}
+```
+
+输出
+
+``` shell
+Base was constructed
+Bar was constructed
+Base was constructed
+Bar1 was constructed
+Foo was constructed
+```
+
+如果main里加`foo.test()`会报错`ambiguous access of 'test'`，因为每个Bar类都分别有自己的一个父类对象。如下所示
+
+``` shell
+Base   Base
+ |      |
+Bar    Bar1
+   \  /
+    Foo
+```
+
+为避免这个问题，我们使用虚继承（virtual inheritance）...
+
+把两个Bar类的继承里的modifier加上关键字`virtual`，就会得到如下，两者继承到了同一个父类对象上。
+
+``` shell
+Base was constructed
+Bar was constructed
+Bar1 was constructed
+Foo was constructed
+```
+
+此时的继承关系为
+
+``` shell
+   Base
+  /   \
+Bar    Bar1
+  \   /
+   Foo
+```
+
 ## Constructors and member initializer lists
 
 ``` cpp
@@ -278,7 +364,7 @@ Test::Test(const Point&)
 return obj;
 ```
 
-本来java中的引用变量赋值就是把reference给你而已。但是C++直接给你弄了个了新对象。
+本来java中的引用变量之间的赋值就是把这个变量的值赋给你而已。但是C++直接给你弄了个了新对象。
 
 ``` cpp
 //main
@@ -400,4 +486,35 @@ test2 = test3; //wrong!
 
 ## Type casting
 
-待更，用到再更...
+[面向SO编程](https://stackoverflow.com/questions/332030/when-should-static-cast-dynamic-cast-const-cast-and-reinterpret-cast-be-used)
+
+在OOP里头一般用到的casting关键字，一般有`static_cast`, `dynamic_cast`, `const_cast`和`reinterpret_cast`和C风格cast）
+
+- `static_cast`是安全地，隐式地在类型之间进行转换(比如void, int, double, float)
+- `dynamic_cast`是在有继承关系的类之间的up cast, down cast and side cast（虽然上者也可以
+- `const_cast`可以加减`const`约束
+- `reinterpret_cast`暴力casting，不管啥的
+
+一个例子
+
+``` cpp
+#include <iostream>
+
+struct Base
+{
+  int a = 114514;
+};
+
+struct D : public Base
+{
+  int a = 1919810;
+};
+
+int main()
+{
+  D* d = new D;
+  std::cout << d->a << '\n'; // 1919810
+  Base* b = dynamic_cast<Base*>(d); // upcast
+  std::cout << b->a; // 114514
+}
+```

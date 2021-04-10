@@ -96,7 +96,7 @@ hello().then((value) => console.log(value)); // hello
 // expression: A Promise or any value to wait for.
 ```
 
-在Promise-based的函数前加await，可以让code暂时停下，直到这个promise被fulfill
+在Promise-based的函数前加await，可以让code暂时停下，直到这个promise被fulfill，并返回的是结果的值，**而不是**Promise
 
 await can be put in front of any async **promise-based** function to pause your code on that line until the promise fulfills, then return the resulting value.
 
