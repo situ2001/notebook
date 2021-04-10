@@ -32,7 +32,7 @@ console.log(gen.next()); // { value: undefined, done: true }
 
 简单一例
 
-``` java
+``` javascript
 const fn = function* () {
     console.log(114514, yield);
 }

@@ -25,7 +25,7 @@ invoke的操作分别是`new func()`, `func()`, `foo.func()`, `func.apply(thisAr
 
 大多数情况就是用来查明这个函数是由谁call的，但是要注意Arrow function没有属于自己的argument和this。
 
-函数和箭头函数都可以capture外部this，但前者可以作为constructor invocation pattern来使用，用于新建对象。
+函数和箭头函数都可以capture外部this。但前者拥有自己的this，可以作为constructor invocation pattern来使用，用于新建对象。
 
 ## argument
 

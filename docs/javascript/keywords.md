@@ -114,7 +114,9 @@ console.log(this.x); // "global"
 console.log(this.y); // undefined
 ```
 
-还有一个特性TDZ(temporal dead zone)，可以理解为在初始化之前被使用就会报错，而全局变量只会`undefined`，
+还有一个特性TDZ(temporal dead zone)，中文叫做临时死区。
+
+可以理解为在初始化之前被使用就会报错，而全局变量只会`undefined`，这是因为两者都有变量提升(即变量的声明位置被提到了该变量的顶层作用域的开头)的特性，但是var只是undefined，而let的会直接报错。
 
 ``` javascript
 { // TDZ starts at beginning of scope
@@ -124,6 +126,8 @@ console.log(this.y); // undefined
   let foo = 2; // End of TDZ (for foo)
 }
 ```
+
+这个例子中的`bar`和`foo`都被提升到作用域的开头，并在对应行才进行赋值。但是由于用let声明的`foo`有临时死区，所以在这个死区里有使用，就会报错。而`bar`只有`undefined`出现。
 
 ## const
 

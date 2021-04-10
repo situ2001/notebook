@@ -35,7 +35,6 @@ module.exports = [
             'function', // 函数
             'object', // objects
             'asynchronous', // 异步
-            'promise',
             'iterable',
             'ecmascript'
         ])
@@ -84,7 +83,9 @@ module.exports = [
     },
     {
         title: 'HTTP',
-        children: get('./http', [])
+        children: get('./http', [
+            'cors'
+        ])
     },
     {
         title: 'Node.js',
