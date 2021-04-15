@@ -6,5 +6,6 @@
         "subproblems",
         "tensorflow",
         "untracked"
-    ]
+    ],
+    "editor.detectIndentation": false
 }

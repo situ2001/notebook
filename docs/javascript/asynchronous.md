@@ -143,7 +143,7 @@ hello().then((value) => console.log(value)); // hello
 // expression: A Promise or any value to wait for.
 ```
 
-在Promise-based的函数，即返回值为Promise的函数调用前，加await，可以让code暂时停下，直到这个promise被fulfill，并返回结果的值，**而不是Promise**
+在Promise-based的函数调用前，加await，可以让code暂时停下，直到这个promise被fulfill，并返回结果的值，**而不是Promise**
 
 ``` javascript
 // a function that returns a Promise

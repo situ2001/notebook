@@ -19,13 +19,15 @@ invoke的操作分别是`new func()`, `func()`, `foo.func()`, `func.apply(thisAr
 
 ## this
 
+已经优化，并发了：[博客](https://blog.situ2001.com/contents/f7dd0265df9c/)
+
 > In most cases, the value of this is determined by how a function is called (runtime binding). It can't be set by assignment during execution, and it may be different each time the function is called.
 
-`this`这个关键字常见，在JavaScript中大概就是执行当前语句时的对象吧。（个人理解）
+`this`这个关键字常见，在JavaScript中大概就是执行当前context的对象吧。（个人理解）
 
 大多数情况就是用来查明这个函数是由谁call的，但是要注意Arrow function没有属于自己的argument和this。
 
-函数和箭头函数都可以capture外部this。但前者拥有自己的this，可以作为constructor invocation pattern来使用，用于新建对象。
+函数和箭头函数都可以capture外部this(后者的this是在箭头函数被定义之后就确定的了，为定义处的this)。但前者拥有自己的this，可以作为constructor invocation pattern来使用，用于新建对象。
 
 ## argument
 
@@ -38,6 +40,10 @@ let fn = function () {
 
 fn(114, 514); // [Arguments] { '0': 114, '1': 514 }
 ```
+
+传参又是怎么样的呢？
+
+在js函数里头，传的参数的长度不是固定为参数列表中参数的个数。完全可以传多或者传少，只不过要**严格遵循**参数的所在位置
 
 ## Closure
 

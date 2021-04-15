@@ -491,8 +491,8 @@ test2 = test3; //wrong!
 在OOP里头一般用到的casting关键字，一般有`static_cast`, `dynamic_cast`, `const_cast`和`reinterpret_cast`和C风格cast）
 
 - `static_cast`是安全地，隐式地在类型之间进行转换(比如void, int, double, float)
-- `dynamic_cast`是在有继承关系的类之间的up cast, down cast and side cast（虽然上者也可以
-- `const_cast`可以加减`const`约束
+- `dynamic_cast`是在有继承关系的类之间的up cast, down cast and side cast（虽然上者也可以，但是上者对虚类down cast的支持不好）
+- `const_cast`可以进行`const`约束的添加和删除
 - `reinterpret_cast`暴力casting，不管啥的
 
 一个例子

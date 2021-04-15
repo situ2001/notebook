@@ -65,7 +65,7 @@ module.exports = [
         title: '数据结构与算法',
         children: get('./dsa', [
             'basis',
-            'dynamic_programming'
+            'dp'
         ])
     },
     {

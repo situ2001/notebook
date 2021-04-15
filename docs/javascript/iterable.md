@@ -1,14 +1,18 @@
-# Iterable
+# Iterable and Generator
 
-## Protocol
+好多都是E2015及其之后加入的
 
-鸽子中...
+## Generator
 
-## Generator function
+generator是与iterable密切相关的，注意理解
 
-带asterisk的function: `function*`表示这个函数会返回一个Generator对象(符合iterator protocol)
+### Function
 
-调用该函数就会返回一个`iterator`对象，之后调用这个对象的`next()`方法，生成器函数的函数体就会先执行到下一个`yield`表达式处停下，返回一个对象，包含了yield的值`value`和`done`--是否已`yield`完了最后一个`yield`。
+带asterisk的function: `function*`表示这个函数会返回一个Generator对象(这个对象符合iterator protocol)
+
+调用该函数就会返回一个`iterator`对象
+
+之后再调用这个对象的`next()`方法，生成器函数的函数体就会先执行，到第一个或者下一个`yield`表达式处停下，返回一个对象。该对象包含了yield的值`value`和是否已`yield`完了最后一个`yield`的`done`。
 
 ``` javascript
 function* foo () {
@@ -27,6 +31,46 @@ let gen = foo()
 console.log(gen.next()); // { value: 1, done: false }
 console.log(gen.next()); // { value: undefined, done: true }
 ```
+
+### Spread syntax (...)
+
+于ES2018加入的，可以把iterable比如函数arguments或者数组给展开。比如，可用于可变参数，对象属性复制和数组生成中。
+
+``` javascript
+myFunction(...iterableObj); // pass all elements of iterableObj as arguments to function myFunction
+[...iterableObj]; // insert all elements from iterableObj to an array
+[...iterableObj, '4', 'five', 6]; // combine two arrays by inserting all elements from iterableObj
+let objClone = { ...obj }; // pass all key:value pairs from an object 
+```
+
+### Delegation
+
+可以用`yield*`来跳到委托的生成器中。
+
+比如我们可以用这个来获取含有一个对象里面的所有property的数组
+
+``` javascript
+const obj = {
+    s: 2,
+    i: 0,
+    t: 0,
+    u: 1
+};
+
+obj[Symbol.iterator] = function* () {
+    yield* Object.keys(this);
+};
+
+console.log([...obj]); // [ 's', 'i', 't', 'u' ]
+```
+
+这里就是把iteration委托给array了。如果不用delegation，即yield为`yield Object.keys(this);`，就会是这样的
+
+``` javascript
+console.log([...obj]); // [ [ 's', 'i', 't', 'u' ] ]
+```
+
+### Args passing
 
 也可以传参：比如把参数换成`yield`。但是要注意`next()`一下以停在用yield代替的参数处，再进行传参。
 
@@ -93,12 +137,6 @@ The last yield was yielded
 { value: undefined, done: true }
 ```
 
-## Generator Delegation
-
-可以用`yield*`来跳到委托的生成器中。
-
-鸽子中...
-
 ## Symbol.iterator
 
 这个东东是用来自定义一个对象的迭代器的。往一个对象里头加`Symbol.iterator`这个property就行了，比如
@@ -129,3 +167,7 @@ console.log(Array.from(new Foo())); // [ 114514, 1919810 ]
 Symbol即符号，这个是js里头的primitive
 
 鸽子中...
+
+## Iterable Protocol
+
+还是鸽子中...

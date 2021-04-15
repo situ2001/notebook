@@ -14,6 +14,8 @@ console.log(typeof f); // function
 
 ## let
 
+了解这个之前可以了解一下js的scope？[文章点此](https://blog.situ2001.com/contents/d5c78114ba70/)
+
 > The let statement declares a block-scoped local variable, optionally initializing it to a value.
 
 跟全局变量var不一样，let声明的是个具有block-scope的本地变量，即它的作用域是在一个block内，并且在同一个块里面，我们**不能重复声明**同一个变量。比如我们这样做就会发生错误
@@ -88,19 +90,15 @@ var Thing;
   };
 }
 
-console.log(typeof privateScope);
-// "undefined"
+console.log(typeof privateScope); // "undefined"
 
 var thing = new Thing();
 
-console.log(thing);
-// Thing {someProperty: "foo"}
+console.log(thing); // Thing {someProperty: "foo"}
 
-thing.showPublic();
-// "foo"
+thing.showPublic(); // "foo"
 
-thing.showPrivate();
-// 1
+thing.showPrivate(); // 1
 ```
 
 然后，let不会在global object上面创建一个property
@@ -116,7 +114,7 @@ console.log(this.y); // undefined
 
 还有一个特性TDZ(temporal dead zone)，中文叫做临时死区。
 
-可以理解为在初始化之前被使用就会报错，而全局变量只会`undefined`，这是因为两者都有变量提升(即变量的声明位置被提到了该变量的顶层作用域的开头)的特性，但是var只是undefined，而let的会直接报错。
+可以理解为在初始化之前被使用就会报错，而全局变量只会`undefined`，这是因为两者都有变量提升(即变量的声明位置被提到了该变量的顶层作用域的开头，比如var的就是全局作用域，let就是局部的)的特性，但是var只是undefined，而let的会直接报错。
 
 ``` javascript
 { // TDZ starts at beginning of scope
@@ -127,8 +125,8 @@ console.log(this.y); // undefined
 }
 ```
 
-这个例子中的`bar`和`foo`都被提升到作用域的开头，并在对应行才进行赋值。但是由于用let声明的`foo`有临时死区，所以在这个死区里有使用，就会报错。而`bar`只有`undefined`出现。
+这个例子中的`bar`和`foo`都被提升，并在对应行才进行赋值。但是由于用let声明的`foo`有临时死区，所以在这个死区里有使用，就会报错。而`bar`只有`undefined`出现。
 
 ## const
 
-这个和let是差不多的，只不过const的，必须要在声明的时候顺便初始化，并且不能被重新赋值。
+这个和let是差不多的，只不过const的，多了这么几个限制--必须要在声明的时候顺便初始化，并且这个常量不能被重新赋值。
