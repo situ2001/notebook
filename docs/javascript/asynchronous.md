@@ -47,7 +47,7 @@ Hello world
 
 ## Promise
 
-Promise都是异步的，这是ES6引进来的新东西
+Promise都是异步的，这是ES2015引进来的新东西
 
 > In essence, it's the browser's way of saying "I promise to get back to you with the answer as soon as I can," hence the name "promise."
 

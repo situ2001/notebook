@@ -54,6 +54,46 @@ public static String format​(String format, Object... args)
 // For example, invoke it with parameter("%s, %s", "foo", "bar")
 ```
 
+## Generic Erasing
+
+编译为字节码时compiler会将type parameter给擦除，即把type parameter给替换为实际的类型，擦除是如下这样的。
+
+当编译class, interface和method时，就会根据type parameter来进行擦除。
+
+当type parameter为unbound的时候，就会擦除为Object类型，比如
+
+```java
+public static <T> void foo(T[] elements)
+```
+
+被擦除为
+
+```java
+public static void foo(Object[] elements)
+```
+
+bounded的即像`<T extends Number>`的话，就是擦除为父类类型。
+
+而当编译上面这些之外的code的话，就会是像下面这样进行擦除，以确保类型安全
+
+> Insert type casts if necessary to preserve type safety.
+
+比如有这个东西
+
+```java
+List<String> list = new ArrayList<>();
+list.add("dssq");
+String str = list.get(0);
+```
+
+编译时候就会被擦除为(类似的)
+
+```java
+List list = new ArrayList();
+list.add("dssq");
+String str = (String)(list.get(0));
+```
+
 ## MethodHandle
 
 > A method handle is a typed, directly executable reference to an underlying method, constructor, field, or similar low-level operation, with optional transformations of arguments or return values. These transformations are quite general, and include such patterns as conversion, insertion, deletion, and substitution.

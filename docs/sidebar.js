@@ -36,7 +36,7 @@ module.exports = [
             'object', // objects
             'asynchronous', // 异步
             'iterable',
-            'ecmascript'
+            'misc' // 杂七杂八的
         ])
     },
     {
@@ -65,7 +65,7 @@ module.exports = [
         title: '数据结构与算法',
         children: get('./dsa', [
             'basis',
-            'dp'
+            'approach'
         ])
     },
     {

@@ -20,7 +20,7 @@ let foo = new Promise(...);
 foo.then(...).catch(...);
 ```
 
-## ES6 module报错
+## ES2015 module报错
 
 记录时为2020/03/25
 

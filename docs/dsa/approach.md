@@ -1,4 +1,6 @@
-# Dynamic Programming
+# Approaches
+
+## Dynamic Programming
 
 > Dynamic programming is the process of solving subproblems, then combining the solutions of the subproblems to obtain an overall solution.
 
@@ -56,3 +58,21 @@ public class EfficientPrimeNumbers {
     }
 }
 ```
+
+## Divide-and-Conquer
+
+> The divide-and-conquer approach divides the problems into subproblems, solves the subproblems, and then combines the solutions of the subproblems to obtain the solution for the entire problem.
+
+这个叫做分治法。与递归类似，但是分治并不会导致redundant的反复计算(如递归法计算斐波拉契数列)。
+
+比如使用这个来算出数组里头的最大最小数。
+
+```java
+
+```
+
+## Backtracking
+
+> The backtracking approach searches for a candidate solution incrementally, abandoning the option as soon as it determines the candidate cannot possibly be a valid solution, then looks for a new candidate.
+
+这叫回溯法，记录好此步，向前进一步做尝试，如果不行就往回退，寻找下一个可能。
