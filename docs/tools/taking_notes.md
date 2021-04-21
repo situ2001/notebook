@@ -12,7 +12,7 @@ How to take notes with vuepress?
 
 主要是要了解它的一些syntax之类的，我平时参考的是这个表格
 
-``` markdown
+```markdown
 ### Heading
 
 # H1
@@ -160,7 +160,7 @@ $LaTeX$是一个用来写数学公式的typesetting system
 
 ### Github-Style Tables
 
-``` markdown
+```markdown
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
@@ -176,7 +176,7 @@ $LaTeX$是一个用来写数学公式的typesetting system
 
 ### Custom container
 
-``` markdown
+```markdown
 ::: tip
 This is a tip
 :::

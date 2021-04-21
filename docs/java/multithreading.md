@@ -38,7 +38,7 @@ Thread类里头有一些方法要有个印象，也要对这个类里面一些De
 多个线程同时操作一个数据，很容易使得这个数据corrupted（数据腐败？）
 这个是使用了一个经典例子：银行存款或者是生产者消费者关系来举例。
 
-``` java
+```java
 package chapter32;
 
 import java.util.concurrent.*;
@@ -105,7 +105,7 @@ ing example, the Account class is not thread-safe.`
 
 所以为了解决同时跑同一个代码块的情况，我们可以给他加上一个关键字`synchronized`来使一块代码或类线程同步。如下
 
-``` java
+```java
 public synchronized void deposit(int amount)
 ```
 
@@ -115,7 +115,7 @@ public synchronized void deposit(int amount)
 
 使用是像下面这样子
 
-``` java
+```java
 synchronized (expr) {
     statements;
 }
@@ -128,7 +128,7 @@ synchronized (expr) {
 
 怎么用呢，先实例化一个static的Lock，然后在想要线程同步的代码块前后使用即可
 
-``` java
+```java
 private static Lock lock = new ReentrantLock(); // Create a lock
 
 lock.lock(); // Acquire the lock
@@ -176,7 +176,7 @@ finally {
 
 这翻译过来叫做信号塔...?算了还是用英语顶住吧。这个跟Lock是几乎一致的，但是它可以允许多个线程拿到锁进入（1~n个）。
 
-``` java
+```java
 private static Semaphore semaphore = new Semaphore(1)
 public void deposit(int amount) { 
     try {

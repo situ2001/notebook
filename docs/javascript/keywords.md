@@ -4,7 +4,7 @@
 
 要确定一个js变量的类型，可以使用`typeof`关键字
 
-``` javascript
+```javascript
 let i = 114
 console.log(typeof i) // number
 
@@ -20,7 +20,7 @@ console.log(typeof f); // function
 
 跟全局变量var不一样，let声明的是个具有block-scope的本地变量，即它的作用域是在一个block内，并且在同一个块里面，我们**不能重复声明**同一个变量。比如我们这样做就会发生错误
 
-``` javascript
+```javascript
 let x = 1;
 switch(x) {
   case 0:
@@ -35,7 +35,7 @@ switch(x) {
 
 而要做的，只需要把每个case后面的statement使用brace括起来就行了，比如
 
-``` javascript
+```javascript
 case 0: {
   let foo;
   break;
@@ -44,7 +44,7 @@ case 0: {
 
 很多时候，`var`和`let`的行为都是差不多的，但是有几种情况。
 
-``` javascript
+```javascript
 function varTest() {
   var x = 1;
   {
@@ -66,7 +66,7 @@ function letTest() {
 
 由于 let statement declares a block-scoped local variable，所以我们可以利用这个特性外加闭包来创建`private member`。比如这个
 
-``` javascript
+```javascript
 var Thing;
 
 {
@@ -105,7 +105,7 @@ thing.showPrivate(); // 1
 
 > At the top level of programs and functions, let, unlike var, does not create a property on the global object.
 
-``` javascript
+```javascript
 var x = 'global';
 let y = 'global';
 console.log(this.x); // "global"
@@ -116,7 +116,7 @@ console.log(this.y); // undefined
 
 可以理解为在初始化之前被使用就会报错，而全局变量只会`undefined`，这是因为两者都有变量提升(即变量的声明位置被提到了该变量的顶层作用域的开头，比如var的就是全局作用域，let就是局部的)的特性，但是var只是undefined，而let的会直接报错。
 
-``` javascript
+```javascript
 { // TDZ starts at beginning of scope
   console.log(bar); // undefined
   console.log(foo); // ReferenceError

@@ -4,42 +4,42 @@
 
 ## 比较
 
-``` python
+```python
 if (114 < a < 514) # it is possible!
 if (a > 114 and a < 514) # equivalent
 ```
 
 ## 三目运算符
 
-``` python
+```python
 a = i > 15 ? 114 : 514 # wrong!
 a = 114 if i > 15 else 514 # Correct!
 ```
 
 ## 重复
 
-``` python
+```python
 str = 'dssq'*3 # dssqdssqdssq
 list = [1, 9]*2 # 1919
 ```
 
 ## 反转
 
-``` python
+```python
 str = 'hello'
 print (str[::-1]) # olleh
 ```
 
 ## 赋值
 
-``` python
+```python
 a, b, c = 1, 3, 5
 accuracy, label = ([15], [114514])
 ```
 
 ## 合并列表与字典
 
-``` python
+```python
 foo = {
     'a': 114,
     'b': 514
@@ -62,7 +62,7 @@ print (bar)
 
 ## 列表降维
 
-``` python
+```python
 import itertools
 
 foo = [[2, 3], [114, 514], [1919, 810]]
@@ -73,7 +73,7 @@ print (list(it)) # [2, 3, 114, 514, 1919, 810]
 
 ## iterate with enumerate
 
-``` python
+```python
 foo = [2, 3, 114, 514, 1919, 810]
 
 for id, item in enumerate(foo):
@@ -91,7 +91,7 @@ for id, item in enumerate(foo):
 
 ## list to str
 
-``` python
+```python
 foo = ['d', 'ss', 'q']
 s = ''.join(foo)
 print (s) # dssq
@@ -99,7 +99,7 @@ print (s) # dssq
 
 ## list to dict
 
-``` python
+```python
 foo = [x for x in range(4)]
 bar = [x**2 for x in range(4)]
 
@@ -108,7 +108,7 @@ print (dict(zip(foo, bar))) # {0: 0, 1: 1, 2: 4, 3: 9}
 
 ## dict reverse
 
-``` python
+```python
 foo = [x for x in range(4)]
 bar = [x**2 for x in range(4)]
 
@@ -118,7 +118,7 @@ e = dict(zip(d.values(), d.keys()))
 
 ## isinstance
 
-``` python
+```python
 foo = 14
 isinstance(foo, (int, list)) # True
 ```
@@ -127,7 +127,7 @@ isinstance(foo, (int, list)) # True
 
 传iteratable进去
 
-``` python
+```python
 foo = [1, 2, 3, 4, 5]
 bar = ['a', 'b', 'c']
 
@@ -148,7 +148,7 @@ for a, b in zip(foo, bar):
 
 也就是推导式
 
-``` python
+```python
 foo = [x**2 for x in range(5)] # [0, 1, 4, 9, 16]
 bar = {x: x**2 for x in range(5)} # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 foo1 = [x for x in foo if x > 8] # [9, 16]
@@ -159,7 +159,7 @@ enum = {x for x in range(1, 5)} # {1, 2, 3, 4}
 
 像Java的`iterator()`(消费者)
 
-``` python
+```python
 foo = (x for x in range(5))
 foo.__next__() # 0
 foo.__next__() # 1

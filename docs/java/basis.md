@@ -15,13 +15,13 @@
 
 当有一个方法不是很确定参数的个数的时候，就可以使用可变参数了，其实在Java里头，可变参数的实质就是一个长度可变的**数组**。syntax如下
 
-``` java
+```java
 public void foo(Object foo, String... bars)
 ```
 
 比如说我们把可变参数里的元素全部print出来
 
-``` java
+```java
 import java.util.Arrays;
 
 public class Example {
@@ -42,14 +42,14 @@ public class Example {
 
 那么为什么不用数组做参数？区别请见下
 
-``` java
+```java
 foo(1, 9, 1, 9, 8, 1, 0);
 foo(new int[]{1, 9, 1, 9, 8, 1, 0});
 ```
 
 自带API里头的一个好例子，就是`String.format`这个方法啦
 
-``` java
+```java
 public static String format​(String format, Object... args)
 // For example, invoke it with parameter("%s, %s", "foo", "bar")
 ```
@@ -98,7 +98,7 @@ String str = (String)(list.get(0));
 
 > A method handle is a typed, directly executable reference to an underlying method, constructor, field, or similar low-level operation, with optional transformations of arguments or return values. These transformations are quite general, and include such patterns as conversion, insertion, deletion, and substitution.
 
-``` java
+```java
 public class Test {
     public static void main(String[] args) throws Throwable {
         MethodType methodType;
@@ -124,7 +124,7 @@ public class Test {
 
 就像是这样，下面是一个try-catch block
 
-``` java
+```java
 public class Test {
     public static void main(String[] args) {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("obj.dat"))) {
@@ -144,7 +144,7 @@ public class Test {
 
 比如`<T extends Object & Serializable>`。代码见下
 
-``` java
+```java
 public class Test {
     static class Foo {
 
@@ -173,7 +173,7 @@ public class Test {
 
 可以直接把Lambda表达式的类型给cast一下，可以得到有实现了一个接口的匿名类的这么一个效果
 
-``` java
+```java
 public class Test {
     public static void main(String[] args) {
         Runnable task = (Runnable & Serializable) () -> System.out.println("Test");
@@ -198,7 +198,7 @@ interface java.io.Serializable
 
 枚举类里面的元素，可以看成是一个已经实例化了的该类型的constant。带参就`ELEMENT(param)`不带就`ELEMENT`
 
-``` java
+```java
 package appendixH;
 
 public enum TrafficLight {

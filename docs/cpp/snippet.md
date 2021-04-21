@@ -6,7 +6,7 @@ For convenience of looking up, I collect some C++ code snippets.
 
 (special case)
 
-``` cpp
+```cpp
 #include <iostream>
 
 struct Foo
@@ -124,7 +124,7 @@ foo++ was called
 
 Part of the features since C++11.
 
-``` cpp
+```cpp
 #include <iostream>
 #include <memory>
 #include <vector>

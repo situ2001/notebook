@@ -12,7 +12,7 @@ How does the keyword static works?
 
 如果都是用来做type alias的话，就是这样（不过define还是别滥用
 
-``` cpp
+```cpp
 #define T std::int64_t
 using T = std::int64_t;
 typedef std::int64_t T;
@@ -20,7 +20,7 @@ typedef std::int64_t T;
 
 typedef 为什么顺序有点不一样呢，可以直接想想C风格的struct
 
-``` c
+```c
 typedef struct 
 {
     int foo;
@@ -40,13 +40,13 @@ The header is included by the one source file that defines the variable and by a
 
 - file3.h
 
-``` c
+```c
 extern int global_variable;  /* Declaration of the variable */
 ```
 
 - file1.c
 
-``` c
+```c
 #include "file3.h"  /* Declaration made available here */
 #include "prog1.h"  /* Function declarations */
 
@@ -58,7 +58,7 @@ int increment(void) { return global_variable++; }
 
 - file2.c
 
-``` c
+```c
 #include "file3.h"
 #include "prog1.h"
 #include <stdio.h>
@@ -71,7 +71,7 @@ void use_it(void)
 
 一些源码，electron里面的`electron_constants.cc`与`electron_constants.h`
 
-``` cpp
+```cpp
 // electron_constants.h
 namespace electron {
     // The app-command in NativeWindow.
@@ -106,7 +106,7 @@ namespace electron {
 
 ## Pointer to function
 
-``` cpp
+```cpp
 void test()
 {
     std::cout << "This is function test" << '\n';

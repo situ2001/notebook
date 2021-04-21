@@ -28,15 +28,15 @@ module.exports = [
     {
         title: 'JavaScript',
         children: get('./javascript', [
-            'problems',            
-            'common_function',
+            'background', // 背景
+            'problems', // 问题记录     
+            'common_function', // 常用函数
             'keywords', // 关键字
             'built_in_object', // 内建对象
             'function', // 函数
             'object', // objects
             'asynchronous', // 异步
-            'iterable',
-            'misc' // 杂七杂八的
+            'iterable', // 可迭代的
         ])
     },
     {
@@ -44,10 +44,10 @@ module.exports = [
         children: get('./python', [
             'rules_naming', // 命名规则
             'built_in_things', // 内建
-            'special', //特殊技巧
-            'special_method',
-            'problems',
-            'ducking_type'
+            'special', // 特殊技巧
+            'special_method', // 魔法函数
+            'problems', // 问题记录
+            'ducking_type' // 鸭子类型
         ])
     },
     {

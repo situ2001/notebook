@@ -33,7 +33,7 @@ invoke的操作分别是`new func()`, `func()`, `foo.func()`, `func.apply(thisAr
 
 函数里面除了拥有this，还有argument。实际上就是一个对象
 
-``` javascript
+```javascript
 let fn = function () {
     console.log(arguments);
 };
@@ -51,7 +51,7 @@ fn(114, 514); // [Arguments] { '0': 114, '1': 514 }
 
 > This is possible because the function has the access to the context in which it was created.
 
-``` javascript
+```javascript
 /** example code for explaining closure */
 
 /** 

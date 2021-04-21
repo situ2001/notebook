@@ -36,7 +36,7 @@ Q: 如何获得数据集(dataset)
 
 就是把数据集以一定比例分开为测试集与训练集，并且每一次训练和测试都交换一下其中一部分测试集与训练集的顺序。
 
-``` shell
+```shell
 Data1-9 (Training) + Data10 (Testing) => result1
 Data1-8 Data10 + Data9 => result2
 ...

@@ -23,7 +23,7 @@ A good repo: [StyleGuide](https://github.com/google/styleguide)
 
 这个规则适用于class, enum, struct, type alias, type template parameter ：每个单词的首字母都要大写，不要加下划线或横杠。
 
-``` cpp
+```cpp
 // classes and structs
 class UrlTable { ...
 class UrlTableTester { ...
@@ -43,7 +43,7 @@ enum class UrlTableError { ...
 
 同class的命名规则
 
-``` cpp
+```cpp
 AddTableEntry()
 DeleteUrl()
 OpenFileOrDie()
@@ -53,7 +53,7 @@ OpenFileOrDie()
 
 用k开头，并且命名方式是驼峰命名法
 
-``` cpp
+```cpp
 const int kDaysInAWeek = 7;
 const int kAndroid8_0_0 = 24;  // Android 8.0.0
 ```
@@ -62,7 +62,7 @@ const int kAndroid8_0_0 = 24;  // Android 8.0.0
 
 全部小写，空格用下划线代替
 
-``` cpp
+```cpp
 std::string table_name;  // OK - lowercase with underscore.
 std::string tableName;   // Bad - mixed case.
 ```
@@ -71,7 +71,7 @@ std::string tableName;   // Bad - mixed case.
 
 与非成员变量一样的，只不过是在trailing位加一个underscore
 
-``` cpp
+```cpp
 class TableInfo {
   ...
  private:

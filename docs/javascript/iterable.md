@@ -14,7 +14,7 @@ generator是与iterable密切相关的，注意理解
 
 之后再调用这个对象的`next()`方法，生成器函数的函数体就会先执行，到第一个或者下一个`yield`表达式处停下，返回一个对象。该对象包含了yield的值`value`和是否已`yield`完了最后一个`yield`的`done`。
 
-``` javascript
+```javascript
 function* foo () {
     yield 1;
 }
@@ -36,7 +36,7 @@ console.log(gen.next()); // { value: undefined, done: true }
 
 于ES2018加入的，可以把iterable比如函数arguments或者数组给展开。比如，可用于可变参数，对象属性复制和数组生成中。
 
-``` javascript
+```javascript
 myFunction(...iterableObj); // pass all elements of iterableObj as arguments to function myFunction
 [...iterableObj]; // insert all elements from iterableObj to an array
 [...iterableObj, '4', 'five', 6]; // combine two arrays by inserting all elements from iterableObj
@@ -49,7 +49,7 @@ let objClone = { ...obj }; // pass all key:value pairs from an object
 
 比如我们可以用这个来获取含有一个对象里面的所有property的数组
 
-``` javascript
+```javascript
 const obj = {
     s: 2,
     i: 0,
@@ -66,7 +66,7 @@ console.log([...obj]); // [ 's', 'i', 't', 'u' ]
 
 这里就是把iteration委托给array了。如果不用delegation，即yield为`yield Object.keys(this);`，就会是这样的
 
-``` javascript
+```javascript
 console.log([...obj]); // [ [ 's', 'i', 't', 'u' ] ]
 ```
 
@@ -76,7 +76,7 @@ console.log([...obj]); // [ [ 's', 'i', 't', 'u' ] ]
 
 简单一例
 
-``` javascript
+```javascript
 const fn = function* () {
     console.log(114514, yield);
 }
@@ -89,7 +89,7 @@ gen.next('1919810');
 
 实质，也就只是在前往下一个yield的时候顺便传值了而已
 
-``` javascript
+```javascript
 const f = function* () {
     console.log('Before the first yield');
     console.log(yield, yield);
@@ -126,7 +126,7 @@ console.log(gen.next());
 
 结果
 
-``` shell
+```shell
 Before the first yield
 { value: undefined, done: false }
 { value: undefined, done: false }
@@ -141,7 +141,7 @@ The last yield was yielded
 
 这个东东是用来自定义一个对象的迭代器的。往一个对象里头加`Symbol.iterator`这个property就行了，比如
 
-``` javascript
+```javascript
 const obj = {
     *[Symbol.iterator] () {
         yield 114;

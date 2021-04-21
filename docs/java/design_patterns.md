@@ -22,7 +22,7 @@
 
 我写了一段使用JavaFX代码，运行后，窗口中的宽度与高度大小信息都会随着窗体的大小变化而更新。如下
 
-``` java
+```java
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -72,7 +72,7 @@ public class JavaFXBinding extends Application {
 
 可以看出，窗口里头`Text`的字符串变换是通过这一段代码实现的。这里以Width（窗体宽度）来说。
 
-``` java
+```java
 primaryStage.widthProperty().addListener(new InvalidationListener() {
     @Override
     public void invalidated(Observable observable) {
@@ -88,7 +88,7 @@ primaryStage.widthProperty().addListener(new InvalidationListener() {
 
 我们在`javafx.stage.Windows`类下发现了这个，并根据上下文，再复制了其他的片段，如下所示。
 
-``` java
+```java
 private ReadOnlyDoubleWrapper width = new ReadOnlyDoubleWrapper(this, "width", Double.NaN);
 
 public final ReadOnlyDoubleProperty widthProperty() { 
@@ -98,7 +98,7 @@ public final ReadOnlyDoubleProperty widthProperty() {
 
 这里出现了不同的两个类型，并且里面涉及到的方法又去到了其他的类，查了一下jfx的文档，发现了类之间的继承关系如下。
 
-``` text
+```text
 Class ReadOnlyDoubleWrapper
 java.lang.Object
 javafx.beans.binding.NumberExpressionBase
@@ -122,7 +122,7 @@ public class ReadOnlyDoubleWrapper extends SimpleDoubleProperty
 
 我们首先在`ReadOnlyDoubleWrapper`的constructor里头发现了`with-arg`的`super()`，也就是说它显示地invoke了父类的constructor。父类里的constructor也是如此的操作，直到来到了类`DoublePropertyBase`才停了下来。
 
-``` java
+```java
 //class ReadOnlyDoubleWrapper
 public ReadOnlyDoubleWrapper(Object bean, String name,
         double initialValue) {
@@ -143,7 +143,7 @@ public DoublePropertyBase(double initialValue) {
 
 那么，最后返回的是个什么对象？仔细地查看了一下如下的代码，发现这是通过一个私有类`ReadOnlyPropertyImpl`将一个可写的property转化为了一个只读的property
 
-``` java
+```java
 private ReadOnlyPropertyImpl readOnlyProperty;
 
 public ReadOnlyDoubleProperty getReadOnlyProperty() {
@@ -174,7 +174,7 @@ private class ReadOnlyPropertyImpl extends ReadOnlyDoublePropertyBase {
 
 这个私有类的继承关系如下，为了更好看，我去IDEA上生成了关系图
 
-``` text
+```text
 Class ReadOnlyDoublePropertyBase
 java.lang.Object
 javafx.beans.binding.NumberExpressionBase
@@ -195,7 +195,7 @@ NumberExpression, Observable, ReadOnlyProperty<Number>, ObservableDoubleValue, O
 
 所以我们要看`addListener`的实现，就要去`DoublePropertyBase`这个类里头看了。如下所示
 
-``` java
+```java
 ExpressionHelper<Number> helper;
 @Override
 public void addListener(InvalidationListener listener) {
@@ -207,7 +207,7 @@ az，里面竟然还有一个`ExpressionHelper`？？？不管是马是驴，先
 
 选择性地抽出`ExpressionHelper`的部分代码。
 
-``` java
+```java
 protected final ObservableValue<T> observable;
 
 private ExpressionHelper(ObservableValue<T> observable) {
@@ -284,7 +284,7 @@ private static class Generic<T> extends ExpressionHelper<T> {
 
 那么，在这个例子里头，width property的更改，是随着窗体大小的更改而更改的。那么我猜测可以通过看`javafx.stage.Windows`里头的方法来找到根源。
 
-``` java
+```java
 public final void setWidth(double value) {
     width.set(value);
     peerBoundsConfigurator.setWindowWidth(value);
@@ -294,7 +294,7 @@ public final void setWidth(double value) {
 
 可以看出，这个width是通过`set(double value)`方法更改值的。通过IDE强大的定位功能，我一番小操作，就来到了`DoublePropertyBase`里头，找到了这么点代码
 
-``` java
+```java
 @Override
 public void set(double newValue) {
     if (isBound()) {
@@ -318,7 +318,7 @@ private void markInvalid() {
 
 但是，我们做出监听的对象是`ReadOnlyDoubleWrapper`啊，那么怎么就只定位到了`DoublePropertyBase`呢？大脑告诉我，IDE不是万能的，只是我自己太菜导致万万不能而已。回想刚刚上面记录的继承关系图和`width`的实际类型，我顺藤摸瓜，来到了`ReadOnlyDoubleWrapper`，果不其然，找到了Override的方法
 
-``` java
+```java
 private ReadOnlyPropertyImpl readOnlyProperty;
 
 @Override
@@ -332,7 +332,7 @@ protected void fireValueChangedEvent() {
 
 又根据`ReadOnlyDoubleWrapper`的继承关系图，我找到了。`ReadOnlyDoublePropertyBase`里头的这个方法的确是被调用了。
 
-``` java
+```java
 protected void fireValueChangedEvent() {
     ExpressionHelper.fireValueChangedEvent(helper);
 }
@@ -340,7 +340,7 @@ protected void fireValueChangedEvent() {
 
 来到这里，就已经稳得一笔了，我们只需要定位到`ReadOnlyDoublePropertyBase`里头的helper实际所属的类，找到`fireValueChangedEvent()`方法即可
 
-``` java
+```java
 //ExpressionHelper (Part)
 public static <T> void fireValueChangedEvent(ExpressionHelper<T> helper) {
     if (helper != null) {
@@ -410,7 +410,7 @@ private static class Generic<T> extends ExpressionHelper<T> {
 
 那么，做出了推理之后，是不是要Debug验证一下呢？于是我在IDE中，给这里下了个Breakpoint
 
-``` java
+```java
 //ReadOnlyDoublePropertyBase
 ExpressionHelper.fireValueChangedEvent(helper);//breakpoint here
 ```
@@ -425,7 +425,7 @@ ExpressionHelper.fireValueChangedEvent(helper);//breakpoint here
 
 思路就是，实现一个Subscription接口，然后由Customer实现，最后Store里头存储着subscribers，并会提醒subscriber们关于价格和库存的更新。
 
-``` java
+```java
 package test;
 
 import java.util.ArrayList;
@@ -538,7 +538,7 @@ class Customer implements Subscription {
 
 运行结果为
 
-``` text
+```text
 A subscriber subscribes the product!
 A subscriber subscribes the product!
 Hi, Situ. The price of product is changed. New price is $1919810

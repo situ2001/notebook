@@ -6,7 +6,7 @@
 
 就像是Java里头的`toString()`
 
-``` python
+```python
 class Foo(object):
     def __init__(self) -> None:
         super().__init__()
@@ -20,7 +20,7 @@ print (Foo()) # Hello from foo...
 
 python对象的属性可以通过属性`__dict__`来获得
 
-``` python
+```python
 class Foo(object):
     def __init__(self) -> None:
         self.bar = 114514
@@ -53,7 +53,7 @@ py通红也有运算符重载的操作，官方叫法叫做`Emulating numeric ty
 
 例如
 
-``` python
+```python
 class Circle(object):
     def __init__(self) -> None:
         self.radius = 2
@@ -72,7 +72,7 @@ print (c1 + c2) # 25.12
 
 铺垫，要讲下去，我们先要实现`__getitem__`方法，下面的内容才有意义（比如numpy就是实现了这个方法），比如这个，比如[1, 2, 3]就作为`k`给pass进`__getitem__`里面了，可以说是py里面的一种特殊的运算符重载操作
 
-``` python
+```python
 class T(object):
     def __getitem__(self, k):
         return k
@@ -104,7 +104,7 @@ Ellipsis
 
 首先我们创建了一个三维数组
 
-``` python
+```python
 import numpy as np
 x = np.arange(27).reshape((3, 3, 3))
 '''
@@ -128,7 +128,7 @@ x = np.arange(27).reshape((3, 3, 3))
 
 如果我们这样`x[:2, :, 1:]`切片，就是切成了这样，其实不用多说啥，划重点：看到上面`19`和`[19]`是怎么样refine的了吗？所以，总结规律，我们只需要**按照正常的高维数组refinement的次序**来思考怎么切，切哪里就行了。
 
-``` python
+```python
 print (x[:2, :, 1:])
 '''
 [[[ 1  2]

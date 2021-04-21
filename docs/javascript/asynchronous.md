@@ -28,14 +28,14 @@ js运行的主线程只有一条，但目前对于操作系统的理解不是很
 
 我们也可以用一段代码来试一下，可以在循环`console.log()`输出114514次一个变量，然后设置一个3秒的`setTimeout()`来输出hello world
 
-``` javascript
+```javascript
 setTimeout(() => console.log("Hello world"), 3000);
 for (var i = 0; i < 114514; i++) { console.log(i) }
 ```
 
 理论上三秒就能执行输出hello world了，但是等了十多秒，也就是for循环结束之后才输出。（这就是在主线程空闲时再执行）
 
-``` shell
+```shell
 114512
 114513
 Hello world
@@ -65,7 +65,7 @@ Promise对象有三种状态: pending, fulfilled 和 rejected
 
 由于方法`then()`与`catch()`与`finally()`都返回一个Promise，这个Promise的result呢...只有`then()`能更改Promise对象的resolved value。因此Promise可以被链式调用。像这样
 
-``` javascript
+```javascript
 const calc = new Promise((resolve, reject) => {
     resolve(4);
 }).then(val => val ** 2)
@@ -78,7 +78,7 @@ const calc = new Promise((resolve, reject) => {
 
 ### Instantiation
 
-``` javascript
+```javascript
 let promise = new Promise(function(resolve, reject) {
   // the function is executed automatically when the promise is constructed
 
@@ -100,7 +100,7 @@ let promise = new Promise(function(resolve, reject) {
 
 由于Promise保证了是异步，因此就算是看起来可以马上被执行的函数，也只会在栈空了、过了一个clock-tick之后被执行
 
-``` javascript
+```javascript
 const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {
     resolutionFunc(777);
 });
@@ -127,7 +127,7 @@ console.log("immediate logging");
 
 加`async`的函数，就会是一个Promise-based function，返回值就会是一个Promise
 
-``` javascript
+```javascript
 let hello = async function() { return "Hello" };
 hello(); // Promise {<fulfilled>: "hello"}
 hello().then((value) => console.log(value)); // hello
@@ -137,7 +137,7 @@ hello().then((value) => console.log(value)); // hello
 
 > The await operator is used to wait for a Promise
 
-``` javascript
+```javascript
 [rv] = await expression;
 // rv: Returns the fulfilled value of the promise, or the value itself if it's not a Promise.
 // expression: A Promise or any value to wait for.
@@ -145,7 +145,7 @@ hello().then((value) => console.log(value)); // hello
 
 在Promise-based的函数调用前，加await，可以让code暂时停下，直到这个promise被fulfill，并返回结果的值，**而不是Promise**
 
-``` javascript
+```javascript
 // a function that returns a Promise
 function resolveAfter2Seconds(x) {
   return new Promise(resolve => {
@@ -166,7 +166,7 @@ f1();
 
 而如果把await去掉,就会打印出 `Promise {<pending>}`
 
-``` javascript
+```javascript
 var x = resolveAfter2Seconds(10); // await was removed
 ```
 
@@ -174,7 +174,7 @@ var x = resolveAfter2Seconds(10); // await was removed
 
 一般可以用来做自定义
 
-``` javascript
+```javascript
 let show = v => console.log(v);
 
 class Thenable {
@@ -196,7 +196,7 @@ new Promise(resolve => resolve(4))
 
 `await`还可以把`reject()`的给catch住，不过暂时还不知道有什么用...
 
-``` javascript
+```javascript
 let f = async () => {
   try {
       let x = await Promise.reject(4);

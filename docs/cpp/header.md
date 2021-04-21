@@ -10,7 +10,7 @@ C/C++可以在头文件里面做function, namespace, class, global variable和st
 
 比如说，我有一个`foo.h`和`foo.cpp`
 
-``` cpp
+```cpp
 // foo.h
 namespace foo
 {
@@ -29,7 +29,7 @@ namespace foo
 
 那么用`g++ -E foo.cpp -o foo.ii`预编译一下`foo.cpp`，输出来的预编译文件`foo.ii`是这样的
 
-``` cpp
+```cpp
 # 1 "Foo.cpp"
 # 1 "<built-in>"
 # 1 "<command-line>"

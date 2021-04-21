@@ -8,7 +8,7 @@
 
 那就是`setTimeout`和`setInterval`了，之前一直不会英语，导致不知道是什么意思。现在literally读了一下，估计应该是：前者是在一段时间后执行，后者是以某一时间长短为间隔，反复执行。看起来没什么问题毕竟叫做是Timeout和Interval嘛。。。一查发现，的确如此
 
-``` javascript
+```javascript
 setTimeout()
 Execute a specified block of code once after a specified time has elapsed.
 setInterval()
@@ -35,7 +35,7 @@ The result of calling the function with the specified this value and arguments.
 
 具体怎么操作呢？见下代码
 
-``` javascript
+```javascript
 const mod = {
   value: 114514,
   getValue: function () {

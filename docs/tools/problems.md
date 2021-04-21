@@ -6,6 +6,6 @@
 
 只需要on off一下...
 
-``` shell
+```shell
 nmcli network on
 ```

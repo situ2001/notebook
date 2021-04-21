@@ -22,7 +22,7 @@
 
 举个例子
 
-``` python
+```python
 class Animal:
     def who(self):
         print ('I am a generic animal')
@@ -53,7 +53,7 @@ identify(dog)
 
 输出结果是
 
-``` shell
+```shell
 I am a duck
 I am a cat
 I am a dog
@@ -61,13 +61,13 @@ I am a dog
 
 而如果我们写
 
-``` python
+```python
 identify('animal')
 ```
 
 就会得到错误
 
-``` shell
+```shell
 Traceback (most recent call last):
   File "c:/Users/situ/codes/python/test1.py", line 28, in <module>
     identify('animal')
@@ -82,7 +82,7 @@ AttributeError: 'str' object has no attribute 'who'
 
 一些静态语言，比如Java/C++就不是这样子实现的了，它们的class有很强的等级制度。比如
 
-``` java
+```java
 class Test {
     class Animal {
         public abstract void who();
@@ -106,7 +106,7 @@ class Test {
 
 这上面的是错误的，因为此时传进去的duck，其declared type就是Object，而Object并没有who()这个方法，因此在identify()中，可以这样做。
 
-``` java
+```java
 if (obj instanceof Animal) {
     ((Animal)obj).who();
 }
@@ -114,7 +114,7 @@ if (obj instanceof Animal) {
 
 或者
 
-``` java
+```java
 public static void identify(Animal animal) {
     animal.who();
 }

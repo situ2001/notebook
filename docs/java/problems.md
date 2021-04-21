@@ -8,7 +8,7 @@
 
 > 这个问题是我在看到`Integer.java`源码之后，才想去了解下的。看Oracle里的doc，发现全称应该是叫做`static initialization blocks`。与此同时，对应地，也有`initialization blocks`。长这样子
 
-``` java
+```java
 // they are both in a class body
 static {
     // do something here
@@ -21,7 +21,7 @@ static {
 
 > 前者是在class被加载的时候被调用，而后者是instantiation的时候被调用。因此前者可以用来初始化一些final field，后者可以处理新建对象后的事情(这样就不用把field初始化之类的事情写在constructor里了)。举个例子，如下
 
-``` java
+```java
 public class Example {
     static class Foo {
         {
@@ -55,7 +55,7 @@ CONSTRUCTOR
 
 > 其实这个呢，我觉得就是为了更好地控制类和接口访问权限的开与闭而已。由于Interface现在默认掉（但不建议加）public和static(仅限inner interface)的关键字了。因此，inner interface就是static的了，比如我们只希望在Foo类里头使用Bar接口，我们就可以这样写。如下，如果我们不在同一个package下，就不能访问到Example里头的Bar了
 
-``` java
+```java
 class Example {
     static class Foo<T> {
         @FunctionalInterface
@@ -91,7 +91,7 @@ Q: 为什么`javafx.scene.image.Image`的relative url是相对于classpath的，
 >
 > `Java.io`的相对路径是根据此时的working directory来决定的
 
-``` java
+```java
 package test;
 import java.io.File;
 public class Test {
@@ -106,14 +106,14 @@ public class Test {
 
 比如这样，的确是根据工作目录来的。
 
-``` shell
+```shell
 C:\Users\situ\codes>java -cp C:\Users\situ\codes\experiment\out\production\experiment test.Test
 C:\Users\situ\codes\test.dat
 ```
 
 而之前使用JavaFX，要读图只能放在classpath下。之前搞不懂，是因为我不知道classpath到底是个什么鬼，而现在我懂了。
 
-``` java
+```java
 // The image is located in my.res package of the classpath
 Image image2 = new Image("my/res/flower.png");
 ```

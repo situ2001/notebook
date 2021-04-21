@@ -4,7 +4,7 @@
 
 ### Retrieve a char
 
-``` javascript
+```javascript
 let str = 'dssq';
 console.log(str[2]); // s
 ```
@@ -13,7 +13,7 @@ console.log(str[2]); // s
 
 Return the starting position of the substring in a string. If the substring is not found in the string, `-1` will be returned.
 
-``` javascript
+```javascript
 let str = 'situ2001';
 let index = str.indexOf('2001'); // 4
 ```
@@ -22,7 +22,7 @@ let index = str.indexOf('2001'); // 4
 
 把substring切出来，但是要注意是，左闭右开：`(inclusive, exclusive)`
 
-``` javascript
+```javascript
 let str = 'situ2001';
 let substring = str.slice(0,4); // situ
 let substring1 = str.slice(4); // 2001
@@ -36,7 +36,7 @@ let substring1 = str.slice(4); // 2001
 
 Do replacement and return a new string.
 
-``` javascript
+```javascript
 let str = 'situ2001';
 str.replace('2001', '2021'); // replace 2001 with 2021, result: situ2021
 ```
@@ -47,7 +47,7 @@ str.replace('2001', '2021'); // replace 2001 with 2021, result: situ2021
 
 Just use the method `split`
 
-``` javascript
+```javascript
 let myData = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
 let myArray = myData.split(',');
 // ["Manchester", "London", "Liverpool", "Birmingham", "Leeds", "Carlisle"]
@@ -59,7 +59,7 @@ let myArray = myData.split(',');
 
 ![Great](./images/1pQk8.jpg)
 
-``` javascript
+```javascript
 let a = [23, 45, 12, 67];
 a.unshift(34);
 console.log(a); // [34, 23, 45, 12, 67]
@@ -69,7 +69,7 @@ console.log(a); // [34, 23, 45, 12, 67]
 
 将字符串等转换为数字
 
-``` javascript
+```javascript
 let i = '114514';
 i = Number(i);
 ```
@@ -80,7 +80,7 @@ i = Number(i);
 
 固定小数位位数
 
-``` javascript
+```javascript
 let lotsOfDecimal = 1.766584958675746364;
 lotsOfDecimal;
 let twoDecimalPlaces = lotsOfDecimal.toFixed(2);

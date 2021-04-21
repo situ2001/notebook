@@ -16,7 +16,7 @@
 
 一个痛点得到了完美的解决，比如类型`Set<Map<K, V>.Entry<K, V>>`
 
-``` java
+```java
 var map = new HashMap<String, Integer>();
 var entrySet = map.entrySet(); // Set<Map<String, Integer>.Entry<String, Integer>>
 ```
@@ -27,7 +27,7 @@ var entrySet = map.entrySet(); // Set<Map<String, Integer>.Entry<String, Integer
 
 - 匿名λ expression
 
-``` java
+```java
 var lambda = s -> System.out::println; // NOT OK! Can't infer the type of lambda
 var lambda = new Consumer<String>() {
     @Override
@@ -39,19 +39,19 @@ var lambda = new Consumer<String>() {
 
 - 方法参数列表
 
-``` java
+```java
 public void test(var foo) // not allowed
 ```
 
 - 仅声明
 
-``` java
+```java
 var x; // not allowed
 ```
 
 - 赋个null
 
-``` java
+```java
 var x = null; // not allowed
 ```
 
@@ -59,7 +59,7 @@ var x = null; // not allowed
 
 你永远不知道在运行时前的编译时，你要catch的Exception是什么类型。
 
-``` java
+```java
 try {
 
 } catch (var e) // not allowed!
@@ -73,7 +73,7 @@ try {
 
 在Java10里，我们可以基于一个存在的类，来创建一个新类，不过这个新类却没有相对应的新类型名字。这个就叫做`Non-denoted Type`，声明这种对象的时候必须要用`var`(因为根本没有存在的类型)，下面的代码用Object做declared type就会报错。
 
-``` java
+```java
 public class Test {
     public static void main(String[] args) {
         var obj = new Object() {
@@ -100,7 +100,7 @@ public class Test {
 
 Python, YES!!!
 
-``` java
+```java
 String example = """
         This is a 
         multi-line example.
@@ -128,7 +128,7 @@ Wow, so python-liked(
 
 可以当成赋值表达式用了，真香。所以赋值也好，return也好，都可以的。`->`后若是一个code block，那么就要用`yield`来说明返回值。
 
-``` java
+```java
 public class Test {
     enum Foo {
         ONE, TWO, THREE, FOUR, FIVE
@@ -159,7 +159,7 @@ public class Test {
 
 使用的话直接cmd输入即可
 
-``` shell
+```shell
 jshell
 ```
 

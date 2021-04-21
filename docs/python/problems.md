@@ -10,7 +10,7 @@ Conversion between collections and arguments
 
 `**` collects all the keyword arguments in a dictionary.
 
-``` python
+```python
 def func(*args, **kargs):
     # ...
 func(1, 14, 514, a=1, b=2, c=3)
@@ -23,14 +23,14 @@ func(1, 14, 514, a=1, b=2, c=3)
 
 `**` unpacks a dictionary into keyword arguments.
 
-``` python
+```python
 l = [114, 514] # f(*l) -> f(114, 514)
 d = {'a': 114, 'b': 514} # f(**d) -> f(a=114, b=514)
 ```
 
 比如
 
-``` python
+```python
 def func(a, b=None, *args, **kwargs):
     print (a)
     print (b)
@@ -51,7 +51,7 @@ func(1, 14, *[514, 1919], chou='810')
 
 报错了，怎么看traceback呢，它**不像**java的stacktrace那样读，有句话很关键: **most recent call last**，即最近的call是在最下面的！所以，整个过程是要从上往下看的。
 
-``` python
+```python
 def test(str):
     print ('Hello, ' + st)
 
@@ -75,7 +75,7 @@ NameError: name 'st' is not defined
 
 ## scope
 
-``` python
+```python
 def test():
     if some_condition:
         a = 3
@@ -94,7 +94,7 @@ def test():
 
 要想module里的class和函数外的语句不被import的时候调用，可以加这个来判断`__main__`，达到作为模块的时候不被执行的效果
 
-``` python
+```python
 if __name == '__main__':
     # do sth
 ```

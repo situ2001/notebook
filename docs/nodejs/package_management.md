@@ -27,7 +27,7 @@ ES2015模块在加载之前有一个静态解析阶段，来确定依赖关系�
 
 CommonJS to ES2015 module，只能先整体引入。单独引用一部分就继续import。同理，export的时候，cjs到es6就也可以这样做，加个wrapper
 
-``` javascript
+```javascript
 import packageMain from 'commonjs-package';
 const { method } = packageMain;
 

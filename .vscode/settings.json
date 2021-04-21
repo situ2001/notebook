@@ -5,6 +5,7 @@
         "multithreading",
         "subproblems",
         "tensorflow",
+        "transpiler",
         "untracked"
     ],
     "editor.detectIndentation": false

@@ -30,7 +30,7 @@ class上的`:`，如同java里的`extends`
 
 无参数的话，**不用带parentheses**
 
-``` cpp
+```cpp
 Test test1;
 
 Test* test2 = new Test;
@@ -44,7 +44,7 @@ Test* test2 = new Test;
 
 比如java里头定义一个父类抽象方法的话，子类来实现。
 
-``` java
+```java
 //father
 public abstract void test();
 //son
@@ -56,7 +56,7 @@ public void test() {
 
 C++就要用到纯虚函数了
 
-``` cpp
+```cpp
 //father
 virtual void test() = 0;
 //son
@@ -68,7 +68,7 @@ virtual void test()
 
 如果父类的虚函数想有自己的实现的话，把`= 0`去掉，加自己的实现即可（此时仍然有多态）。但此时的父类就不是抽象类了，可以被实例化。
 
-``` cpp
+```cpp
 class Animal
 {
     public:
@@ -92,7 +92,7 @@ class Chicken : public Animal
 
 该关键字(C++11)可以防止写虚函数重载的时候，不小心写错的大无语事件发生。
 
-``` cpp
+```cpp
 virtual void eat() override;
 ```
 
@@ -112,7 +112,7 @@ virtual void eat() override;
 
 还有，根据C++17前（艹）的标准。define的时候必须要在类外面进行(除非为const的时候才能在类内做定义)
 
-``` cpp
+```cpp
 //class Test
 public:
   static int i;
@@ -128,7 +128,7 @@ Test::i // 114514
 
 C++17及之后可以inline
 
-``` cpp
+```cpp
 inline static int i = 114514;
 ```
 
@@ -136,7 +136,7 @@ inline static int i = 114514;
 
 > The friend declaration appears in a class body and grants a function or another class access to private and protected members of the class where the friend declaration appears.
 
-``` cpp
+```cpp
 class Test
 {
 public:
@@ -158,7 +158,7 @@ void getNum(Test test)
 }
 ```
 
-``` cpp
+```cpp
 Test test;
 getNum(test); // 114514
 ```
@@ -167,7 +167,7 @@ getNum(test); // 114514
 
 前提是有一个该类的对象，才能进行访问
 
-``` cpp
+```cpp
 //In class Test
 friend class Friend;
 
@@ -181,7 +181,7 @@ class Friend
 
 ## Inheritance
 
-``` cpp
+```cpp
 class Chicken : public Animal
 ```
 
@@ -197,7 +197,7 @@ class Chicken : public Animal
 
 比如在保护继承和私有的继承的情况下，如果想改变某一个member的accessibility（比如原来是public或protected的，但是继承后降级），可以使用scope qualifier...(差不多得了)
 
-``` cpp
+```cpp
 class Animal
 {
     int i = 1141514;
@@ -223,7 +223,7 @@ int main()
 
 主要是用来当Interface用吧（C++的OOP没有Interface...
 
-``` cpp
+```cpp
 class Foo : public BaseFoo, public BaseBar
 ```
 
@@ -231,7 +231,7 @@ class Foo : public BaseFoo, public BaseBar
 
 然后还有歧义的问题，就是这样的
 
-``` cpp
+```cpp
 #include <iostream>
 
 class Base
@@ -270,7 +270,7 @@ int main()
 
 输出
 
-``` shell
+```shell
 Base was constructed
 Bar was constructed
 Base was constructed
@@ -280,7 +280,7 @@ Foo was constructed
 
 如果main里加`foo.test()`会报错`ambiguous access of 'test'`，因为每个Bar类都分别有自己的一个父类对象。如下所示
 
-``` shell
+```shell
 Base   Base
  |      |
 Bar    Bar1
@@ -292,7 +292,7 @@ Bar    Bar1
 
 把两个Bar类的继承里的modifier加上关键字`virtual`，就会得到如下，两者继承到了同一个父类对象上。
 
-``` shell
+```shell
 Base was constructed
 Bar was constructed
 Bar1 was constructed
@@ -301,7 +301,7 @@ Foo was constructed
 
 此时的继承关系为
 
-``` shell
+```shell
    Base
   /   \
 Bar    Bar1
@@ -311,7 +311,7 @@ Bar    Bar1
 
 ## Constructors and member initializer lists
 
-``` cpp
+```cpp
 public:
   Chicken() : Animal(arg)
   {
@@ -321,7 +321,7 @@ public:
 
 相似地，我们也可以用来给field初始化
 
-``` cpp
+```cpp
 private:
   std::string text = nullptr;
 public:
@@ -337,7 +337,7 @@ public:
 
 类的析构和构造，都是默认缺省的（无参数），这点都一样，当然也可以自己写实现
 
-``` cpp
+```cpp
 //class Test
 ~Test()
 {
@@ -353,20 +353,20 @@ public:
 
 然后就是这个了，同上，这个东西也是默认缺省的，像这样，传的必须要是一个引用类型（不传引用？你可以想想套娃调用...）。
 
-``` cpp
+```cpp
 Test::Test(const Point&)
 ```
 
 其中这个类型，可以cv-qualified，其中`const`主要是用来应对`rvalue`的（`const T&`和`T&&`都能被赋值一个临时对象），如果copy constructor的参数类型不加`const`那么这个就会报错
 
-``` cpp
+```cpp
 // in a function body
 return obj;
 ```
 
 本来java中的引用变量之间的赋值就是把这个变量的值赋给你而已。但是C++直接给你弄了个了新对象。
 
-``` cpp
+```cpp
 //main
 Test test;
 Test test1 = test; //invoke Copy Constructor
@@ -374,7 +374,7 @@ Test test1 = test; //invoke Copy Constructor
 
 调用默认拷贝构造函数的时候，一切栈上的变量都被拷过去了(这不就是跟struct一模一样吗)。但是当然要自己实现的时候，就不是这样了（要自己一个一个加实现）
 
-``` cpp
+```cpp
 Test test;
 Test test1;
 test1 = test; // This is operator overloading, NOT invoking copy constructor
@@ -392,7 +392,7 @@ C++11开始加入了rvalue reference，这是什么呢，一查cpprefernce就能
 
 还有std::move，类的构造器也有了移动构造函数
 
-``` cpp
+```cpp
 //class Foo
 public:
   Foo(Foo&& bar); 
@@ -400,7 +400,7 @@ public:
 
 初始化并赋值一个新对象的时候，可以使用Move constructor
 
-``` cpp
+```cpp
 Foo foo1;
 Foo foo2 = std::move(foo1);
 ```
@@ -415,13 +415,13 @@ Foo foo2 = std::move(foo1);
 
 这个java的引用变量是差不多的。声明也就这样
 
-``` cpp
+```cpp
 ClassType* pointer;
 ```
 
 用法也就那样，如
 
-``` cpp
+```cpp
 Test test1;
 Test* pointer = &test1;
 
@@ -440,7 +440,7 @@ Test* test2 = new Test;
 
 如果要禁用某个函数，可以上`=delete`
 
-``` cpp
+```cpp
 Test() = default;
 Test(const X&) = delete;
 Test& operator=(const X&) = delete;
@@ -492,12 +492,12 @@ test2 = test3; //wrong!
 
 - `static_cast`是安全地，隐式地在类型之间进行转换(比如void, int, double, float)
 - `dynamic_cast`是在有继承关系的类之间的up cast, down cast and side cast（虽然上者也可以，但是上者对虚类down cast的支持不好）
-- `const_cast`可以进行`const`约束的添加和删除
+- `const_cast`可以对对象的指针或引用进行`const`约束的添加和删除
 - `reinterpret_cast`暴力casting，不管啥的
 
 一个例子
 
-``` cpp
+```cpp
 #include <iostream>
 
 struct Base

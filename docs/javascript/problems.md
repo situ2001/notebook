@@ -2,6 +2,32 @@
 
 [[toc]]
 
+## Strict mode
+
+> Strict mode is like a linter reminding you how JS should be written to have the highest quality and best chance at performance
+
+JS的严格模式，举个例子，在浏览器环境下，严格模式会使得global object变为`undefined`，而不是`Window`
+
+启用方法如下，这条statement前若有代码，那么就会使严格模式不生效
+
+```javascript
+// only comments and whitespace are allowed
+"use strict";
+// code starts here
+```
+
+当然也可以用在function的scope上，叫做`function-level strict mode`。比如这个
+
+```javascript
+function foo() {
+    // only comments and whitespace are allowed
+    "use strict";
+    // code starts here
+}
+```
+
+不过ES6的module都是假定在strict mode下的，所以ES6文件的代码都是自动默认为strict mode的（为什么不全部JS文件都默认为严格模式呢？这会break the web）
+
 ## 运算符 || &&
 
 |operator|meaning|statement|
@@ -9,7 +35,7 @@
 | `||` |Logic OR| If expr1 can be converted to true, returns expr1; else, returns expr2.|
 | `&&` |Logic AND| If expr1 can be converted to true, returns expr2; else, returns expr1.|
 
-``` javascript
+```javascript
 let a = undefined || 114514; // a = 114514
 let b = undefined && 1919810; // b = undefined
 let c = "you" || "me"; // c = you
@@ -43,7 +69,7 @@ In web browser, when a variable defined with `var` keyword, they are created as 
 
 For example
 
-``` javascript
+```javascript
 // on a web browser
 var a = 114514;
 let b = 114514;
@@ -62,7 +88,7 @@ console.log(this.b); // undefined
 
 `for ... of ...`，迭代的是一个对象的property value，然而限定了使用的对象，**要是iteratable**的才行，比如`Array`, `Map`, `Set`, `String`, `TypedArray`, `arguments`
 
-``` javascript
+```javascript
 let list = [4, 5, 6];
 
 for (let i in list) {
@@ -87,7 +113,7 @@ for (let pet of pets) {
 
 ## template literals
 
-``` javascript
+```javascript
 let str = '514';
 console.log(`114${str}`); // 114514
 let examScore = 45;
@@ -103,7 +129,7 @@ examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round((ex
 
 就是模块导入呗，这是ES2015开始才有的功能，注意另外一个导入模块的`require()`并不是标准js api的一部分。是node.js那边特有的一个函数。
 
-``` javascript
+```javascript
 import defaultExport from "module-name";
 import * as name from "module-name";
 import { export1 } from "module-name";
@@ -121,7 +147,7 @@ var promise = import("module-name");
 
 与import相反，作为模块而导出
 
-``` javascript
+```javascript
 // Exporting individual features
 export let name1, name2, …, nameN; // also var, const
 export let name1 = …, name2 = …, …, nameN; // also var, const

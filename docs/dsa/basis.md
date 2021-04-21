@@ -48,7 +48,7 @@ $$O(1)<O(logn)<O(n)<O(n logn)<O(n^2)<(O^3)<O(2^n)$$
 
 其实for loop可以说，是从while loop那里来的而已。while是基本。
 
-``` java
+```java
 for (int i = 0; i < n; i++) {
     // do sth
 }
@@ -56,7 +56,7 @@ for (int i = 0; i < n; i++) {
 
 等效于
 
-``` java
+```java
 int i = 0;
 while (i < n) {
     // do sth
@@ -86,7 +86,7 @@ while (i < n) {
 
 简的来说就是：算出$T(n)$的表达式
 
-``` java
+```java
 for (int i = 1; i <= n; i++) {
     k = k + 5;
 }
@@ -98,7 +98,7 @@ for (int i = 1; i <= n; i++) {
 
 $$T(n)=c*n=O(n)$$
 
-``` java
+```java
 for (int i = 1; i <= n; i++) {
     for (int i = 1; i <= n; i++) {
         k = k + 5;
@@ -110,7 +110,7 @@ for (int i = 1; i <= n; i++) {
 
 $$T(n)=c*n*n=O(n^2)$$
 
-``` java
+```java
 for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= i; j++) {
         k += 5;
@@ -122,7 +122,7 @@ for (int i = 1; i <= n; i++) {
 
 $$T(n)=c*(1+2+3+...+n)=c*\frac{n(n+1)}{2}=O(n^2)$$
 
-``` java
+```java
 if (list.contains(e)) {
     System.out.println(e);
 } else {
@@ -138,7 +138,7 @@ if (list.contains(e)) {
 
 $$T(n)=O(n)+O(n)=O(n)$$
 
-``` java
+```java
 long result = 1;
 for (int i = 1; i <= n; i++) {
     result *= a;
@@ -173,7 +173,7 @@ for (int i = 1; i <= k; i++) {
 
 举个例子，选择排序
 
-``` java
+```java
 private static void sort(int[] array) {
     for (int i = 0; i < array.length - 1; i++) {
         int currentMin = array[i];

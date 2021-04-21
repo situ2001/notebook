@@ -12,7 +12,7 @@ primitive的特点就是immutable，也就是说它们不能被更改，不能�
 
 而Object类型变量(reference variable)之间的赋值就是赋地址(对象所在的内存地址)了，这跟Java是差不多的
 
-``` javascript
+```javascript
 let a = { x: 114514 };
 let b = a; // copy the reference and assign to b
 b.x = 1919810;
@@ -37,7 +37,7 @@ prototype是一个对象，是函数的**原型对象**。`prototype`调用const
 
 图中`new Foo()`产生的对象，其`__proto__`是`Foo.prototype`，`function Foo()`只是个`constructor`罢了。
 
-``` javascript
+```javascript
 function a () {
     this.i = 114514;
 }
@@ -53,7 +53,7 @@ typeof Function.prototype // function
 
 `Object.create()`是直接使用现有的对象，作为新建对象的proto。
 
-``` javascript
+```javascript
 const foo = {
     name: "situ2001",
     isHuman: true
@@ -69,13 +69,13 @@ bar.__proto__ // foo
 
 new就是相当于创建了继承于`func.prototype`的新对象，再使用`apply()`将this指向这个对象
 
-``` javascript
+```javascript
 // a simple implementation
 var obj = Object.create(func.prototype);
 func.apply(obj, [args]);
 ```
 
-``` javascript
+```javascript
 let foo = function () {
     this.x = 114;
     this.y = 514;

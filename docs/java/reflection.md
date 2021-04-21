@@ -20,7 +20,7 @@
 
 上面的讨论都在下面的代码里头体现了。
 
-``` java
+```java
 package reflection;
 
 import java.lang.reflect.Field;
@@ -69,7 +69,7 @@ class Bar extends Foo {
 
 输出结果
 
-``` shell
+```shell
 public int reflection.Bar.value
 public java.lang.String reflection.Foo.key
 private java.lang.String reflection.Bar.mValue
@@ -94,7 +94,7 @@ dssq
 
 比如我们获取`Function`下的`andThen`的一些信息，并且invoke它。
 
-``` java
+```java
 public class Reflection {
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Function<Integer, Integer> f = x -> x * x;
@@ -129,7 +129,7 @@ public class Reflection {
 
 输出
 
-``` shell
+```shell
 Class type parameters: [T, R]
 Method name: andThen
 It is a public method
@@ -143,7 +143,7 @@ Result: 16
 
 同理，像获取Method一样获取Constructor，并可以进行调用来new一个对象。
 
-``` java
+```java
 public class Reflection {
     public static void main(String[] args) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         Class<?> klass = Foo.class;
@@ -168,7 +168,7 @@ class Foo {
 
 输出
 
-``` java
+```java
 Non-arg constructor
 Private constructor with args: 114 514
 ```
