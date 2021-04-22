@@ -1,4 +1,4 @@
-/docs/.vuepress/dist/
-/node_modules
-/.tmp
-/deploy.git
+docs/.vuepress/dist/
+node_modules
+.tmp
+deploy.git
