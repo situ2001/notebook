@@ -1,4 +1,4 @@
-const sidebar = require('../sidebar')
+const sidebar = require('../sidebar');
 
 module.exports = {
     title: 'Situ Book',
