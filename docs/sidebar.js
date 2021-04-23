@@ -31,10 +31,10 @@ module.exports = [
             'background', // 背景
             'problems', // 问题记录     
             'common_function', // 常用函数
-            'keywords', // 关键字
             'built_in_object', // 内建对象
-            'function', // 函数
             'object', // objects
+            'function', // 函数
+            'class', // class
             'asynchronous', // 异步
             'iterable', // 可迭代的
         ])

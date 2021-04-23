@@ -1,11 +1,14 @@
 {
     "cSpell.words": [
+        "IIFE",
         "Xcute",
         "emcascript",
+        "interoperation",
         "multithreading",
         "subproblems",
         "tensorflow",
         "transpiler",
+        "typeof",
         "untracked"
     ],
     "editor.detectIndentation": false

@@ -1,8 +1,8 @@
 # Function
 
-## 一等公民
+在js里，函数式一等公民。也就是说，函数不用被特殊对待，就是一个值。
 
-就是说，你在js里面，函数不用被特殊对待，它们就像一个对象一样，可以被赋值给变量，可以作为参数传递，也可以存在数组里头...
+这个值可以被赋值给变量，可以作为参数传递，也可以存在对象里头...
 
 ## Pattern
 
@@ -23,11 +23,11 @@ invoke的操作分别是`new func()`, `func()`, `foo.func()`, `func.apply(thisAr
 
 > In most cases, the value of this is determined by how a function is called (runtime binding). It can't be set by assignment during execution, and it may be different each time the function is called.
 
-`this`这个关键字常见，在JavaScript中大概就是执行当前context的对象吧。（个人理解）
+`this`在JavaScript中就是执行当前context的对象
 
 大多数情况就是用来查明这个函数是由谁call的，但是要注意Arrow function没有属于自己的argument和this。
 
-函数和箭头函数都可以capture外部this(后者的this是在箭头函数被定义之后就确定的了，为定义处的this)。但前者拥有自己的this，可以作为constructor invocation pattern来使用，用于新建对象。
+箭头函数的this，是静态的，为箭头函数定义的地方capture自外部的this。
 
 ## argument
 
@@ -116,12 +116,7 @@ var add_the_handlers = function (nodes) {
 
 ## Arrow function
 
-简的来说就是没argument对象和this，因为如此，也就不能用bind, apply和call了。也不能用来做constructor
+简的来说就是没`argument`,`this`和`super`，不适合使用bind, apply和call了（同理，也不能做对象的method）。也不能用来做constructor。还有一些与普通函数的区别，摘自MDN。
 
-Differences & Limitations:
-
-- Does not have its own bindings to this or super, and should not be used as methods.
 - Does not have arguments, or new.target keywords.
-- Not suitable for call, apply and bind methods, which generally rely on establishing a scope.
-- Can not be used as constructors.
 - Can not use yield, within its body.
