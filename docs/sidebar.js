@@ -34,9 +34,9 @@ module.exports = [
             'built_in_object', // 内建对象
             'object', // objects
             'function', // 函数
-            'class', // class
+            'class_and_module', // class & module
             'asynchronous', // 异步
-            'iterable', // 可迭代的
+            'iteration', // 可迭代的
         ])
     },
     {

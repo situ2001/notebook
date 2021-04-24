@@ -1,12 +1,14 @@
-# Iterable and Generator
+# Iteration
 
-好多都是E2015及其之后加入的
+## Iterable Protocol
+
+ES6标准定义了一套`Iterable protocol`，用于对`iterable`对象进行迭代。依靠这个protocol里面的`next()`--用于返回含有property为`value`和`done`的一个`iterator`对象。一个粗糙的实现是：`next()`后是否`done`，是则停下，否则继续`next()`
+
+ES6拥有几个实现了该protocol的API和syntax，比如常见的循环`for..of`
+
+可以直接提供`iterator`给`iterable protocol`进行迭代，是因为`iterator`本身就是iterable的。当我们对一个`iterator`对象进行迭代，返回的就是这个`iterator`对象本身。
 
 ## Generator
-
-generator是与iterable密切相关的，注意理解
-
-### Function
 
 带asterisk的function: `function*`表示这个函数会返回一个Generator对象(这个对象符合iterator protocol)
 
@@ -32,7 +34,7 @@ console.log(gen.next()); // { value: 1, done: false }
 console.log(gen.next()); // { value: undefined, done: true }
 ```
 
-### Spread syntax (...)
+## Spread syntax (...)
 
 于ES2018加入的，可以把iterable比如函数arguments或者数组给展开。比如，可用于可变参数，对象属性复制和数组生成中。
 
@@ -40,10 +42,19 @@ console.log(gen.next()); // { value: undefined, done: true }
 myFunction(...iterableObj); // pass all elements of iterableObj as arguments to function myFunction
 [...iterableObj]; // insert all elements from iterableObj to an array
 [...iterableObj, '4', 'five', 6]; // combine two arrays by inserting all elements from iterableObj
-let objClone = { ...obj }; // pass all key:value pairs from an object 
+let objClone = { ...obj }; // (copy object)pass all key:value pairs from an object 
+let newArray = [...array] // copy array to a new array
 ```
 
-### Delegation
+常见的有
+
+```javascript
+// convert string to char array
+let test = "test";
+let chars = [...test]; // ['t', 'e', 's', 't']
+```
+
+## Delegation
 
 可以用`yield*`来跳到委托的生成器中。
 
@@ -70,7 +81,7 @@ console.log([...obj]); // [ 's', 'i', 't', 'u' ]
 console.log([...obj]); // [ [ 's', 'i', 't', 'u' ] ]
 ```
 
-### Args passing
+## Args passing
 
 也可以传参：比如把参数换成`yield`。但是要注意`next()`一下以停在用yield代替的参数处，再进行传参。
 
@@ -161,13 +172,3 @@ class Foo {
 console.log([...obj]); // [ 114, 514, 1919, 810 ]
 console.log(Array.from(new Foo())); // [ 114514, 1919810 ]
 ```
-
-## Symbol primitive
-
-Symbol即符号，这个是js里头的primitive
-
-鸽子中...
-
-## Iterable Protocol
-
-还是鸽子中...

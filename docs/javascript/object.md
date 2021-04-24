@@ -2,43 +2,9 @@
 
 [[toc]]
 
-## Primitive & Object
+## 值的类型
 
-在JS里头，value有两种--primitive和object
-
-几种primitive，它们分别是 `string`, `number`, `bigint`, `boolean`, `undefined`, `symbol`, `null`
-
-primitive的特点就是immutable，也就是说它们的值不能被更改。即不像数组，对象，函数那样，可以把自身的property或value给更改。如果一个被赋值了primitive value的变量的value被更改，那就是被重新赋了个新值。
-
-> All primitives are immutable, i.e., they cannot be altered. It is important not to confuse a primitive itself with a variable assigned a primitive value. The variable may be reassigned a new value, but the existing value can not be changed in the ways that objects, arrays, and functions can be altered.
-
-而Object类型变量(reference variable)，objects are held by reference。跟Java是差不多的.
-
-```javascript
-let a = { x: 114514 };
-let b = a; // copy the reference and assign to b
-b.x = 1919810;
-console.log(a.x); // 1919810
-
-let c = 114514;
-let d = c; // assigning a new primitive, but not copying the reference
-d = 1919810;
-console.log(c); // 114514
-```
-
-`undefined`指的是一个value的值为empty，一般来说，就是变量没有被赋值。这跟`null`有点不一样
-
-`Symbol`是一个有特殊用途的primitive，表现为一个隐藏的值。通常作为一个对象的特殊的key
-
-`function`和`array`是特殊的Object类型
-
-`typeof`这里也有一点坑，理论上primitive就显示对应的类型，但是`null`却不是如此
-
-```javascript
-typeof function() {} // "function"
-typeof [1919, 810] // "object" but not "array"
-typeof null // "object" but not "null"
-```
+update：见[博客](https://blog.situ2001.com/contents/d2b42a9c0258/)
 
 ## 原型链
 

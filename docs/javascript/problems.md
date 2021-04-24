@@ -28,11 +28,28 @@ function foo() {
 
 不过ES6的module都是假定在strict mode下的，所以ES6文件的代码都是自动默认为strict mode的（为什么不全部JS文件都默认为严格模式呢？这会break the web）
 
-## 运算符 || &&
+## Falsy values
+
+这里插入falsy value，为后面比较做铺垫
+
+下面这些值都是false
+
+- `false`
+- `null`
+- `undefined`
+- `NaN`
+- `0` (zero)
+- `-0` (Number negative zero)
+- `0n` (BigInt zero)
+- empty string ("" or '' or ``)
+
+## Operator || &&
+
+与此同时，顺便插入跟其他常见语言行为有点不同的`&&`和`||`运算符运算规则
 
 |operator|meaning|statement|
 |--|--|--|
-| `||` |Logic OR| If expr1 can be converted to true, returns expr1; else, returns expr2.|
+| `` |Logic OR| If expr1 can be converted to true, returns expr1; else, returns expr2.|
 | `&&` |Logic AND| If expr1 can be converted to true, returns expr2; else, returns expr1.|
 
 ```javascript
@@ -44,46 +61,11 @@ let d = "you" && "me"; // d = me
 
 根据**短路运算**的规则来理解就行了，比如Logic OR，第一个true就扔回第一个，否则就会比较第二个，因此第一个false就会扔回第二个。Logic AND也是如此
 
-并且因为js用来判断false和true的是用falsy value和truthy value，所以使用if语句的时候，要注意哪些东西在js里头是false的。
+并且因为js用来判断false和true的是用falsy value和truthy value，所以使用if语句的时候，要注意哪些东西在js里头是falsy的。
 
-## Falsy values
+## 值的比较
 
-下面这些表达式都是false的
-
-- null
-- NaN
-- 0
-- empty string ("" or '' or ``)
-- undefined
-
-## == or ===
-
-`===`是比较严格的比较（带上类型的比较），但也不是真正的strict equal comparison...
-
-```javascript
-NaN === NaN // false
-0 === -0 // false
-```
-
-但是这两个都可以用`Object.is()`来解决，所以`Object.is()`就是`====`了（手滑
-
-`==`与`===`这两个在同类型比较的时候，行为是**一样**的。但是在两个待比较的值的类型不同的时候，就会产生差别，`==`会把类型做转换后再进行比较值（强制比较，即Coercive equality）。且优先做**primitive numeric comparison**
-
-```javascript
-114514 == "114514" // true
-true == 1 // true
-```
-
-那`<`和`>`和`>=`和`<=`呢？其比较的原理跟`==`的一样，所以`==`的规则还是要懂的
-
-还要注意字符串的比较，是一个一个字符的进行比较
-
-```javascript
-let x = "10";
-let y = "9";
-
-x < y // false
-```
+update：见[博客](https://blog.situ2001.com/contents/d2b42a9c0258/)
 
 ## Global Object
 
@@ -102,11 +84,13 @@ For example
 // on a web browser
 var a = 114514;
 let b = 114514;
+this; // Window
 console.log(this.a); // 114514
 console.log(this.b); // undefined
 // on node.js
 var a = 114514;
 var b = 114514;
+console.log(this); // undefined
 console.log(this.a); // undefined
 console.log(this.b); // undefined
 ```
@@ -228,15 +212,7 @@ console.log(this.y); // undefined
 
 > A third declaration form is const. It's like let but has an additional limitation that it must be given a value at the moment it's declared, and cannot be re-assigned a different value later.
 
-## 文件即程序
-
-在JS里头，每一个文件就被当成一个**独立**的程序。多个js文件被加载之后，其实是每个单独的js文件通过`global scope`来共享它们之间的状态的，所以运行的时候它们就在一起工作了。（这就是网页有时候有多个js，但是一两个加载失败之后，网页的部分功能还能运作的原因）
-
-ES6之后加入了module这个东西，只要一个文件有`import`之类的语句，或者在HTML上用tag `<script type=module>`，那么这个文件就会被当为ES6模块，不过ES6模块还是被视作为一个单独的文件。一个模块被import的时候，工作起来还是那样，如下
-
-> Similar to how "global scope" allows standalone files to mix together at runtime, importing a module into another allows runtime interoperation between them.
-
-## for in 与 for of
+## for in vs for of
 
 `for ... in ...`，迭代的是一个对象的enumerable property name
 
@@ -265,6 +241,19 @@ for (let pet of pets) {
 }
 ```
 
+`for..of`循环还可以这样，一般来说，JS内建的iterable都有下面几个方法：`keys()`, `values()`和`entries()`
+
+```javascript
+var arr = [ 10, 20, 30 ];
+
+for (let [idx,val] of arr.entries()) {
+    console.log(`[${ idx }]: ${ val }`);
+}
+// [0]: 10
+// [1]: 20
+// [2]: 30
+```
+
 ## template literals
 
 ```javascript
@@ -275,57 +264,10 @@ let examHighestScore = 70;
 examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round((examScore/examHighestScore*100)) }%). ${ examScore >= 49 ? 'Well done, you passed!' : 'Bad luck, you didn\'t pass this time.' }`;
 ```
 
-## script标签
+## 文件即程序
 
-这个要注意，因为HTML的加载，是从头加载到尾的，所以如果一个js有与DOM相关的操作，就要等物件都加载完了先。因此最好的方法是把`<script src=""></script>`放在body后面，而不是放在`<head>`里头。
+在JS里头，每一个文件就被当成一个**独立**的程序。多个js文件被加载之后，其实是每个单独的js文件通过`global scope`来共享它们之间的状态的，所以运行的时候它们就在一起工作了。（这就是网页有时候有多个js，但是一两个加载失败之后，网页的部分功能还能运作的原因）
 
-## import
+ES6之后加入了module这个东西，只要一个文件有`import`之类的语句，或者在HTML上用tag `<script type=module>`，那么这个文件就会被当为ES6模块，不过ES6模块还是被视作为一个单独的文件。一个模块被import的时候，工作起来还是那样，如下
 
-就是模块导入呗，这是ES2015开始才有的功能，注意另外一个导入模块的`require()`并不是标准js api的一部分。是node.js那边特有的一个函数。
-
-```javascript
-import defaultExport from "module-name";
-import * as name from "module-name";
-import { export1 } from "module-name";
-import { export1 as alias1 } from "module-name";
-import { export1 , export2 } from "module-name";
-import { foo , bar } from "module-name/path/to/specific/un-exported/file";
-import { export1 , export2 as alias2 , [...] } from "module-name";
-import defaultExport, { export1 [ , [...] ] } from "module-name";
-import defaultExport, * as name from "module-name";
-import "module-name";
-var promise = import("module-name");
-```
-
-## export
-
-与import相反，作为模块而导出
-
-```javascript
-// Exporting individual features
-export let name1, name2, …, nameN; // also var, const
-export let name1 = …, name2 = …, …, nameN; // also var, const
-export function functionName(){...}
-export class ClassName {...}
-
-// Export list
-export { name1, name2, …, nameN };
-
-// Renaming exports
-export { variable1 as name1, variable2 as name2, …, nameN };
-
-// Exporting destructured assignments with renaming
-export const { name1, name2: bar } = o;
-
-// Default exports
-export default expression;
-export default function (…) { … } // also class, function*
-export default function name1(…) { … } // also class, function*
-export { name1 as default, … };
-
-// Aggregating modules
-export * from …; // does not set the default export
-export { name1, name2, …, nameN } from …;
-export { import1 as name1, import2 as name2, …, nameN } from …;
-export { default, … } from …;
-```
+> Similar to how "global scope" allows standalone files to mix together at runtime, importing a module into another allows runtime interoperation between them.
