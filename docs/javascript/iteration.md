@@ -10,7 +10,7 @@ ES6拥有几个实现了该protocol的API和syntax，比如常见的循环`for..
 
 ## Generator
 
-带asterisk的function: `function*`表示这个函数会返回一个Generator对象(这个对象符合iterator protocol)
+带`*`的function: `function*`表示这个函数会返回一个Generator对象(这个对象符合iterator protocol)
 
 调用该函数就会返回一个`iterator`对象
 

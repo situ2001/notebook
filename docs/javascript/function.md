@@ -19,9 +19,7 @@ invoke的操作分别是`new func()`, `func()`, `foo.func()`, `func.apply(thisAr
 
 ## this
 
-已经优化，并发了：[博客](https://blog.situ2001.com/contents/f7dd0265df9c/)
-
-> In most cases, the value of this is determined by how a function is called (runtime binding). It can't be set by assignment during execution, and it may be different each time the function is called.
+已经优化，发了[博客](https://blog.situ2001.com/contents/f7dd0265df9c/)
 
 `this`在JavaScript中就是执行当前context的对象
 
@@ -29,9 +27,9 @@ invoke的操作分别是`new func()`, `func()`, `foo.func()`, `func.apply(thisAr
 
 箭头函数的this，是静态的，为箭头函数定义的地方capture自外部的this。
 
-## argument
+## arguments
 
-函数里面除了拥有this，还有argument。实际上就是一个对象
+函数里面除了拥有`this`，还有`arguments`。实际上就是一个`Array-like`的对象
 
 ```javascript
 let fn = function () {
@@ -39,6 +37,14 @@ let fn = function () {
 };
 
 fn(114, 514); // [Arguments] { '0': 114, '1': 514 }
+```
+
+这个对象的`prototype`只有两个property: `length`, `callee`(当前的这个函数)
+
+没有与Array自带的方法，不过可以转化为array
+
+```javascript
+let array = Array.prototype.slice.call(arguments); // in function body
 ```
 
 传参又是怎么样的呢？

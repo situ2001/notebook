@@ -15,6 +15,10 @@ setInterval()
 Execute a specified block of code repeatedly with a fixed time delay between each call.
 ```
 
+然后它们的返回值是一个数值--`timeoutID`或者`intervalID`，都是共享同一个ID池的。
+
+这个ID作用一般是用于传给`clearTimeout()`或者`clearInterval()`，以清除timeout或者interval的。
+
 ## apply & call
 
 > The difference is that apply lets you invoke the function with arguments as an array; call requires the parameters be listed explicitly. A useful mnemonic is **"A for array and C for comma."**

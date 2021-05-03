@@ -2,10 +2,6 @@
 
 [[toc]]
 
-## 值的类型
-
-update：见[博客](https://blog.situ2001.com/contents/d2b42a9c0258/)
-
 ## 原型链
 
 面向对象&继承，js跟Java/C++里的类不一样，js用的是函数模拟实现，继承靠的是原型链
@@ -72,3 +68,29 @@ console.log(bar); // foo { x: 114, y: 514 }
 ## Object.hasOwnProperty
 
 只会判断这个property是否是自己的，而不会通过原型链来找(毕竟叫做own property)
+
+## 值的类型
+
+update：见[博客](https://blog.situ2001.com/contents/d2b42a9c0258/)
+
+## instanceof
+
+`instanceof`运算符用于判断一个对象是否拥有该构造函数的prototype。
+
+```javascript
+// obj instanceof constructor
+obj instanceof Object
+```
+
+要注意到这个运算符的一些行为
+
+例如，`string`可以是`primitive`也可以是`object`。`primitive`其实是可以被wrap成`object`(像Java的wrapper class一样)。所以`number`, `boolean`这些，也会出现下面的行为。
+
+``` javascript
+let s1 = '114514'
+let s2 = new String('1919810')
+s1 instanceof String // false
+s2 instanceof String // true
+typeof s1 // 'string'
+typeof s2 // 'object'
+```
